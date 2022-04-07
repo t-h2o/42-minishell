@@ -24,17 +24,20 @@ Version: 6
 
 # Introduction
 
-```
 L’existence des shells est intrinsèquement liée à celle de l’informatique.
-```
-À l’époque, les développeurs étaient tous d’accord pour dire que _communiquer avec
+
+À l’époque, les développeurs étaient tous d’accord pour dire que
+_communiquer avec
 un ordinateur en utilisant des interrupteurs 1/0 était fortement irritant_.
 
-La suite logique fut d’inventer un moyen de communiquer via des lignes de commandes
-interactives dans un langage jusqu’à un certain point proche du langage humain.
+La suite logique fut d’inventer un moyen
+de communiquer via des lignes de commandes
+interactives dans un langage
+jusqu’à un certain point proche du langage humain.
 
-AvecMinishell, vous allez voyager dans le passé et faire face aux problèmes que l’on
-pouvait avoir au temps où _Windows_ n’existait pas encore.
+Avec `Minishell`, vous allez voyager dans le passé et
+faire face aux problèmes que l’on pouvait avoir au temps
+où _Windows_ n’existait pas encore.
 
 
 # Chapitre II
@@ -51,31 +54,36 @@ vous aurez 0 au projet en cas de faute de norme.
 mis à part dans le cas d’un comportement indéfini.
 Si cela arrive, votre projet sera considéré
 non fonctionnel et vous aurez 0 au projet.
-l Toute mémoire allouée sur la heap doit être libéré lorsque c’est nécessaire.
+- Toute mémoire allouée sur la heap doit être libéré lorsque c’est nécessaire.
 Aucun leak ne sera toléré.
 - Si le projet le demande,
 vous devez rendre un Makefile qui compilera vos sources
-pour créer la sortie demandée, en utilisant les flags-Wall,-Wextraet-Werror.
+pour créer la sortie demandée,
+en utilisant les flags **-Wall**, **-Wextra** et **-Werror**.
 Votre Makefile ne doit pas relink.
 - Si le projet demande un Makefile,
 votre Makefile doit au minimum contenir
-les règles $(NAME), all, clean, fclean et re.
-- Pour rendre des bonus, vous devez inclure une règlebonusà votre Makefile qui
-ajoutera les divers headers, librairies ou fonctions
-qui ne sont pas autorisées dans
-la partie principale du projet. Les bonus doivent être dans un fichier différent :
-_bonus.{c/h}_.
+les règles **$(NAME), all, clean, fclean et re**.
+- Pour rendre des bonus, vous devez inclure une règle bonus
+à votre Makefile qui ajoutera les divers headers, librairies ou fonctions
+qui ne sont pas autorisées dans la partie principale du projet.
+Les bonus doivent être dans un fichier différent : _bonus.{c/h}_.
 L’évaluation de la partie obligatoire et de la partie bonus sont
 faites séparément.
-- Si le projet autorise votrelibft, vous devez copier ses sources et son Makefile
-associé dans un dossier libft contenu à la racine. Le Makefile de votre projet doit
-compiler la librairie à l’aide de son Makefile, puis compiler le projet.
-- Nous vous recommandons de créer des programmes de test pour votre projet, bien
-que ce travail **ne sera pas rendu ni noté**. Cela vous donnera une chance de
-tester facilement votre travail ainsi que celui de vos pairs.
-- Vous devez rendre votre travail sur le git qui vous est assigné. Seul le travail déposé
-sur git sera évalué. Si Deepthought doit corriger votre travail, cela sera fait à la fin
-des peer-evaluations. Si une erreur se produit pendant l’évaluation Deepthought,
+- Si le projet autorise votre libft,
+vous devez copier ses sources et son Makefile
+associé dans un dossier libft contenu à la racine.
+Le Makefile de votre projet doit compiler la librairie
+à l’aide de son Makefile, puis compiler le projet.
+- Nous vous recommandons de créer des programmes de test pour votre projet,
+bien que ce travail **ne sera pas rendu ni noté**.
+Cela vous donnera une chance de tester facilement votre travail
+ainsi que celui de vos pairs.
+- Vous devez rendre votre travail sur le git qui vous est assigné.
+Seul le travail déposé sur git sera évalué.
+Si Deepthought doit corriger votre travail, cela sera fait à la fin
+des peer-evaluations.
+Si une erreur se produit pendant l’évaluation Deepthought,
 celle-ci s’arrête.
 
 
@@ -133,37 +141,37 @@ Minishell Aussi mignon qu’un vrai shell
 
 - Implémenter les **redirections** :
 
-```
-◦ <doit rediriger l’entrée.
-◦ >doit rediriger la sortie.
-◦ <<doit recevoir un délimiteur et lire l’input donné jusqu’à rencontrer une ligne
-contenant le délimiteur. Cependant, l’historique n’a pas à être mis à jour!
-◦ >>doit rediriger la sortie en mode append.
-```
-- Implémenter les **pipes** (caractère|). La sortie de chaque commande de la _pipeline_ est connectée à l’entrée de la commande suivante grâce à un pe_.
-- Gérer les **variables d’environnement** (un$suivi d’une séquence de caractères)
+	- < doit rediriger l’entrée.
+	- > doit rediriger la sortie.
+	- << doit recevoir un délimiteur et lire l’input donné
+	jusqu’à rencontrer une ligne contenant le délimiteur.
+	Cependant, l’historique n’a pas à être mis à jour!
+	- >>doit rediriger la sortie en mode append.
+- Implémenter les **pipes** (caractère|).
+La sortie de chaque commande de la _pipeline_ est connectée à
+l’entrée de la commande suivante grâce à un pe_.
+- Gérer les **variables d’environnement**
+(un$suivi d’une séquence de caractères)
     qui doivent être substituées par leur contenu.
-- Gérer$? qui doit être substitué par le statut de sortie de la dernière _pipeline_
-    exécutée au premier plan.
-- Gérerctrl-C,ctrl-Detctrl-\qui doivent fonctionner comme dansbash.
+- Gérer **$?** qui doit être substitué par le statut de sortie
+de la dernière _pipeline_ exécutée au premier plan.
+- Gérer **ctrl-C, ctrl-D et ctrl-\** qui doivent fonctionner comme dansbash.
 - En mode interactif :
 
-```
-◦ ctrl-Caffiche un nouveau prompt sur une nouvelle ligne.
-◦ ctrl-Dquitte le shell.
-◦ ctrl-\ne fait rien.
-```
+	- ctrl-C affiche un nouveau prompt sur une nouvelle ligne.
+	- ctrl-D quitte le shell.
+	- ctrl-\ ne fait rien.
+
 - Votre shell doit implémenter les **builtins** suivantes :
 
-```
-◦ echo et l’option-n
-◦ cd uniquement avec un chemin relatif ou absolu
-◦ pwd sans aucune option
-◦ export sans aucune option
-◦ unset sans aucune option
-◦ env sans aucune option ni argument
-◦ exit sans aucune option
-```
+	- echo et l’option-n
+	- cd uniquement avec un chemin relatif ou absolu
+	- pwd sans aucune option
+	- export sans aucune option
+	- unset sans aucune option
+	- env sans aucune option ni argument
+	- exit sans aucune option
+
 La fonction readline()peut causer des fuites de mémoire. Vous n’avez pas à les
 gérer. Attention, cela **ne veut pas pour autant dire que votre code, oui celui que
 vous avez écrit, peut avoir des fuites de mémoire**.
