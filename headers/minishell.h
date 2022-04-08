@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/07 16:13:55 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/08 15:10:29 by theo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,10 @@
 //	INCLUDES
 
 # include	<stdio.h>
+# include	<stdlib.h>
+
+//	readline
+# include	<readline/readline.h>
+# include	<readline/history.h>
 
 #endif /* MINISHELL_H */

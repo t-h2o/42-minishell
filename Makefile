@@ -4,8 +4,8 @@ NAME	=	minishell
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
-OFLAGS	=	-fsanitize=address
-
+OFLAGS	+=	-fsanitize=address
+OFLAGS	+=	-lreadline
 
 #	Headers
 
