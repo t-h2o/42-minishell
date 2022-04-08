@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/08 17:27:55 by theo             ###   ########.fr       */
+/*   Updated: 2022/04/08 22:46:49 by theo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void
 
 //	Infinite loop :
 //	readline, if line is null, (CTRL + D)
-void
+static void
 	loop(void)
 {
 	char	*line;
@@ -34,10 +34,17 @@ void
 	{
 		line = readline("it's the Prompt $ ");
 		if (line == 0)
-			return (0);
+			return ;
 		check_build(line);
 		free(line);
 	}
+}
+
+//	CTRL + C (signal interrupt)
+void	sig_int(int	n)
+{
+	if (n == SIGINT)
+		printf("signal interrupt\n");
 }
 
 //	1.	Print a welcome message
@@ -46,5 +53,7 @@ int
 	main(void)
 {
 	wel_msg();
+	signal(SIGINT, sig_int);
 	loop();
+	return (0);
 }
