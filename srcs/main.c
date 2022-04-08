@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/08 15:46:11 by theo             ###   ########.fr       */
+/*   Updated: 2022/04/08 17:27:55 by theo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,28 @@ static void
 	printf("\t###############################\n\n");
 }
 
-int
-	main(void)
+//	Infinite loop :
+//	readline, if line is null, (CTRL + D)
+void
+	loop(void)
 {
 	char	*line;
-
-	wel_msg();
 
 	while (1)
 	{
 		line = readline("it's the Prompt $ ");
+		if (line == 0)
+			return (0);
 		check_build(line);
 		free(line);
 	}
+}
 
-	free(line);
+//	1.	Print a welcome message
+//	2.	Start the main loop
+int
+	main(void)
+{
+	wel_msg();
+	loop();
 }
