@@ -6,16 +6,21 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/08 15:10:59 by theo             ###   ########.fr       */
+/*   Updated: 2022/04/08 15:46:11 by theo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
 
-void
-	ft_foo(int n)
+//	display a welcome message
+static void
+	wel_msg(void)
 {
-	printf("\n\tHello World %d\n\n", n);
+	printf("\n\t###############################\n");
+	printf("\t#                             #\n");
+	printf("\t#  MiniShell by Lucas & Theo  #\n");
+	printf("\t#                             #\n");
+	printf("\t###############################\n\n");
 }
 
 int
@@ -23,8 +28,14 @@ int
 {
 	char	*line;
 
-	ft_foo(42);
-	line = readline("it's the Prompt $ ");
-	printf("line-->%s\n", line);
+	wel_msg();
+
+	while (1)
+	{
+		line = readline("it's the Prompt $ ");
+		check_build(line);
+		free(line);
+	}
+
 	free(line);
 }

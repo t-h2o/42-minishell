@@ -16,24 +16,14 @@ HEADER	=	minishell.h
 #	Sources
 
 DIR_SRC	=	./srcs
-SRCS	=	${DIR_SRC}/main.c
+SRCS	=	${DIR_SRC}/main.c	\
+			${DIR_SRC}/build.c
 
 
 #	Objets
 
 DIR_OBJ	=	./objs
 OBJS	=	${addprefix ${DIR_OBJ}/, ${notdir ${SRCS:.c=.o}}}
-
-#	Linux
-ifeq ($(UNAME_S),Linux)
-	@echo "It is linux os"
-endif
-
-
-#	Apple
-ifeq ($(UNAME_S),Darwin)
-	@echo "It is mac os"
-endif
 
 RM		=	rm -rf
 
