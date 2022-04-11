@@ -4,7 +4,10 @@ NAME	=	minishell
 
 CC		=	gcc
 
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	+=	-Wall
+CFLAGS	+=	-Wextra
+CFLAGS	+=	-Werror
+
 OFLAGS	+=	-fsanitize=address
 OFLAGS	+=	-lreadline
 
@@ -14,11 +17,12 @@ OFLAGS	+=	-lreadline
 DIR_INC	=	./headers/
 HEADER	=	minishell.h
 
+
 #	LIBRARIES
 
 LIB		+=	-I $(DIR_INC)
-LIB		+=	-L /usr/include/readline
-LIB		+=	-lreadline
+LIB		+=	-L /usr/include/
+
 
 #	SOURCES
 
@@ -38,28 +42,35 @@ vpath %.c $(DIR_SRC)
 
 all : $(NAME)
 
+
 $(NAME):	$(OBJS)
-	$(CC) $(OFLAGS) $(LIB) $(OBJS) -o $(NAME)
-#	$(CC) $(OFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(OFLAGS) $(OBJS) -o $(NAME)
+
 
 $(DIR_OBJ)/%.o : %.c | $(DIR_OBJ)
 	$(CC) $(CFLAGS) $(LIB) -o $@ -c $^
 
+
 $(DIR_OBJ) :
 	@mkdir -p $(DIR_OBJ)
+
 
 clean:
 	$(RM) $(DIR_OBJ)
 
+
 fclean:	clean
 	$(RM) $(NAME)
 
+
 re:		fclean all
+
 
 norm:
 	clear
 	@(norminette $(DIR_INC)$(HEADER) $(SRCS) \
 	| grep -v  OK\!) || true
+
 
 lldb:
 	gcc $(SRCS) -I$(DIR_INC) $(OFLAGS) -g -o $(NAME)
