@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/08 18:56:28 by theo             ###   ########.fr       */
+/*   Updated: 2022/04/11 23:21:04 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 //	BUILD
 
-int	check_build(char *line);
+int		check_build(char *line);
+void	pwd(void);
 
 #endif /* MINISHELL_H */

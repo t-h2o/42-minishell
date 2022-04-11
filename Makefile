@@ -28,7 +28,8 @@ LIB		+=	-L /usr/include/
 
 DIR_SRC	=	./srcs
 SRCS	=	$(DIR_SRC)/main.c	\
-			$(DIR_SRC)/build.c
+			$(DIR_SRC)/build.c	\
+			$(DIR_SRC)/pwd.c
 
 #	OBJETS
 

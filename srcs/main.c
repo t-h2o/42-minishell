@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/08 22:46:49 by theo             ###   ########.fr       */
+/*   Updated: 2022/04/11 23:24:57 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,17 @@ static void
 	{
 		line = readline("it's the Prompt $ ");
 		if (line == 0)
+		{
+			printf("\n");
 			return ;
+		}
 		check_build(line);
 		free(line);
 	}
 }
 
 //	CTRL + C (signal interrupt)
-void	sig_int(int	n)
+static void	sig_int(int n)
 {
 	if (n == SIGINT)
 		printf("signal interrupt\n");

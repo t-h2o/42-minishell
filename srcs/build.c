@@ -6,7 +6,7 @@
 /*   By: theo </var/spool/mail/theo>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/04/08 15:45:30 by theo             ###   ########.fr       */
+/*   Updated: 2022/04/11 23:23:18 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,10 @@ int	check_build(char *line)
 		free(line);
 		exit(0);
 	}
-	return (0);
+	if (!str_cmp(line, "pwd"))
+	{
+		pwd();
+		return (0);
+	}
+	return (1);
 }
