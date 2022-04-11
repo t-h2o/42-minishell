@@ -6,7 +6,7 @@
 /*   By: theo </var/spool/mail/theo>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/04/11 23:23:18 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/11 23:40:08 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	str_cmp(char *s1, char *s2)
 
 //	if line is a build command --> return 0
 //	if line is not a build command --> return 1
-int	check_build(char *line)
+int	check_build(char *line, char **envp)
 {
 	if (!str_cmp(line, "exit"))
 	{
@@ -41,6 +41,11 @@ int	check_build(char *line)
 	if (!str_cmp(line, "pwd"))
 	{
 		pwd();
+		return (0);
+	}
+	if (!str_cmp(line, "env"))
+	{
+		env(envp);
 		return (0);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/11 23:24:57 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/11 23:40:35 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void
 //	Infinite loop :
 //	readline, if line is null, (CTRL + D)
 static void
-	loop(void)
+	loop(char **envp)
 {
 	char	*line;
 
@@ -38,7 +38,7 @@ static void
 			printf("\n");
 			return ;
 		}
-		check_build(line);
+		check_build(line, envp);
 		free(line);
 	}
 }
@@ -53,10 +53,13 @@ static void	sig_int(int n)
 //	1.	Print a welcome message
 //	2.	Start the main loop
 int
-	main(void)
+	main(int argc, char **argv, char **envp)
 {
+	(void)argc;
+	(void)argv;
+
 	wel_msg();
 	signal(SIGINT, sig_int);
-	loop();
+	loop(envp);
 	return (0);
 }
