@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 02:50:51 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/12 22:36:40 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include	<termios.h>
 
 # include	<signal.h>
+
+# include	<errno.h>
 
 //	STRUCTURE
 
