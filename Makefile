@@ -21,7 +21,7 @@ HEADER	=	minishell.h
 #	LIBRARIES
 
 LIB		+=	-I $(DIR_INC)
-LIB		+=	-L /usr/include/
+
 
 
 #	SOURCES
@@ -38,6 +38,21 @@ DIR_OBJ	=	./objs
 OBJS	=	$(addprefix $(DIR_OBJ)/, $(notdir $(SRCS:.c=.o)))
 
 RM		=	rm -rf
+
+
+#	LINUX
+
+ifeq ($(UNAME_S),Linux)
+	LIB		+=	-L /usr/include/
+endif
+
+
+#	MAC OS
+
+ifeq ($(UNAME_S),Darwin)
+	OFLAGS	+=	-L $(HOME)/.brew/Cellar/readline/8.1.2
+endif
+
 
 vpath %.c $(DIR_SRC)
 
@@ -77,3 +92,4 @@ norm:
 lldb:
 	gcc $(SRCS) -I$(DIR_INC) $(OFLAGS) -g -o $(NAME)
 	lldb $(NAME)
+
