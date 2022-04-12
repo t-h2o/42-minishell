@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 02:18:05 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/12 02:34:42 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ void	env(char **envp);
 
 //	PARSING
 
-void	parse(char *line);
+void	parse(t_cmd *cmd1, char *line);
 
 //	UTILS
 
+void	free_str(char **s);
+void	free_cmd(t_cmd *cmd1);
 char	*str_dup(char *s);
 char	**split(char *line);
 

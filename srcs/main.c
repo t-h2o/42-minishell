@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 02:19:17 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/12 02:36:05 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static void
 static void
 	loop(char **envp)
 {
+	t_cmd	cmd1;
 	char	*line;
-	int		ret;
 
 	while (1)
 	{
@@ -39,10 +39,10 @@ static void
 			printf("\n");
 			return ;
 		}
-		ret = check_build(line, envp);
-		if (ret)
-			parse(line);
-		free(line);
+		parse(&cmd1, line);
+		check_build(line, envp);
+		free_str(&line);
+		free_cmd(&cmd1);
 	}
 }
 
