@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 02:34:42 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/12 02:50:51 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ struct s_cmd {
 
 //	BUILD
 
-int		check_build(char *line, char **env);
+int		check_build(t_cmd *cmd1, char **env);
 void	pwd(void);
 void	env(char **envp);
 
