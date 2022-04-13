@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/13 10:46:22 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/13 12:58:09 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,13 @@ static void	getpath(t_cmd *cmd1)
 	{
 		pcmd = append(pathall[i++], cmd1->cmd);
 		if (access(pcmd, X_OK) == 0)
+		{
+			free_str(&cmd1->cmd);
+			cmd1->cmd = pcmd;
 			break ;
+		}
 		free_str(&pcmd);
-		i++;
 	}
-	free_str(&cmd1->cmd);
-	cmd1->cmd = pcmd;
 	free_tab(&pathall);
 }
 
