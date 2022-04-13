@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/04/13 14:26:44 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:10:30 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_build(t_cmd *cmd1, char **envp)
 	}
 	if (!str_cmp(cmd1->arg[0], "echo"))
 	{
-		echo(cmd1->arg[1], cmd1->arg[2]);
+		echo(cmd1);
 		return (0);
 	}
 	return (1);

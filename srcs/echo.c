@@ -6,19 +6,18 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:19:06 by ldominiq          #+#    #+#             */
-/*   Updated: 2022/04/13 14:32:57 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:35:05 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	echo(char *flag, char *str)
+void	echo(t_cmd *cmd1)
 {
-	if (flag)
-	{
-		if (str_cmp(flag, "-n") == 0)
-			printf("%s", str);
-		else
-			printf("%s\n", flag);
-	}
+	int		i;
+
+	i = 0;
+	while (cmd1->arg[++i])
+		printf("%s ", cmd1->arg[i]);
+	printf("\n");
 }
