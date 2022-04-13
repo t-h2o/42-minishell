@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/13 13:57:08 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:27:57 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ struct s_cmd {
 int		check_build(t_cmd *cmd1, char **env);
 void	pwd(void);
 void	env(char **envp);
+void	echo(char *str, char *flag);
 
 //	PARSING
 
@@ -64,5 +65,6 @@ void	free_cmd(t_cmd *cmd1);
 void	errmsg(char *msg, char *cmd);
 char	*str_dup(char *s);
 char	**split(char *line, char *sep);
+int		str_cmp(char *s1, char *s2);
 
 #endif /* MINISHELL_H */

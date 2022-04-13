@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: theo </var/spool/mail/theo>                +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/04/13 13:07:56 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/13 14:26:44 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //	if the two string are equal			--> return 0
 //	if the two string are not equal		--> return 1
 //	if one of the two is null pointe	--> return -1
-static int	str_cmp(char *s1, char *s2)
+int	str_cmp(char *s1, char *s2)
 {
 	if (s1 == 0 || s2 == 0)
 		return (-1);
@@ -46,6 +46,11 @@ int	check_build(t_cmd *cmd1, char **envp)
 	if (!str_cmp(cmd1->arg[0], "env"))
 	{
 		env(envp);
+		return (0);
+	}
+	if (!str_cmp(cmd1->arg[0], "echo"))
+	{
+		echo(cmd1->arg[1], cmd1->arg[2]);
 		return (0);
 	}
 	return (1);
