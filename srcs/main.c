@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/11 23:40:35 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/13 10:43:23 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ static void
 static void
 	loop(char **envp)
 {
+	t_cmd	cmd1;
 	char	*line;
 
+	cmd1.cmd = 0;
+	cmd1.arg = 0;
 	while (1)
 	{
 		line = readline("it's the Prompt $ ");
@@ -38,8 +41,11 @@ static void
 			printf("\n");
 			return ;
 		}
-		check_build(line, envp);
-		free(line);
+		parse(&cmd1, line);
+		if (check_build(&cmd1, envp))
+			exec_cmd(&cmd1);
+		free_cmd(&cmd1);
+		free_str(&line);
 	}
 }
 
@@ -57,7 +63,6 @@ int
 {
 	(void)argc;
 	(void)argv;
-
 	wel_msg();
 	signal(SIGINT, sig_int);
 	loop(envp);

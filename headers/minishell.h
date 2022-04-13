@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 00:24:43 by theo             ###   ########.fr       */
+/*   Updated: 2022/04/13 13:57:08 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,40 @@
 
 # include	<errno.h>
 
+# include	<fcntl.h>
+
+//	STRUCTURE
+
+//	cmd:	name of the command
+//	arg:	arguments of the command
+//	next:	pointer on the next command
+typedef struct s_cmd	t_cmd;
+struct s_cmd {
+	char	*cmd;
+	char	**arg;
+	t_cmd	*next;
+};
+
 //	BUILD
 
-int		check_build(char *line, char **env);
+int		check_build(t_cmd *cmd1, char **env);
 void	pwd(void);
 void	env(char **envp);
+
+//	PARSING
+
+void	parse(t_cmd *cmd1, char *line);
+
+//	EXECUTION
+
+void	exec_cmd(t_cmd *cmd1);
+//	UTILS
+
+void	free_tab(char ***tab);
+void	free_str(char **s);
+void	free_cmd(t_cmd *cmd1);
+void	errmsg(char *msg, char *cmd);
+char	*str_dup(char *s);
+char	**split(char *line, char *sep);
 
 #endif /* MINISHELL_H */
