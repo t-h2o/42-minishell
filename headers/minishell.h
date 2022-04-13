@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 22:36:40 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/12 23:59:11 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include	<signal.h>
 
 # include	<errno.h>
+
+# include	<fcntl.h>
 
 //	STRUCTURE
 
@@ -51,11 +53,16 @@ void	env(char **envp);
 
 void	parse(t_cmd *cmd1, char *line);
 
+//	EXECUTION
+
+void	exec_cmd(t_cmd *cmd1);
 //	UTILS
 
+void	free_tab(char ***tab);
 void	free_str(char **s);
 void	free_cmd(t_cmd *cmd1);
+void	errmsg(char *msg, char *cmd);
 char	*str_dup(char *s);
-char	**split(char *line);
+char	**split(char *line, char *sep);
 
 #endif /* MINISHELL_H */

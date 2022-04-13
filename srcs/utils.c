@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:16:27 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/12 02:42:09 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/12 23:43:14 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 //	set the pointer at null, we are protect of double free
 void	free_str(char **s)
 {
+	if (*s == 0)
+		return ;
 	free(*s);
 	*s = 0;
 }
@@ -24,6 +26,8 @@ void	free_tab(char ***tab)
 {
 	int	i;
 
+	if (*tab == 0)
+		return ;
 	i = 0;
 	while (tab[0][i])
 		i++;

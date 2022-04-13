@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 02:54:55 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/13 10:43:23 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void
 	t_cmd	cmd1;
 	char	*line;
 
+	cmd1.cmd = 0;
+	cmd1.arg = 0;
 	while (1)
 	{
 		line = readline("it's the Prompt $ ");
@@ -40,8 +42,10 @@ static void
 			return ;
 		}
 		parse(&cmd1, line);
-		check_build(&cmd1, envp);
+		if (check_build(&cmd1, envp))
+			exec_cmd(&cmd1);
 		free_cmd(&cmd1);
+		free_str(&line);
 	}
 }
 

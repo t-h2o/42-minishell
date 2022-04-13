@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/12 02:19:07 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/12 22:48:35 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 //	blank characters --> return 1
 //	not blank characters --> return 0
-static int	blank(char n)
+static int	blank(char n, char *s)
 {
-	if (n == ' '
-		|| n == '\n'
-		|| n == '\t')
-		return (1);
+	while (*s)
+	{
+		if (n == *s)
+			return (1);
+		s++;
+	}
 	return (0);
 }
 
 //	copy up to a whit character
-static char	*put_str(char *s, int *i)
+static char	*put_str(char *s, int *i, char *sep)
 {
 	char	*ret;
 	int		len;
@@ -33,7 +35,7 @@ static char	*put_str(char *s, int *i)
 	len = 0;
 	if (s == 0)
 		return (0);
-	while (s[*i + len] != 0 && !blank(s[*i + len]))
+	while (s[*i + len] != 0 && !blank(s[*i + len], sep))
 	{
 		len++;
 	}
@@ -48,7 +50,7 @@ static char	*put_str(char *s, int *i)
 	return (ret);
 }
 
-static int	count(char *line)
+static int	count(char *line, char *sep)
 {
 	int	i;
 	int	arg;
@@ -57,12 +59,12 @@ static int	count(char *line)
 	arg = 0;
 	while (1)
 	{
-		while (line[i] && blank(line[i]))
+		while (line[i] && blank(line[i], sep))
 			i++;
 		if (line[i] == 0)
 			break ;
 		arg++;
-		while (line[i] && !blank(line[i]))
+		while (line[i] && !blank(line[i], sep))
 			i++;
 		if (line[i] == 0)
 			break ;
@@ -70,14 +72,14 @@ static int	count(char *line)
 	return (arg);
 }
 
-//	split the string by blank characters
-char	**split(char *line)
+//	split the string by characters in sep string
+char	**split(char *line, char *sep)
 {
 	char	**ret;
 	int		arg;
 	int		i;
 
-	arg = count(line);
+	arg = count(line, sep);
 	ret = malloc(sizeof(char *) * (arg + 1));
 	if (ret == 0)
 		return (0);
@@ -86,11 +88,11 @@ char	**split(char *line)
 	arg = 0;
 	while (1)
 	{
-		while (line[i] && blank(line[i]))
+		while (line[i] && blank(line[i], sep))
 			i++;
 		if (line[i] == 0)
 			break ;
-		ret[arg] = put_str(line, &i);
+		ret[arg] = put_str(line, &i, sep);
 		arg++;
 		if (line[i] == 0)
 			break ;
