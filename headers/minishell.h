@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/12 23:59:11 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/14 11:45:27 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ void	env(char **envp);
 
 //	PARSING
 
+char	**args(char *line);
 void	parse(t_cmd *cmd1, char *line);
 
 //	EXECUTION
 
 void	exec_cmd(t_cmd *cmd1);
+
 //	UTILS
 
 void	free_tab(char ***tab);

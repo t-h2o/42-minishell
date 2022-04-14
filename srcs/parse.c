@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/13 12:58:09 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/14 14:46:57 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ void	parse(t_cmd *cmd1, char *line)
 {
 	if (line[0] == 0)
 		return ;
-	cmd1->arg = split(line, " \t\n");
-	cmd1->cmd = str_dup(cmd1->arg[0]);
-	getpath(cmd1);
+	cmd1->arg = args(line);
+	if (cmd1->arg)
+	{
+		cmd1->cmd = str_dup(cmd1->arg[0]);
+		getpath(cmd1);
+	}
 }
