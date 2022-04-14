@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/14 11:45:27 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/14 14:52:59 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ struct s_cmd {
 int		check_build(t_cmd *cmd1, char **env);
 void	pwd(void);
 void	env(char **envp);
+void	echo(t_cmd *cmd1);
 
 //	PARSING
 
@@ -66,5 +67,6 @@ void	free_cmd(t_cmd *cmd1);
 void	errmsg(char *msg, char *cmd);
 char	*str_dup(char *s);
 char	**split(char *line, char *sep);
+int		str_cmp(char *s1, char *s2);
 
 #endif /* MINISHELL_H */
