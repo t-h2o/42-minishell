@@ -6,7 +6,7 @@
 /*   By: theo </var/spool/mail/theo>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/04/11 23:40:08 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/16 13:59:18 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	check_build(char *line, char **envp)
 {
 	if (!str_cmp(line, "exit"))
 	{
+		clear_history();
 		free(line);
 		exit(0);
 	}
