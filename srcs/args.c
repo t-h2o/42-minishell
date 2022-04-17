@@ -6,72 +6,55 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/14 15:20:55 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/18 01:10:55 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
 
-//	blank characters --> return 1
-//	not blank characters --> return 0
-static int	blank(char n, char *s)
+static void	get_spot(char *s, int *i, int *len)
 {
-	while (*s)
+	while (s[*i] && s[*i] != ' ')
 	{
-		if (n == *s)
-			return (1);
-		s++;
+		while (s[*i] == '\'')
+		{
+			(*i)++;
+			while (s[*i] && s[*i] != '\'')
+			{
+				(*i)++;
+				(*len)++;
+			}
+			(*i)++;
+		}
+		while (s[*i] && s[*i] != '\'' && s[*i] != ' ')
+		{
+			(*i)++;
+			(*len)++;
+		}
 	}
-	return (0);
 }
 
 //	copy up to a white character
-static char	*put_str_quote(char *s, int *i)
+static char	*put_str(char *s, int *j)
 {
 	char	*ret;
+	int		i;
 	int		len;
-	int		tmp;
 
+	i = 0;
 	len = 0;
-	if (s == 0)
-		return (0);
-	if (s[*i + 1] == '\'')
-		return (0);
-	while (s[*i + len + 1] != 0 && !blank(s[*i + len + 1], "\'"))
-		len++;
+	get_spot(s, &i, &len);
 	ret = malloc(len + 1);
 	if (ret == 0)
 		return (0);
 	ret[len] = 0;
-	tmp = len;
-	while (len--)
-		ret[len] = s[*i + len + 1];
-	*i += tmp + 2;
-	return (ret);
-}
-
-//	copy up to a white character
-static char	*put_str_blank(char *s, int *i)
-{
-	char	*ret;
-	int		len;
-	int		tmp;
-
-	if (s[*i] == '\'')
-		return (put_str_quote(s, i));
-	len = 0;
-	if (s == 0)
-		return (0);
-	while (s[*i + len] != 0 && !blank(s[*i + len], " \n\t\'"))
-		len++;
-	ret = malloc(len + 1);
-	if (ret == 0)
-		return (0);
-	ret[len] = 0;
-	tmp = len;
-	while (len--)
-		ret[len] = s[*i + len];
-	*i += tmp;
+	*j += i--;
+	while (len >= 0)
+	{
+		while (s[i] == '\'')
+			i--;
+		ret[--len] = s[i--];
+	}
 	return (ret);
 }
 
@@ -84,27 +67,20 @@ static int	count(char *line)
 	arg = 0;
 	while (1)
 	{
-		while (line[i] && blank(line[i], " \n\t"))
+		while (line[i] == ' ')
 			i++;
-		if (line[i] == '\'')
-		{
-			i++;
-			if (line[i] != 0 && line[i] != '\'')
-			{
-				arg++;
-				while (line[i] && line[i] != '\'' )
-					i++;
-			}
-				i++;
-		}
-		else if (line[i] != 0)
-		{
-			arg++;
-			while (line[i] && !blank(line[i], " \n\t\'"))
-				i++;
-		}
 		if (line[i] == 0)
 			break ;
+		while (line[i] == '\'')
+		{
+			i++;
+			while (line[i] != 0 && line[i] != '\'')
+				i++;
+			i++;
+		}
+		while (line[i] != 0 && line[i] != ' ')
+			i++;
+		arg++;
 	}
 	return (arg);
 }
@@ -125,16 +101,17 @@ char	**args(char *line)
 	ret[arg] = 0;
 	i = 0;
 	arg = 0;
-	while (1)
+	while (ret[arg] != 0)
 	{
-		while (line[i] && blank(line[i], " \n\t"))
+		while (line[i] == ' ')
 			i++;
-		if (line[i] == 0)
-			break ;
-		ret[arg] = put_str_blank(line, &i);
+		ret[arg] = put_str(&(line[i]), &i);
+		if (ret[arg] == 0)
+		{
+			free_tab(&ret);
+			return (0);
+		}
 		arg++;
-		if (line[i] == 0)
-			break ;
 	}
 	return (ret);
 }
