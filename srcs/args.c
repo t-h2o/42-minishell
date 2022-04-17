@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/14 14:44:53 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/14 15:20:55 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	*put_str_blank(char *s, int *i)
 	len = 0;
 	if (s == 0)
 		return (0);
-	while (s[*i + len] != 0 && !blank(s[*i + len], " \n\t"))
+	while (s[*i + len] != 0 && !blank(s[*i + len], " \n\t\'"))
 		len++;
 	ret = malloc(len + 1);
 	if (ret == 0)
@@ -88,19 +88,19 @@ static int	count(char *line)
 			i++;
 		if (line[i] == '\'')
 		{
-			if (line[i + 1] != '\'')
+			i++;
+			if (line[i] != 0 && line[i] != '\'')
 			{
 				arg++;
-				i++;
 				while (line[i] && line[i] != '\'' )
 					i++;
 			}
-			i++;
+				i++;
 		}
 		else if (line[i] != 0)
 		{
 			arg++;
-			while (line[i] && !blank(line[i], " \n\t"))
+			while (line[i] && !blank(line[i], " \n\t\'"))
 				i++;
 		}
 		if (line[i] == 0)
