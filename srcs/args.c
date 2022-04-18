@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/18 01:10:55 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/18 11:04:26 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static char	*put_str(char *s, int *j)
 		return (0);
 	ret[len] = 0;
 	*j += i--;
-	while (len >= 0)
+	while (len > 0)
 	{
 		while (s[i] == '\'')
 			i--;
@@ -92,6 +92,7 @@ char	**args(char *line)
 	int		arg;
 	int		i;
 
+	line = put_env_in_line(line);
 	arg = count(line);
 	if (arg == 0)
 		return (0);
@@ -113,5 +114,6 @@ char	**args(char *line)
 		}
 		arg++;
 	}
+	free(line);
 	return (ret);
 }

@@ -88,3 +88,20 @@ arg[0] = "echo"
 arg[1] = "my     home is  : /home/user"
 arg[2] = 0
 ```
+
+## Method
+
+1. replace the environment variable by the value
+2. separate elements of the line
+
+```
+$ echo my home is $HOME
+line = "echo my home is $HOME"
+1. line = "echo my home is /home/user"
+arg[0] = "echo"
+arg[1] = "my"
+arg[2] = "home"
+arg[3] = "is"
+arg[4] = "/home/user"
+arg[4] = 0
+```
