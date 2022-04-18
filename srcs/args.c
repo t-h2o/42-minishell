@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/18 11:04:26 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/18 19:36:17 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ static int	count(char *line)
 			i++;
 			while (line[i] != 0 && line[i] != '\'')
 				i++;
+			if (line[i] == 0)
+				return (-1);
 			i++;
 		}
 		while (line[i] != 0 && line[i] != ' ')
@@ -93,8 +95,10 @@ char	**args(char *line)
 	int		i;
 
 	line = put_env_in_line(line);
+	if (line == 0)
+		return (0);
 	arg = count(line);
-	if (arg == 0)
+	if (arg <= 0)
 		return (0);
 	ret = malloc(sizeof(char *) * (arg + 1));
 	if (ret == 0)

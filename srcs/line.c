@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 10:15:32 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/18 15:29:35 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/18 19:35:12 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*env_len(char *s, int *i, int *len)
 }
 
 //	count length of the new line
-static void	count(char *line, int *i, int *len)
+static int	count(char *line, int *i, int *len)
 {
 	*len = 0;
 	*i = 0;
@@ -52,6 +52,8 @@ static void	count(char *line, int *i, int *len)
 				(*i)++;
 				(*len)++;
 			}
+			if (line[*i] == 0)
+				return (-1);
 			(*i)++;
 			(*len)++;
 		}
@@ -66,6 +68,7 @@ static void	count(char *line, int *i, int *len)
 			(*len)++;
 		}
 	}
+	return (0);
 }
 
 //	replace the environment variable in line by its value
@@ -77,7 +80,8 @@ char	*put_env_in_line(char *line)
 	int		i;
 	int		j;
 
-	count(line, &i, &len);
+	if (count(line, &i, &len))
+		return (0);
 	ret = malloc(len + 1);
 	ret[len] = 0;
 	i = 0;
