@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 10:15:32 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/18 11:19:00 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/18 15:29:35 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*env_len(char *s, int *i, int *len)
 		var[j] = s[j];
 	env = getenv(var);
 	j = 0;
-	while (env[j])
+	while (env && env[j])
 		j++;
 	*len += j;
 	free(var);
@@ -96,7 +96,7 @@ char	*put_env_in_line(char *line)
 			i++;
 			env = env_len(&(line[i]), &i, &j);
 			j = 0;
-			while (env[j])
+			while (env && env[j])
 				ret[len++] = env[j++];
 		}
 		while (line[i] && line[i] != '$' && line[i] != '\'')
