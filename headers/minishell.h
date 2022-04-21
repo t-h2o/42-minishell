@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/13 15:33:06 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/18 10:24:18 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	echo(t_cmd *cmd1);
 
 //	PARSING
 
+char	*put_env_in_line(char *line);
+char	**args(char *line);
 void	parse(t_cmd *cmd1, char *line);
 
 //	EXECUTION

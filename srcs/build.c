@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/04/13 15:10:30 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/14 14:53:13 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	str_cmp(char *s1, char *s2)
 //	if line is not a build command --> return 1
 int	check_build(t_cmd *cmd1, char **envp)
 {
+	if (cmd1->arg == 0)
+		return (0);
 	if (!str_cmp(cmd1->arg[0], "exit"))
 	{
 		free_cmd(cmd1);

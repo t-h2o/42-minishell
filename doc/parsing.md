@@ -91,6 +91,7 @@ arg[2] = 0
 
 ## Method
 
+<<<<<<< HEAD
 here an input example
 
 ```
