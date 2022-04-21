@@ -150,3 +150,14 @@ arg[3] = "-->  /home/user   <--"
 arg[4] = "c/w/d:"
 arg[5] = 0
 ```
+
+# Test
+
+
+| command | expected |
+| :-| :-|
+| `echo '' '' a`	| `  a`	|
+| `echo '''a''b''def'`	| `abdef`	|
+| `echo  'My $HOME IS' -->$HOME<--`	| `My $HOME IS -->/home/user<--`	|
+| `echo $pkeifo is unknow`	| `is unknow`	|
+| `echo`	| ` `	|
