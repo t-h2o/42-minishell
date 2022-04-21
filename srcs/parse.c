@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/14 14:46:57 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/21 17:49:23 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,13 @@ static void	getpath(t_cmd *cmd1)
 //	t_cmd->arg[1]	: argument_1
 //	t_cmd->arg[n]	: argument_n
 //	t_cmd->arg[last]: NULL POINTER
-void	parse(t_cmd *cmd1, char *line)
+void	parse(t_cmd *cmd1, char **line)
 {
 	if (line[0] == 0)
 		return ;
-	cmd1->arg = args(line);
+	*line = line_env(line);
+	printf("%s\n", *line);
+	cmd1->arg = 0;
 	if (cmd1->arg)
 	{
 		cmd1->cmd = str_dup(cmd1->arg[0]);

@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/13 10:43:23 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/04/21 17:41:51 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void
 			printf("\n");
 			return ;
 		}
-		parse(&cmd1, line);
+		parse(&cmd1, &line);
 		if (check_build(&cmd1, envp))
 			exec_cmd(&cmd1);
 		free_cmd(&cmd1);

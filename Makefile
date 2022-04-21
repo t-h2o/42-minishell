@@ -33,11 +33,10 @@ SRCS	=	$(DIR_SRC)/main.c	\
 			$(DIR_SRC)/parse.c	\
 			$(DIR_SRC)/split.c	\
 			$(DIR_SRC)/exec.c	\
-			$(DIR_SRC)/args.c	\
-			$(DIR_SRC)/line.c	\
 			$(DIR_SRC)/env.c	\
 			$(DIR_SRC)/pwd.c	\
 			$(DIR_SRC)/brexit.c \
+			$(DIR_SRC)/line_env.c	\
 			$(DIR_SRC)/echo.c
 
 #	OBJETS
