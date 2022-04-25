@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cat << EOF > text.txt
+
+echo lol
+echo 333lol
+
+EOF
+
+./minishell < text.txt
