@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/21 19:22:48 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/22 03:09:29 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,16 @@ static int	get_len(char *line)
 {
 	int		i;
 	int		len;
+	int		td;
 
 	i = 0;
 	len = 0;
+	td = 1;
 	while (line[i])
 	{
-		while (line[i] == '\'' && ++i)
+		if (line[i] == '\"' && ++i && ++len)
+			td = (td + 1) % 2;
+		while (td && line[i] == '\'' && ++i)
 		{
 			len += 2;
 			while (line[i] && line[i] != '\'' && ++i)
@@ -77,9 +81,12 @@ static int	get_len(char *line)
 		}
 		while (line[i] == '$' && ++i)
 			get_envlen(line, &i, &len);
-		while (line[i] && line[i] != '$' && ++i)
+		while (line[i] && (line[i] != '\"' || td)
+			&& (line[i] != '\'' || !td) && line[i] != '$' && ++i)
 			len++;
 	}
+	if (td == 0)
+		return (-1);
 	return (len);
 }
 
@@ -92,17 +99,28 @@ char	*line_env(char **line)
 	int		len;
 	char	*env;
 	char	*ret;
+	int		td;
 
 	len = get_len(*line);
+	if (len == -1)
+		free_str(line);
+	if (len == -1)
+		return (0);
 	ret = malloc(len + 1);
 	if (ret == 0)
 		return (0);
 	ret[len] = 0;
 	i = 0;
 	r = 0;
+	td = 1;
 	while ((*line)[i])
 	{
-		while ((*line)[i] == '\'')
+		if ((*line)[i] == '\"')
+		{
+			ret[r++] = (*line)[i++];
+			td = (td + 1) % 2;
+		}
+		while ((*line)[i] == '\'' && td)
 		{
 			ret[r++] = (*line)[i++];
 			while ((*line)[i] && (*line)[i] != '\'')
@@ -116,7 +134,8 @@ char	*line_env(char **line)
 			while (env && env[e])
 				ret[r++] = env[e++];
 		}
-		while ((*line)[i] && (*line)[i] != '\'' && (*line)[i] != '$')
+		while ((*line)[i] && ((*line)[i] != '\"' || td) &&
+			((*line)[i] != '\'' || !td) && (*line)[i] != '$')
 			ret[r++] = (*line)[i++];
 	}
 	free_str(line);

@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/21 17:49:23 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/04/22 02:31:04 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	parse(t_cmd *cmd1, char **line)
 	if (line[0] == 0)
 		return ;
 	*line = line_env(line);
-	printf("%s\n", *line);
+	if (*line)
+		printf("%s\n", *line);
 	cmd1->arg = 0;
 	if (cmd1->arg)
 	{
