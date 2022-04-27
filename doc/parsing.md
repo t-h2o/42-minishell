@@ -91,74 +91,35 @@ arg[2] = 0
 
 ## Method
 
-<<<<<<< HEAD
 here an input example
 
 ```
-$ echo 'My $HOME' is "-->  /home/user   <--" $PWD':'
-line: echo 'My $HOME' is "-->  /home/user   <--" $PWD':'
+$ echo 'My $HOME/Doc' is "-->  $HOME/Doc   <--"   $PWD':'
+line: echo 'My $HOME' is "-->  /home/user/Doc   <--"   $PWD':'
 ```
 
 1. change all environment variable
-* The name off environment variable is only 
-	* lowercase letter
-	* upercase letter
-	* underscore
-* if the environment variable does not exist, there is no character
-* the name of environment variable start with a $ and finish with
-	* a space
-	* a simple quote
-	* a double quote
 
-Few example:
+The environment variable begin with a '$' and
+ends once it reaches to another character of this:
+* lowercase letter
+* upercase letter
+* underscore
 ```
-$PWD"<--"
-/c/w/d<--
-
-$PWD'<--'
-/c/w/d<--
-
-$PWD <--
-/c/w/d <--
-
-\$PWD
-$PWD
+examples:
+$V-e   --> V
+$V_e-a --> V_e
+$Ve a  --> Ve
+$Ve/a  --> Ve
+$Ve1a  --> Ve
+$Ve"a" --> Ve
+$Ve'a' --> Ve
+\$Ve   --> not a variable
 ```
 
 Line example:
 ```
-$ echo 'My $HOME' is "-->  /home/user   <--" $PWD':'
-line: echo 'My $HOME' is "-->  /home/user   <--" /c/w/d':'
+$ echo 'My $HOME' is "-->  $HOME   <--" $PWD':'
+0. line: echo 'My $HOME' is "-->  $HOME   <--" $PWD':'
+1. line: echo 'My $HOME' is "-->  /home/user   <--" /c/w/d':'
 ```
-
-2. Make easier the program, change double quote by single quote
-
-Line example:
-```
-$ echo 'My $HOME' is "-->  /home/user   <--" $PWD':'
-line: echo 'My $HOME' is '-->  /home/user   <--'g /c/w/d':'
-```
-
-3. split by spaces line in arguments
-
-Line example:
-```
-line: echo 'My $HOME' is '-->  /home/user   <--' /c/w/d':'
-arg[0] = "echo"
-arg[1] = "My $HOME"
-arg[2] = "is"
-arg[3] = "-->  /home/user   <--"
-arg[4] = "c/w/d:"
-arg[5] = 0
-```
-
-# Test
-
-
-| command | expected |
-| :-| :-|
-| `echo '' '' a`	| `  a`	|
-| `echo '''a''b''def'`	| `abdef`	|
-| `echo  'My $HOME IS' -->$HOME<--`	| `My $HOME IS -->/home/user<--`	|
-| `echo $pkeifo is unknow`	| `is unknow`	|
-| `echo`	| ` `	|
