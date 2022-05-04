@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/22 03:09:29 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/05/04 16:23:43 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ static int	get_len(char *line)
 		}
 		while (line[i] == '$' && ++i)
 			get_envlen(line, &i, &len);
-		while (line[i] && (line[i] != '\"' || td)
-			&& (line[i] != '\'' || !td) && line[i] != '$' && ++i)
+		while (line[i] && line[i] != '\"' && (line[i] != '\'' || !td) && line[i] != '$' && ++i)
 			len++;
 	}
 	if (td == 0)

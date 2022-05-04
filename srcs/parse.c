@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/22 02:31:04 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/05/04 16:18:24 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,19 @@ static void	getpath(t_cmd *cmd1)
 //	t_cmd->arg[last]: NULL POINTER
 void	parse(t_cmd *cmd1, char **line)
 {
-	if (line[0] == 0)
+	if (line[0][0] == 0)
 		return ;
 	*line = line_env(line);
 	if (*line)
-		printf("%s\n", *line);
-	cmd1->arg = 0;
+		cmd1->arg = line_sep(*line);
 	if (cmd1->arg)
 	{
 		cmd1->cmd = str_dup(cmd1->arg[0]);
 		getpath(cmd1);
 	}
+	int	i = -1;
+	printf("\nARGUMENTS\n------------\n");
+	while (cmd1->arg && cmd1->arg[++i])
+		printf("%d | %s\n", i, cmd1->arg[i]);
+	printf("------------\n");
 }
