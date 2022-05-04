@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/04 11:26:31 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/04 17:25:01 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_cmd	t_cmd;
 struct s_cmd {
 	char	*cmd;
 	char	**arg;
+	int		type;
 	t_cmd	*next;
 };
 
@@ -56,6 +57,7 @@ void	parse(t_cmd *cmd1, char **line);
 char	*line_env(char **line);
 char	**line_sep(char *line);
 char	**args(char *line);
+void	setcmd(t_cmd *cmd1, char **split);
 
 //	EXECUTION
 
