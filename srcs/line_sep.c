@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/04 16:32:10 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/04 16:45:49 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,29 @@ static int	count(char *line)
 	arg = 0;
 	while (line[i])
 	{
+		while (line[i] == '\'' && ++i)
+		{
+			while (line[i] != '\'')
+				i++;
+			i++;
+		}
 		while (line[i] == '\"' && ++i)
 		{
 			while (line[i] != '\"')
 				i++;
 			i++;
 		}
-		if (line[i] && line[i] != ' ' && line[i] != '\"')
+		if (line[i] && line[i] != ' ' && line[i] != '\'' && line[i] != '\"')
 		{
-			while (line[i] && line[i] != ' ' && line[i] != '\"')
+			while (line[i] && line[i] != ' ' && line[i] != '\'' && line[i] != '\"')
 				i++;
 		}
 		if (line[i] == ' ')
 		{
 			 while (line[i] == ' ')
 			 	i++;
+			 if (line[i] == 0 && arg == 0)
+				 return (-1);
 			arg++;
 		}
 		else if (line[i] == 0)
@@ -93,6 +101,8 @@ char	**line_sep(char *line)
 	int		i;
 
 	arg = count(line);
+	if (arg == -1)
+		return (0);
 	ret = malloc(sizeof(char *) * (arg + 1));
 	if (ret == 0)
 		return (0);
