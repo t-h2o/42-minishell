@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/04 16:23:43 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/07 13:06:04 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ char	*line_env(char **line)
 			while (env && env[e])
 				ret[r++] = env[e++];
 		}
-		while ((*line)[i] && ((*line)[i] != '\"' || td) &&
+		while ((*line)[i] && ((*line)[i] != '\"' || !td) &&
 			((*line)[i] != '\'' || !td) && (*line)[i] != '$')
 			ret[r++] = (*line)[i++];
 	}

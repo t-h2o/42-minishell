@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   line_sep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/04 16:45:49 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/07 13:50:35 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
 
-//	copy up to a whit character
+//	copy up to a white character
+//	if the function meet ' or ", count the white characters
 static char	*put_str(char *s, int *i)
 {
 	char	*ret;
@@ -24,13 +25,22 @@ static char	*put_str(char *s, int *i)
 	td = 0;
 	len = 0;
 	tmp = 0;
+	int	type = 0;
 	if (s == 0)
 		return (0);
-	while (s[*i + len] && ((td % 2) || s[*i + len] != ' '))
+	while (s[*i + len] && (s[*i + len] != ' ' || type))
 	{
-		if (s[*i + len] == '\"' || s[*i + len] == '\'')
+		if (s[*i + len] == '\"' && (type == 0 || type == 2))
+		{
 			td++;
-		++len;
+			type = (type + 2) % 4;
+		}
+		if (s[*i + len] == '\'' && (type == 0 || type == 1))
+		{
+			td++;
+			type = (type + 1) % 2;
+		}
+		len++;
 	}
 	ret = malloc(len - td + 1);
 	if (ret == 0)
@@ -40,8 +50,16 @@ static char	*put_str(char *s, int *i)
 	jump = 0;
 	while (len-- - td)
 	{
-		while (s[*i + len - jump] == '\"' || s[*i + len - jump] == '\'')
+		while (s[*i + len - jump] == '\"' && (type == 0 || type == 2))
+		{
+			type = (type + 2) % 4;
 			jump++;
+		}
+		while (s[*i + len - jump] == '\'' && (type == 0 || type == 1))
+		{
+			type = (type + 1) % 2;
+			jump++;
+		}
 		ret[len - td] = s[*i + len - jump];
 	}
 	*i += tmp;
@@ -100,6 +118,7 @@ char	**line_sep(char *line)
 	int		arg;
 	int		i;
 
+	printf("\nline: %s\n", line);
 	arg = count(line);
 	if (arg == -1)
 		return (0);
