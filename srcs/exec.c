@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/06 13:48:31 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/05/07 12:22:20 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 void	exec_cmd(t_cmd *cmd1, char **envp)
 {
 	int	pid;
+
 	if (access(cmd1->cmd, X_OK) == 0)
 	{
 		pid = fork();
+		if (pid == -1)
+			errmsg("minishell: fork: error");
 		if (pid == 0)
 		{
 			execve(cmd1->cmd, cmd1->arg, envp);
