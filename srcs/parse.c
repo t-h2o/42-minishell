@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/04 17:40:03 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/07 17:44:53 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,4 @@ void	parse(t_cmd *cmd1, char **line)
 		if (split)
 			setcmd(cmd1, split);
 	}
-	int	i = -1;
-	printf("\nARGUMENTS\n------------\n");
-	while (cmd1->arg && cmd1->arg[++i])
-		printf("%d | %s\n", i, cmd1->arg[i]);
-	printf("------------\n");
 }

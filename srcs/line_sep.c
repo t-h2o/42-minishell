@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/07 13:50:35 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/05/07 17:45:56 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ char	**line_sep(char *line)
 	int		arg;
 	int		i;
 
-	printf("\nline: %s\n", line);
 	arg = count(line);
 	if (arg == -1)
 		return (0);
