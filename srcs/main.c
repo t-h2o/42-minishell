@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/04/21 17:41:51 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/07 17:41:25 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ static void
 		line = readline("it's the Prompt $ ");
 		if (line == 0)
 		{
+			clear_history();
 			printf("\n");
 			return ;
 		}
 		parse(&cmd1, &line);
+		add_history(line);
 		if (check_build(&cmd1, envp))
 			exec_cmd(&cmd1);
 		free_cmd(&cmd1);
@@ -53,7 +55,9 @@ static void
 static void	sig_int(int n)
 {
 	if (n == SIGINT)
-		printf("signal interrupt\n");
+		printf(" SIGINT\n");
+	rl_on_new_line();
+	rl_redisplay();
 }
 
 //	1.	Print a welcome message
