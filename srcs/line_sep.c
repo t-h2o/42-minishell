@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/07 17:45:56 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/07 17:54:07 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ static char	*put_str(char *s, int *i)
 	int		tmp;
 	int		td;
 	int		jump;
+	int		type;
 
 	td = 0;
 	len = 0;
 	tmp = 0;
-	int	type = 0;
+	type = 0;
 	if (s == 0)
 		return (0);
 	while (s[*i + len] && (s[*i + len] != ' ' || type))
@@ -99,10 +100,10 @@ static int	count(char *line)
 		}
 		if (line[i] == ' ')
 		{
-			 while (line[i] == ' ')
-			 	i++;
-			 if (line[i] == 0 && arg == 0)
-				 return (-1);
+			while (line[i] == ' ')
+				i++;
+			if (line[i] == 0 && arg == 0)
+				return (-1);
 			arg++;
 		}
 		else if (line[i] == 0)

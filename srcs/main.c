@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/07 17:41:25 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/07 17:48:11 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void
 		parse(&cmd1, &line);
 		add_history(line);
 		if (check_build(&cmd1, envp))
-			exec_cmd(&cmd1);
+			exec_cmd(&cmd1, envp);
 		free_cmd(&cmd1);
 		free_str(&line);
 	}

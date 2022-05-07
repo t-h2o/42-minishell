@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/04 17:25:01 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/07 17:47:57 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # include	<errno.h>
 
 # include	<fcntl.h>
+
+# include	<sys/types.h>
+# include	<sys/wait.h>
 
 //	STRUCTURE
 
@@ -61,7 +64,7 @@ void	setcmd(t_cmd *cmd1, char **split);
 
 //	EXECUTION
 
-void	exec_cmd(t_cmd *cmd1);
+void	exec_cmd(t_cmd *cmd1, char **envp);
 
 //	UTILS
 
