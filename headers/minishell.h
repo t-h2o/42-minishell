@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/07 17:47:57 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/10 16:36:22 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ char	**split(char *line, char *sep);
 int		str_cmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
 int		ft_strlen(char *s);
+
+void	rl_replace_line(const char *, int);
 
 #endif /* MINISHELL_H */
