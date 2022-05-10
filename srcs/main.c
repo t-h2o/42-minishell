@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/07 17:48:11 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/10 18:16:55 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void
 		if (line == 0)
 		{
 			clear_history();
-			printf("\n");
-			return ;
+			printf("exit\n");
+			exit(0);
 		}
 		parse(&cmd1, &line);
 		add_history(line);
@@ -55,9 +55,24 @@ static void
 static void	sig_int(int n)
 {
 	if (n == SIGINT)
-		printf(" SIGINT\n");
-	rl_on_new_line();
-	rl_redisplay();
+	{
+		printf("\n");
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+		
+	}
+}
+
+// CTRL + \ (signal quit)
+static void sig_quit(int n)
+{
+	if (n == SIGQUIT)
+	{
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+	}
 }
 
 //	1.	Print a welcome message
@@ -65,10 +80,16 @@ static void	sig_int(int n)
 int
 	main(int argc, char **argv, char **envp)
 {
+	struct termios t;
+
 	(void)argc;
 	(void)argv;
+	tcgetattr(STDIN_FILENO, &t);
+	t.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, 0, &t);
 	wel_msg();
 	signal(SIGINT, sig_int);
+	signal(SIGQUIT, sig_quit);
 	loop(envp);
 	return (0);
 }
