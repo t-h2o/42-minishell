@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/10 16:55:12 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:16:55 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	sig_int(int n)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
+		
 	}
 }
 
@@ -79,8 +80,13 @@ static void sig_quit(int n)
 int
 	main(int argc, char **argv, char **envp)
 {
+	struct termios t;
+
 	(void)argc;
 	(void)argv;
+	tcgetattr(STDIN_FILENO, &t);
+	t.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, 0, &t);
 	wel_msg();
 	signal(SIGINT, sig_int);
 	signal(SIGQUIT, sig_quit);
