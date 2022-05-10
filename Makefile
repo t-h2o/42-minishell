@@ -9,7 +9,7 @@ CFLAGS	+=	-Wextra
 CFLAGS	+=	-Werror
 
 OFLAGS	+=	-fsanitize=address
-OFLAGS	+=	-lreadline
+OFLAGS	+=	-lreadline -L $(HOME)/.brew/opt/readline/lib -I $(HOME)/.brew/opt/readline/include
 
 
 #	HEADERS
@@ -59,7 +59,7 @@ endif
 #	MAC OS
 
 ifeq ($(UNAME_S),Darwin)
-	OFLAGS	+=	-L $(HOME)/.brew/Cellar/readline/8.1.2
+	OFLAGS	+=	-L $(HOME)/.brew/opt/readline/8.1.2/lib -I $(HOME)/.brew/opt/readline/8.1.2/include
 endif
 
 
