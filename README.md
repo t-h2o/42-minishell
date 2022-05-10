@@ -12,3 +12,15 @@ Create a shell with a team of two
 
 * [parsing](./doc/parsing.md)
 * [environmental variable](./doc/envp.md)
+
+
+# TODO
+
+- [ ] export
+- [ ] unset
+- [ ] redirections
+	- [ ] input <
+	- [ ] output >
+	- [ ] <<
+	- [ ] >>
+- [ ] pipe
