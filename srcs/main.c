@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/10 18:16:55 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:16:52 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,6 @@ static void
 			exec_cmd(&cmd1, envp);
 		free_cmd(&cmd1);
 		free_str(&line);
-	}
-}
-
-//	CTRL + C (signal interrupt)
-static void	sig_int(int n)
-{
-	if (n == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		
-	}
-}
-
-// CTRL + \ (signal quit)
-static void sig_quit(int n)
-{
-	if (n == SIGQUIT)
-	{
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
 	}
 }
 
