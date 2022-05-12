@@ -27,19 +27,20 @@ LIB		+=	-I $(DIR_INC)
 #	SOURCES
 
 DIR_SRC	=	./srcs
-SRCS	=	$(DIR_SRC)/main.c	\
-			$(DIR_SRC)/build.c	\
-			$(DIR_SRC)/utils.c	\
-			$(DIR_SRC)/parse.c	\
-			$(DIR_SRC)/split.c	\
-			$(DIR_SRC)/exec.c	\
-			$(DIR_SRC)/env.c	\
-			$(DIR_SRC)/pwd.c	\
-			$(DIR_SRC)/brexit.c \
+SRCS	=	$(DIR_SRC)/main.c		\
+			$(DIR_SRC)/build.c		\
+			$(DIR_SRC)/utils.c		\
+			$(DIR_SRC)/parse.c		\
+			$(DIR_SRC)/split.c		\
+			$(DIR_SRC)/exec.c		\
+			$(DIR_SRC)/env.c		\
+			$(DIR_SRC)/pwd.c		\
+			$(DIR_SRC)/brexit.c 	\
 			$(DIR_SRC)/line_env.c	\
 			$(DIR_SRC)/line_sep.c	\
-			$(DIR_SRC)/setcmd.c	\
-			$(DIR_SRC)/echo.c
+			$(DIR_SRC)/setcmd.c		\
+			$(DIR_SRC)/echo.c		\
+			$(DIR_SRC)/signals.c
 
 #	OBJETS
 
