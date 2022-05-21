@@ -91,7 +91,7 @@ static int	get_len(char *line)
 }
 
 //	return new line where the environment variable are replaced
-char	*line_env(char **line)
+char	*line_env(char *line)
 {
 	int		i;
 	int		r;
@@ -101,9 +101,9 @@ char	*line_env(char **line)
 	char	*ret;
 	int		td;
 
-	len = get_len(*line);
+	len = get_len(line);
 	if (len == -1)
-		free_str(line);
+		free(line);
 	if (len == -1)
 		return (0);
 	ret = malloc(len + 1);
@@ -113,31 +113,31 @@ char	*line_env(char **line)
 	i = 0;
 	r = 0;
 	td = 1;
-	while ((*line)[i])
+	while (line[i])
 	{
-		if ((*line)[i] == '\"')
+		if (line[i] == '\"')
 		{
-			ret[r++] = (*line)[i++];
+			ret[r++] = line[i++];
 			td = (td + 1) % 2;
 		}
-		while ((*line)[i] == '\'' && td)
+		while (line[i] == '\'' && td)
 		{
-			ret[r++] = (*line)[i++];
-			while ((*line)[i] && (*line)[i] != '\'')
-				ret[r++] = (*line)[i++];
-			ret[r++] = (*line)[i++];
+			ret[r++] = line[i++];
+			while (line[i] && line[i] != '\'')
+				ret[r++] = line[i++];
+			ret[r++] = line[i++];
 		}
-		while ((*line)[i] == '$' && ++i)
+		while (line[i] == '$' && ++i)
 		{
-			env = get_envlen((*line), &i, 0);
+			env = get_envlen(line, &i, 0);
 			e = 0;
 			while (env && env[e])
 				ret[r++] = env[e++];
 		}
-		while ((*line)[i] && ((*line)[i] != '\"' || !td) &&
-			((*line)[i] != '\'' || !td) && (*line)[i] != '$')
-			ret[r++] = (*line)[i++];
+		while (line[i] && (line[i] != '\"' || !td) &&
+			(line[i] != '\'' || !td) && line[i] != '$')
+			ret[r++] = line[i++];
 	}
-	free_str(line);
+	free(line);
 	return (ret);
 }
