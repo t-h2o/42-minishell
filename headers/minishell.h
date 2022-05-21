@@ -56,8 +56,8 @@ void	echo(t_cmd *cmd1);
 
 //	PARSING
 
-void	parse(t_cmd *cmd1, char **line);
-char	*line_env(char **line);
+char	*parse(t_cmd *cmd1, char *line);
+char	*line_env(char *line);
 char	**line_sep(char *line);
 char	**args(char *line);
 void	setcmd(t_cmd *cmd1, char **split);

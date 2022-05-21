@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/04 17:45:17 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/11 16:39:31 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static char	**dupntab(char **tab, int n)
 	return (ret);
 }
 
+// set the line in cmd struct
 void	setcmd(t_cmd *cmd1, char **split)
 {
 	int	n;
