@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/07 17:44:53 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/12 15:02:20 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@
 //	t_cmd->arg[1]	: argument_1
 //	t_cmd->arg[n]	: argument_n
 //	t_cmd->arg[last]: NULL POINTER
-void	parse(t_cmd *cmd1, char **line)
+char	*parse(t_cmd *cmd1, char *line)
 {
 	char	**split;
 
-	if (line[0][0] == 0)
-		return ;
-	*line = line_env(line);
-	if (*line)
+	if (line[0] == 0)
+		return (0) ;
+	line = line_env(line);
+	if (line)
 	{
-		split = line_sep(*line);
+		split = line_sep(line);
 		if (split)
 			setcmd(cmd1, split);
 	}
+	return (line);
 }

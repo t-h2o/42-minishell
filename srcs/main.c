@@ -42,7 +42,7 @@ static void
 			printf("exit\n");
 			exit(0);
 		}
-		parse(&cmd1, &line);
+		line = parse(&cmd1, line);
 		add_history(line);
 		if (check_build(&cmd1, envp))
 			exec_cmd(&cmd1, envp);
