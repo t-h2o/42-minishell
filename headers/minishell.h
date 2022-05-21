@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/12 11:18:06 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:45:15 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_cmd	t_cmd;
 struct s_cmd {
 	char	*cmd;
 	char	**arg;
-	int		type;
 	t_cmd	*next;
 };
 
