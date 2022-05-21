@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/04 17:45:17 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/05/21 15:45:34 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,49 @@ static void	getpath(t_cmd *cmd1)
 	free_tab(&pathall);
 }
 
-static char	**dupntab(char **tab, int n)
+static char	**dupntab(char **tab, int start, int end)
 {
 	char	**ret;
 
-	ret = malloc((n + 1) * sizeof(char *));
+	ret = malloc((end - start + 1) * sizeof(char *));
 	if (ret == 0)
 		return (0);
-	ret[n] = 0;
-	while (n--)
-		ret[n] = str_dup(tab[n]);
+	ret[end - start] = 0;
+	while (end-- - start)
+		ret[end - start] = str_dup(tab[end]);
 	return (ret);
+}
+
+static t_cmd	*new_cmd(void)
+{
+	t_cmd	*new;
+
+	new = malloc(sizeof(t_cmd));
+	return (new);
 }
 
 void	setcmd(t_cmd *cmd1, char **split)
 {
 	int	n;
+	int	offset;
 
 	n = 0;
+	offset = 0;
 	while (split[n])
 	{
 		cmd1->cmd = str_dup(split[n]);
 		getpath(cmd1);
 		while (split[n] && str_cmp(split[n], "|"))
 			n++;
-		cmd1->arg = dupntab(split, n);
+		cmd1->arg = dupntab(split, offset, n);
+		offset = n + 1;
+		if (split[n] != 0)
+		{
+			cmd1->next = new_cmd();
+			cmd1 = cmd1->next;
+			cmd1->next = 0;
+			n++;
+		}
 	}
 	free_tab(&split);
 }
