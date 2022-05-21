@@ -2,6 +2,7 @@
 
 NAME	=	minishell	
 
+DB		=	lldb
 CC		=	gcc
 
 CFLAGS	+=	-Wall
@@ -100,7 +101,8 @@ norm:
 	| grep -v  OK\!) || true
 
 
-lldb:
-	gcc $(SRCS) -I$(DIR_INC) $(OFLAGS) -g -o $(NAME)
-	lldb $(NAME)
+# Debugger
+db:
+	$(CC) $(SRCS) -I$(DIR_INC) $(OFLAGS) -g -o $(NAME)
+	$(DB) $(NAME)
 
