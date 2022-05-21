@@ -92,17 +92,16 @@ celle-ci s’arrête.
 # Partie obligatoire
 
 ```
-Nom du programme
+Nom du programme: minishell
 ```
-```
-minishell
-```
+
 ```
 Fichiers de rendu Makefile, *.h, *.c
 Makefile NAME, all, clean, fclean, re
 Arguments
 Fonctions externes autorisées
 ```
+
 ```
 readline, rl_clear_history, rl_on_new_line,
 rl_replace_line, rl_redisplay, add_history,
@@ -146,12 +145,12 @@ Minishell Aussi mignon qu’un vrai shell
 	- << doit recevoir un délimiteur et lire l’input donné
 	jusqu’à rencontrer une ligne contenant le délimiteur.
 	Cependant, l’historique n’a pas à être mis à jour!
-	- >>doit rediriger la sortie en mode append.
+	- >> doit rediriger la sortie en mode append.
 - Implémenter les **pipes** (caractère|).
 La sortie de chaque commande de la _pipeline_ est connectée à
 l’entrée de la commande suivante grâce à un pe_.
 - Gérer les **variables d’environnement**
-(un$suivi d’une séquence de caractères)
+(un $ suivi d’une séquence de caractères)
     qui doivent être substituées par leur contenu.
 - Gérer **$?** qui doit être substitué par le statut de sortie
 de la dernière _pipeline_ exécutée au premier plan.
