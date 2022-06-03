@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/21 15:45:15 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/03 17:07:28 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,25 @@ struct s_cmd {
 	char	**arg;
 	t_cmd	*next;
 };
+
+// file is the path of the file
+// type, for the output file, if we append or not.
+// append = 1 -> append
+// append = 0 -> create or redo a new file
+// TODO, change append with the flag
+typedef struct s_file {
+   char    *file;
+   int     append;
+} t_file;
+
+// inf:    input file
+// ouf:    output file
+// cmds:   pointer to cmds
+typedef struct s_line {
+   char    *inf;
+   char    *ouf;
+   t_cmd   *cmds;
+} t_line;
 
 //	BUILD
 
