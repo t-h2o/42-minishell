@@ -74,21 +74,20 @@ void	echo(t_cmd *cmd1);
 
 //	PARSING
 
-char	*parse(t_cmd *cmd1, char *line);
+char	*parse(t_line *inputs, char *line);
 char	*line_env(char *line);
 char	**line_sep(char *line);
-char	**args(char *line);
-void	setcmd(t_cmd *cmd1, char **split);
+void	setcmd(t_line *inputs, char **split);
 
 //	EXECUTION
 
-void	exec_cmd(t_cmd *cmd1, char **envp);
+void	exec_cmd(t_line *inputs, char **envp);
 
 //	UTILS
 
 void	free_tab(char ***tab);
 void	free_str(char **s);
-void	free_cmd(t_cmd *cmd1);
+void	free_inputs(t_line *inputs);
 void	errmsg(char *msg, char *cmd);
 char	*str_dup(char *s);
 char	**split(char *line, char *sep);

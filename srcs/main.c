@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/12 11:16:52 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:01:56 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ static void
 static void
 	loop(char **envp)
 {
-	t_cmd	cmd1;
+	t_line	inputs;
 	char	*line;
 
-	cmd1.cmd = 0;
-	cmd1.arg = 0;
+	inputs.inf = 0;
+	inputs.ouf = 0;
+	inputs.cmds = 0;
 	while (1)
 	{
 		line = readline("it's the Prompt $ ");
@@ -42,11 +43,10 @@ static void
 			printf("exit\n");
 			exit(0);
 		}
-		line = parse(&cmd1, line);
 		add_history(line);
-		if (check_build(&cmd1, envp))
-			exec_cmd(&cmd1, envp);
-		free_cmd(&cmd1);
+		line = parse(&inputs, line);
+		exec_cmd(&inputs, envp);
+		free_inputs(&inputs);
 		free_str(&line);
 	}
 }

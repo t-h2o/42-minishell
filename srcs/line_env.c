@@ -6,13 +6,13 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/07 17:52:48 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/03 19:21:37 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
 
-//	an enviromnent variable [A-Z] or [a-z] or '_'
+// an enviromnent variable [A-Z] or [a-z] or '_'
 static int	name_env(char c)
 {
 	char	t;

@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:16:27 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/21 18:33:17 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/03 17:04:46 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,33 @@ void	free_tab(char ***tab)
 		return ;
 	i = 0;
 	while (tab[0][i])
-		i++;
+		++i;
 	while (i--)
 		free_str(&(tab[0][i]));
 	free(*tab);
 	*tab = 0;
 }
 
-void	free_cmd(t_cmd *cmd1)
+static void	free_cmds(t_cmd *command)
 {
-	free_str(&cmd1->cmd);
-	free_tab(&cmd1->arg);
+	if (command->next)
+	{
+		free_cmds(command->next);
+		free(command->next);
+	}
+	free(command->cmd);
+	free_tab(&(command->arg));
+}
+
+void free_inputs(t_line *inputs)
+{
+	free_str(&(inputs->inf));
+	free_str(&(inputs->ouf));
+	if (inputs->cmds)
+	{
+		free_cmds(inputs->cmds);
+		free(inputs->cmds);
+	}
 }
 
 char	*str_dup(char *s)
