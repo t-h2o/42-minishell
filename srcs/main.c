@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/03 17:01:56 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/04 10:53:26 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void
 		}
 		add_history(line);
 		line = parse(&inputs, line);
-		exec_cmd(&inputs, envp);
+		if (line)
+			exec_cmd(&inputs, envp);
 		free_inputs(&inputs);
 		free_str(&line);
 	}
