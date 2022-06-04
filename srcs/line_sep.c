@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/07 17:54:07 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/04 15:09:57 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,15 @@ static int	count(char *line)
 	arg = 0;
 	while (line[i])
 	{
+		if (line[i] == ' ')
+		{
+			while (line[i] == ' ')
+				i++;
+			if (line[i] == 0 && arg == 0)
+				return (-1);
+			if (line[i] == 0)
+				return (arg);
+		}
 		while (line[i] == '\'' && ++i)
 		{
 			while (line[i] != '\'')
@@ -93,21 +102,9 @@ static int	count(char *line)
 				i++;
 			i++;
 		}
-		if (line[i] && line[i] != ' ' && line[i] != '\'' && line[i] != '\"')
-		{
-			while (line[i] && line[i] != ' ' && line[i] != '\'' && line[i] != '\"')
-				i++;
-		}
-		if (line[i] == ' ')
-		{
-			while (line[i] == ' ')
-				i++;
-			if (line[i] == 0 && arg == 0)
-				return (-1);
-			arg++;
-		}
-		else if (line[i] == 0)
-			arg++;
+		while (line[i] && line[i] != ' ' && line[i] != '\'' && line[i] != '\"')
+			i++;
+		arg++;
 	}
 	return (arg);
 }
