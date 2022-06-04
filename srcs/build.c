@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/05/07 16:44:47 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:17:10 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ int	check_build(t_cmd *cmd1, char **envp)
 		return (0);
 	if (!str_cmp(cmd1->arg[0], "exit"))
 	{
-		clear_history();
-		free_cmd(cmd1);
-		exit(0);
+		return(2);
 	}
 	if (!str_cmp(cmd1->arg[0], "pwd"))
 	{

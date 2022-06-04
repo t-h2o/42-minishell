@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/12 15:02:20 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/03 15:22:03 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 //	t_cmd->arg[1]	: argument_1
 //	t_cmd->arg[n]	: argument_n
 //	t_cmd->arg[last]: NULL POINTER
-char	*parse(t_cmd *cmd1, char *line)
+char	*parse(t_line *inputs, char *line)
 {
 	char	**split;
 
@@ -29,7 +29,7 @@ char	*parse(t_cmd *cmd1, char *line)
 	{
 		split = line_sep(line);
 		if (split)
-			setcmd(cmd1, split);
+			setcmd(inputs, split);
 	}
 	return (line);
 }

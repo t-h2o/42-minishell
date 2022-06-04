@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/11 16:39:31 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/03 19:23:11 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,26 +93,30 @@ static t_cmd	*new_cmd(void)
 }
 
 // set the line in cmd struct
-void	setcmd(t_cmd *cmd1, char **split)
+void	setcmd(t_line *input, char **split)
 {
-	int	n;
-	int	offset;
+	t_cmd	*ptr;
+	int		n;
+	int		offset;
 
 	n = 0;
 	offset = 0;
+	ptr = new_cmd();
+	input->cmds = ptr;
+	ptr->next = 0;
 	while (split[n])
 	{
-		cmd1->cmd = str_dup(split[n]);
-		getpath(cmd1);
+		ptr->cmd = str_dup(split[n]);
+		getpath(ptr);
 		while (split[n] && str_cmp(split[n], "|"))
 			n++;
-		cmd1->arg = dupntab(split, offset, n);
+		ptr->arg = dupntab(split, offset, n);
 		offset = n + 1;
 		if (split[n] != 0)
 		{
-			cmd1->next = new_cmd();
-			cmd1 = cmd1->next;
-			cmd1->next = 0;
+			ptr->next = new_cmd();
+			ptr = ptr->next;
+			ptr->next = 0;
 			n++;
 		}
 	}

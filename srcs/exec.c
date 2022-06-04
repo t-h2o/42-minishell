@@ -6,13 +6,13 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/05/07 17:49:35 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/03 15:18:35 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
 
-void	exec_cmd(t_cmd *cmd1, char **envp)
+static void	exec(t_cmd *cmd1, char **envp)
 {
 	int	pid;
 
@@ -30,4 +30,20 @@ void	exec_cmd(t_cmd *cmd1, char **envp)
 	}
 	else
 		errmsg("minishell: command not found: ", cmd1->cmd);
+}
+
+void   exec_cmd(t_line *inputs, char **envp)
+{
+
+   int ret;
+
+   ret = check_build(inputs->cmds, envp);
+   if (ret == 1)
+   {
+       exec(inputs->cmds, envp);
+   }
+   if (ret == 2)
+   {
+       exit(0);
+   }
 }

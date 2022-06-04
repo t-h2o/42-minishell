@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/05/21 15:45:15 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/03 17:07:28 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,25 @@ struct s_cmd {
 	t_cmd	*next;
 };
 
+// file is the path of the file
+// type, for the output file, if we append or not.
+// append = 1 -> append
+// append = 0 -> create or redo a new file
+// TODO, change append with the flag
+typedef struct s_file {
+   char    *file;
+   int     append;
+} t_file;
+
+// inf:    input file
+// ouf:    output file
+// cmds:   pointer to cmds
+typedef struct s_line {
+   char    *inf;
+   char    *ouf;
+   t_cmd   *cmds;
+} t_line;
+
 //	BUILD
 
 int		check_build(t_cmd *cmd1, char **env);
@@ -55,21 +74,20 @@ void	echo(t_cmd *cmd1);
 
 //	PARSING
 
-char	*parse(t_cmd *cmd1, char *line);
+char	*parse(t_line *inputs, char *line);
 char	*line_env(char *line);
 char	**line_sep(char *line);
-char	**args(char *line);
-void	setcmd(t_cmd *cmd1, char **split);
+void	setcmd(t_line *inputs, char **split);
 
 //	EXECUTION
 
-void	exec_cmd(t_cmd *cmd1, char **envp);
+void	exec_cmd(t_line *inputs, char **envp);
 
 //	UTILS
 
 void	free_tab(char ***tab);
 void	free_str(char **s);
-void	free_cmd(t_cmd *cmd1);
+void	free_inputs(t_line *inputs);
 void	errmsg(char *msg, char *cmd);
 char	*str_dup(char *s);
 char	**split(char *line, char *sep);
