@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:16:27 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/03 17:04:46 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/04 10:52:19 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void free_inputs(t_line *inputs)
 	{
 		free_cmds(inputs->cmds);
 		free(inputs->cmds);
+		inputs->cmds = 0;
 	}
 }
 
