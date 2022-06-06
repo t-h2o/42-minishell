@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/06 14:13:41 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:33:02 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,6 @@ char	*line_env(char *line)
 
 	len = get_len(line);
 
-	if (len == -1)
-		free(line);
-	if (len == -1)
-		return (0);
 	if (len < 0)
 	{
 		free(line);
