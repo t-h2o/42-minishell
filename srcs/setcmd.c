@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/03 19:23:11 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/06 13:55:09 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,54 +71,70 @@ static void	getpath(t_cmd *cmd1)
 	free_tab(&pathall);
 }
 
-static char	**dupntab(char **tab, int start, int end)
-{
-	char	**ret;
-
-	ret = malloc((end - start + 1) * sizeof(char *));
-	if (ret == 0)
-		return (0);
-	ret[end - start] = 0;
-	while (end-- - start)
-		ret[end - start] = str_dup(tab[end]);
-	return (ret);
-}
-
 static t_cmd	*new_cmd(void)
 {
 	t_cmd	*new;
 
 	new = malloc(sizeof(t_cmd));
+	new->next = 0;
+	new->cmd = 0;
+	new->arg = 0;
 	return (new);
+}
+
+static char
+	**append_arg(char **args, char *app)
+{
+	char	**ret;
+	int		n;
+
+	n = 0;
+	if (args)
+	{
+		while (args[n])
+			n++;
+	}
+	ret = malloc((n + 2) * sizeof(char *));
+	ret[n + 1] = 0;
+	ret[n] = str_dup(app);
+	while (n--)
+		ret[n] = args[n];
+	free(args);
+	return (ret);
+
+	// 0: "12"
+	// 1: 0
 }
 
 // set the line in cmd struct
 void	setcmd(t_line *input, char **split)
 {
-	t_cmd	*ptr;
 	int		n;
-	int		offset;
+	t_cmd	*ptr;
 
 	n = 0;
-	offset = 0;
 	ptr = new_cmd();
 	input->cmds = ptr;
-	ptr->next = 0;
 	while (split[n])
 	{
-		ptr->cmd = str_dup(split[n]);
-		getpath(ptr);
-		while (split[n] && str_cmp(split[n], "|"))
-			n++;
-		ptr->arg = dupntab(split, offset, n);
-		offset = n + 1;
-		if (split[n] != 0)
+		if (str_cmp(split[n], "<") && ++n)
+		{
+			input->inf.file = str_dup(split[n++]);
+			input->inf.flag = O_RDONLY;
+		}
+		if (split[n] && str_cmp(split[n], "|") && ++n)
 		{
 			ptr->next = new_cmd();
 			ptr = ptr->next;
-			ptr->next = 0;
-			n++;
 		}
+		if (split[n] && ptr->cmd == 0)
+		{
+			ptr->cmd = str_dup(split[n]);
+			if (access(ptr->cmd, X_OK) != 0)
+				getpath(ptr);
+		}
+		if (split[n])
+			ptr->arg = append_arg(ptr->arg, split[n++]);
 	}
 	free_tab(&split);
 }
