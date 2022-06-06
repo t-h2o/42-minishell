@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/04 10:53:26 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/05 15:51:59 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ static void
 	printf("\t###############################\n\n");
 }
 
+static void	setinputs(t_line *inputs)
+{
+	inputs->inf.file = 0;
+	inputs->ouf.file = 0;
+	inputs->cmds = 0;
+}
+
 //	Infinite loop :
 //	readline, if line is null, (CTRL + D)
 static void
@@ -31,9 +38,7 @@ static void
 	t_line	inputs;
 	char	*line;
 
-	inputs.inf = 0;
-	inputs.ouf = 0;
-	inputs.cmds = 0;
+	setinputs(&inputs);
 	while (1)
 	{
 		line = readline("it's the Prompt $ ");

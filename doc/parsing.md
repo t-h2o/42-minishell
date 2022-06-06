@@ -123,3 +123,12 @@ $ echo 'My $HOME' is "-->  $HOME   <--" $PWD':'
 0. line: echo 'My $HOME' is "-->  $HOME   <--" $PWD':'
 1. line: echo 'My $HOME' is "-->  /home/user   <--" /c/w/d':'
 ```
+
+## Infile
+
+```sh
+$ grep -v word < infile
+$ grep word < infile -v 
+$ grep < infile word -v
+$ < infile grep word -v
+```

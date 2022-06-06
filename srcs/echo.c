@@ -17,7 +17,7 @@ void	echo(t_cmd *cmd1)
 	int		i;
 
 	i = 0;
-	if (str_cmp(cmd1->arg[++i], "-n") == 0)
+	if (!str_cmp(cmd1->arg[++i], "-n") == 0)
 	{
 		while (cmd1->arg[++i])
 		{
