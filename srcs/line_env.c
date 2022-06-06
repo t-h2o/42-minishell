@@ -6,12 +6,12 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/06 16:33:02 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/06 20:34:48 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
-
+#include <string.h>
 // an enviromnent variable [A-Z] or [a-z] or '_'
 static int	name_env(char c)
 {
@@ -95,7 +95,6 @@ char	*line_env(char *line)
 {
 	int		i;
 	int		r;
-	int		e;
 	int		len;
 	char	*env;
 	char	*ret;
@@ -125,16 +124,17 @@ char	*line_env(char *line)
 		while (line[i] == '\'' && td)
 		{
 			ret[r++] = line[i++];
-			while (line[i] && line[i] != '\'')
-				ret[r++] = line[i++];
+			len = i;
+			while (line[len] && line[len] != '\'')
+				len++;
+			strncpy(ret + r, line - 1 + i,len - i + 1);
+			i = len;
 			ret[r++] = line[i++];
 		}
 		while (line[i] == '$' && ++i)
 		{
 			env = get_envlen(line, &i, 0);
-			e = 0;
-			while (env && env[e])
-				ret[r++] = env[e++];
+			strncpy(ret + r, env, ft_strlen(env));
 		}
 		while (line[i] && (line[i] != '\"' || !td) &&
 			(line[i] != '\'' || !td) && line[i] != '$')
