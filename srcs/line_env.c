@@ -6,12 +6,12 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/03 19:21:37 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:34:48 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
-
+#include <string.h>
 // an enviromnent variable [A-Z] or [a-z] or '_'
 static int	name_env(char c)
 {
@@ -95,17 +95,18 @@ char	*line_env(char *line)
 {
 	int		i;
 	int		r;
-	int		e;
 	int		len;
 	char	*env;
 	char	*ret;
 	int		td;
 
 	len = get_len(line);
-	if (len == -1)
+
+	if (len < 0)
+	{
 		free(line);
-	if (len == -1)
-		return (0);
+		return (NULL);
+	}
 	ret = malloc(len + 1);
 	if (ret == 0)
 		return (0);
@@ -123,16 +124,17 @@ char	*line_env(char *line)
 		while (line[i] == '\'' && td)
 		{
 			ret[r++] = line[i++];
-			while (line[i] && line[i] != '\'')
-				ret[r++] = line[i++];
+			len = i;
+			while (line[len] && line[len] != '\'')
+				len++;
+			strncpy(ret + r, line - 1 + i,len - i + 1);
+			i = len;
 			ret[r++] = line[i++];
 		}
 		while (line[i] == '$' && ++i)
 		{
 			env = get_envlen(line, &i, 0);
-			e = 0;
-			while (env && env[e])
-				ret[r++] = env[e++];
+			strncpy(ret + r, env, ft_strlen(env));
 		}
 		while (line[i] && (line[i] != '\"' || !td) &&
 			(line[i] != '\'' || !td) && line[i] != '$')
