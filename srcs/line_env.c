@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/03 19:21:37 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/06 14:13:41 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,16 @@ char	*line_env(char *line)
 	int		td;
 
 	len = get_len(line);
+
 	if (len == -1)
 		free(line);
 	if (len == -1)
 		return (0);
+	if (len < 0)
+	{
+		free(line);
+		return (NULL);
+	}
 	ret = malloc(len + 1);
 	if (ret == 0)
 		return (0);
