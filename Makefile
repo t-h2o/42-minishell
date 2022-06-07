@@ -10,7 +10,7 @@ CFLAGS	+=	-Wextra
 CFLAGS	+=	-Werror
 
 OFLAGS	+=	-fsanitize=address
-OFLAGS	+=	-lreadline -L $(HOME)/.brew/opt/readline/lib -I $(HOME)/.brew/opt/readline/include
+OFLAGS	+=	$(shell pkg-config --libs readline) -I $(shell pkg-config --cflags readline)
 
 
 #	HEADERS
@@ -22,7 +22,6 @@ HEADER	=	minishell.h
 #	LIBRARIES
 
 LIB		+=	-I $(DIR_INC)
-
 
 
 #	SOURCES
@@ -49,22 +48,6 @@ DIR_OBJ	=	./objs
 OBJS	=	$(addprefix $(DIR_OBJ)/, $(notdir $(SRCS:.c=.o)))
 
 RM		=	rm -rf
-
-
-#	LINUX
-
-ifeq ($(UNAME_S),Linux)
-	LIB		+=	-L /usr/include/
-endif
-
-
-#	MAC OS
-
-ifeq ($(UNAME_S),Darwin)
-	OFLAGS	+=	-L $(HOME)/.brew/opt/readline/8.1.2/lib -I $(HOME)/.brew/opt/readline/8.1.2/include
-endif
-
-
 vpath %.c $(DIR_SRC)
 
 
