@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/07 16:07:23 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/08 00:20:39 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	setinputs(t_line *inputs)
 	inputs->inf.file = 0;
 	inputs->ouf.file = 0;
 	inputs->cmds = 0;
+	inputs->loop = 1;
 }
 
 //	Infinite loop :
@@ -39,14 +40,15 @@ static void
 	char	*line;
 
 	setinputs(&inputs);
-	while (1)
+	while (inputs.loop)
 	{
 		line = readline("it's the Prompt $ ");
 		if (line == 0)
 		{
 			clear_history();
 			printf("exit\n");
-			exit(0);
+			inputs.loop = 0;
+			break ;
 		}
 		add_history(line);
 		line = parse(&inputs, line);
