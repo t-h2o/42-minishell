@@ -8,6 +8,7 @@ CC		=	gcc
 CFLAGS	+=	-Wall
 CFLAGS	+=	-Wextra
 CFLAGS	+=	-Werror
+CFLAGS	+=	-g
 
 OFLAGS	+=	-fsanitize=address
 OFLAGS	+=	$(shell pkg-config --libs readline) -I $(shell pkg-config --cflags readline)
@@ -85,7 +86,5 @@ norm:
 
 
 # Debugger
-db:
-	$(CC) $(SRCS) -I$(DIR_INC) $(OFLAGS) -g -o $(NAME)
+db:	$(NAME)
 	$(DB) $(NAME)
-
