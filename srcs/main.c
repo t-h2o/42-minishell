@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/05 15:51:59 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/07 16:07:23 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,19 @@ static void
 int
 	main(int argc, char **argv, char **envp)
 {
-	struct termios t;
+	struct termios save;
+	struct termios curr;
 
 	(void)argc;
 	(void)argv;
-	tcgetattr(STDIN_FILENO, &t);
-	t.c_lflag &= ~ECHOCTL;
-	tcsetattr(STDIN_FILENO, 0, &t);
+	tcgetattr(STDIN_FILENO, &curr);
+	tcgetattr(STDIN_FILENO, &save);
+	curr.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, 0, &curr);
 	wel_msg();
 	signal(SIGINT, sig_int);
 	signal(SIGQUIT, sig_quit);
 	loop(envp);
+	tcsetattr(STDIN_FILENO, 0, &save);
 	return (0);
 }
