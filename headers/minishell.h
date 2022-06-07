@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/05 16:13:57 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/08 01:53:33 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ struct s_cmd {
 // file is the path of the file
 // flag for open the file
 typedef struct s_file {
-   char    *file;
-   int     flag;
-} t_file;
+	char	*file;
+	int		flag;
+}	t_file;
 
 // inf:    input file
 // ouf:    output file
 // cmds:   pointer to cmds
 typedef struct s_line {
-   t_file	inf;
-   t_file	ouf;
-   t_cmd	*cmds;
-} t_line;
+	t_file	inf;
+	t_file	ouf;
+	t_cmd	*cmds;
+}	t_line;
 
 //	BUILD
 
@@ -91,7 +91,6 @@ char	**split(char *line, char *sep);
 int		str_cmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
 int		ft_strlen(char *s);
-void	rl_replace_line(const char *, int);
 
 //	SIGNALS
 
