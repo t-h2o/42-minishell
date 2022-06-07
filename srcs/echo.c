@@ -17,24 +17,27 @@ void	echo(t_cmd *cmd1)
 	int		i;
 
 	i = 0;
-	if (!str_cmp(cmd1->arg[++i], "-n") == 0)
+	if (cmd1->arg[1] != NULL)
 	{
-		while (cmd1->arg[++i])
+		if (str_cmp(cmd1->arg[++i], "-n") != 0)
 		{
-			printf("%s", cmd1->arg[i]);
-			if (cmd1->arg[i + 1])
-				printf(" ");
+			while (cmd1->arg[++i])
+			{
+				printf("%s", cmd1->arg[i]);
+				if (cmd1->arg[i + 1])
+					printf(" ");
+			}
 		}
-	}
-	else
-	{
-		i--;
-		while (cmd1->arg[++i])
+		else
 		{
-			printf("%s", cmd1->arg[i]);
-			if (cmd1->arg[i + 1])
-				printf(" ");
+			i--;
+			while (cmd1->arg[++i])
+			{
+				printf("%s", cmd1->arg[i]);
+				if (cmd1->arg[i + 1])
+					printf(" ");
+			}
+			printf("\n");
 		}
-		printf("\n");
 	}
 }
