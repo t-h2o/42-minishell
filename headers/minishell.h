@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/05 16:13:57 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/08 01:54:24 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define MINISHELL_H
 
-//	INCLUDES
+// INCLUDES
 
 # include	<stdio.h>
 # include	<stdlib.h>
@@ -34,11 +34,11 @@
 # include	<sys/types.h>
 # include	<sys/wait.h>
 
-//	STRUCTURE
+// STRUCTURE
 
-//	cmd:	name of the command
-//	arg:	arguments of the command
-//	next:	pointer on the next command
+// cmd:	name of the command
+// arg:	arguments of the command
+// next:	pointer on the next command
 typedef struct s_cmd	t_cmd;
 struct s_cmd {
 	char	*cmd;
@@ -49,38 +49,38 @@ struct s_cmd {
 // file is the path of the file
 // flag for open the file
 typedef struct s_file {
-   char    *file;
-   int     flag;
-} t_file;
+	char	*file;
+	int		flag;
+}	t_file;
 
 // inf:    input file
 // ouf:    output file
 // cmds:   pointer to cmds
 typedef struct s_line {
-   t_file	inf;
-   t_file	ouf;
-   t_cmd	*cmds;
-} t_line;
+	t_file	inf;
+	t_file	ouf;
+	t_cmd	*cmds;
+}	t_line;
 
-//	BUILD
+// BUILD
 
 int		check_build(t_cmd *cmd1, char **env);
 void	pwd(void);
 void	env(char **envp);
 void	echo(t_cmd *cmd1);
 
-//	PARSING
+// PARSING
 
 char	*parse(t_line *inputs, char *line);
 char	*line_env(char *line);
 char	**line_sep(char *line);
 void	setcmd(t_line *inputs, char **split);
 
-//	EXECUTION
+// EXECUTION
 
 void	exec_cmd(t_line *inputs, char **envp);
 
-//	UTILS
+// UTILS
 
 void	free_tab(char ***tab);
 void	free_str(char **s);
@@ -91,9 +91,8 @@ char	**split(char *line, char *sep);
 int		str_cmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
 int		ft_strlen(char *s);
-void	rl_replace_line(const char *, int);
 
-//	SIGNALS
+// SIGNALS
 
 void	sig_int(int n);
 void	sig_quit(int n);
