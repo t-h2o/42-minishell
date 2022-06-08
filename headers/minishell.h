@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/08 01:54:24 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/08 21:38:52 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@
 
 // STRUCTURE
 
-// cmd:	name of the command
-// arg:	arguments of the command
-// next:	pointer on the next command
+// cmd:  name of the command
+// arg:  arguments of the command
+// next: pointer on the next command
 typedef struct s_cmd	t_cmd;
 struct s_cmd {
 	char	*cmd;
@@ -53,13 +53,15 @@ typedef struct s_file {
 	int		flag;
 }	t_file;
 
-// inf:    input file
-// ouf:    output file
-// cmds:   pointer to cmds
+// inf:  input file
+// ouf:  output file
+// cmds: pointer to cmds
+// loop: if true, repeat readline
 typedef struct s_line {
 	t_file	inf;
 	t_file	ouf;
 	t_cmd	*cmds;
+	int		loop;
 }	t_line;
 
 // BUILD

@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/03 15:18:35 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/08 00:19:06 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void   exec_cmd(t_line *inputs, char **envp)
    }
    if (ret == 2)
    {
-       exit(0);
+	   inputs->loop = 0;
    }
 }
