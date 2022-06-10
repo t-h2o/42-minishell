@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/06 23:41:48 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/10 15:10:10 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	setcmd(t_line *input, char **split)
 			input->inf.file = str_dup(split[n++]);
 			input->inf.flag = O_RDONLY;
 		}
-		if (str_cmp(split[n], ">") && ++n)
+		if (split[n] && str_cmp(split[n], ">") && ++n)
 		{
 			input->ouf.file = str_dup(split[n++]);
 			input->ouf.flag = O_CREAT | O_RDWR | O_TRUNC;
