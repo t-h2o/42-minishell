@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/12 11:20:31 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/08 00:20:39 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void
 		add_history(line);
 		line = parse(&inputs, line);
 		if (line)
-			exec_cmd(&inputs, &envp);
+			exec_cmd(&inputs, envp);
 		free_inputs(&inputs);
 		free_str(&line);
 	}
@@ -76,9 +76,7 @@ int
 	wel_msg();
 	signal(SIGINT, sig_int);
 	signal(SIGQUIT, sig_quit);
-	envp = dup_envp(envp);
 	loop(envp);
 	tcsetattr(STDIN_FILENO, 0, &save);
-	free_tab(&envp);
 	return (0);
 }
