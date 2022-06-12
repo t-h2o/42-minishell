@@ -23,25 +23,9 @@ in the table without realloc a new table with +1 space for your new string.
 
 ## Creating environmental variable
 
-```plain
-envp[0] = "HOME=/home/user"
-envp[1] = "PWD=/path/actual"
-envp[2] = "PATH=/path/bin"
-envp[3] = "" // malloc (0)
-envp[4] = 0
-...
-envp[n] = 0
-```
+Duplicate the strings table into our table.
+If we need to export variables,
+we will realloc a new table with the news variables.
 
-## unset
-
-Unset PWD
-
-```
-envp[0] = "HOME=/home/user"
-envp[1] = "\0"
-envp[2] = "PATH=/path/bin"
-envp[3] = ""
-```
-
-export \0=3
+If we need to unset variables,
+we will realloc a new table without the variables.
