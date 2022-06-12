@@ -6,7 +6,8 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/13 22:24:53 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/13 23:14:35 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/12 17:07:32 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +82,8 @@ void	exec_cmd(t_line *inputs, char ***envp)
 	{
 		if (str_cmp(commands->arg[0], "export"))
 			export(commands, envp);
+		else if (str_cmp(commands->arg[0], "cd"))
+			cd(commands);
 		else
 			subprocess(commands, *envp, &fdinf, &ret);
 		commands = commands->next;

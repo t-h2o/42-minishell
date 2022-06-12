@@ -36,6 +36,7 @@ SRCS	=	$(DIR_SRC)/main.c		\
 			$(DIR_SRC)/exec.c		\
 			$(DIR_SRC)/env.c		\
 			$(DIR_SRC)/pwd.c		\
+			$(DIR_SRC)/cd.c		\
 			$(DIR_SRC)/brexit.c 	\
 			$(DIR_SRC)/export.c 	\
 			$(DIR_SRC)/line_env.c	\
