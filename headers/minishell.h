@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/13 22:24:23 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/13 23:13:45 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,17 @@ typedef struct s_line {
 	int		loop;
 }	t_line;
 
+// READLINE
+
+void	rl_replace_line(const char *, int);
+
 // BUILD
 
 int		check_build(t_cmd *cmd1, char **env);
 void	pwd(void);
 void	env(char **envp);
 void	echo(t_cmd *cmd1);
+void	cd(t_cmd *command);
 
 // PARSING
 
