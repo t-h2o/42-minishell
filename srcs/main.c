@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/08 00:20:39 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/13 22:37:30 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	setinputs(t_line *inputs)
 //	Infinite loop :
 //	readline, if line is null, (CTRL + D)
 static void
-	loop(char **envp)
+	loop(char ***envp)
 {
 	t_line	inputs;
 	char	*line;
@@ -76,7 +76,9 @@ int
 	wel_msg();
 	signal(SIGINT, sig_int);
 	signal(SIGQUIT, sig_quit);
-	loop(envp);
+	envp = dup_envp(envp);
+	loop(&envp);
 	tcsetattr(STDIN_FILENO, 0, &save);
+	free_tab(&envp);
 	return (0);
 }

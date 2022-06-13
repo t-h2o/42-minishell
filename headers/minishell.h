@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/08 21:38:52 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/13 22:24:23 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,14 @@ void	setcmd(t_line *inputs, char **split);
 
 // EXECUTION
 
-void	exec_cmd(t_line *inputs, char **envp);
+void	exec_cmd(t_line *inputs, char ***envp);
 
-// UTILS
+//	ENVP
+
+char	**dup_envp(char **envp);
+void	export(t_cmd *command, char ***envp);
+
+//	UTILS
 
 void	free_tab(char ***tab);
 void	free_str(char **s);
