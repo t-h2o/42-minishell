@@ -31,6 +31,7 @@ DIR_SRC	=	./srcs
 SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/build.c      \
 			$(DIR_SRC)/utils.c      \
+			$(DIR_SRC)/utils_free.c \
 			$(DIR_SRC)/parse.c      \
 			$(DIR_SRC)/split.c      \
 			$(DIR_SRC)/exec.c       \
