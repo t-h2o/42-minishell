@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/06 20:34:48 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/13 23:25:41 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ char	*line_env(char *line)
 	int		td;
 
 	len = get_len(line);
-
 	if (len < 0)
 	{
 		free(line);
@@ -127,7 +126,7 @@ char	*line_env(char *line)
 			len = i;
 			while (line[len] && line[len] != '\'')
 				len++;
-			strncpy(ret + r, line - 1 + i,len - i + 1);
+			strncpy(ret + r, line - 1 + i, len - i + 1);
 			i = len;
 			ret[r++] = line[i++];
 		}
@@ -136,8 +135,8 @@ char	*line_env(char *line)
 			env = get_envlen(line, &i, 0);
 			strncpy(ret + r, env, ft_strlen(env));
 		}
-		while (line[i] && (line[i] != '\"' || !td) &&
-			(line[i] != '\'' || !td) && line[i] != '$')
+		while (line[i] && (line[i] != '\"' || !td)
+			&& (line[i] != '\'' || !td) && line[i] != '$')
 			ret[r++] = line[i++];
 	}
 	free(line);
