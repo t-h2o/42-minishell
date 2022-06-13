@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/13 22:37:30 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/13 23:22:57 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static void
 int
 	main(int argc, char **argv, char **envp)
 {
-	struct termios save;
-	struct termios curr;
+	struct termios	save;
+	struct termios	curr;
 
 	(void)argc;
 	(void)argv;
