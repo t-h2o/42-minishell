@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/10 15:18:33 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/13 22:24:53 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	open_infile(t_file inf)
 	return (fd);
 }
 
-void	exec_cmd(t_line *inputs, char **envp)
+void	exec_cmd(t_line *inputs, char ***envp)
 {
 	t_cmd	*commands;
 	int		ret;
@@ -79,7 +79,10 @@ void	exec_cmd(t_line *inputs, char **envp)
 	commands = inputs->cmds;
 	while (commands != NULL)
 	{
-		subprocess(commands, envp, &fdinf, &ret);
+		if (str_cmp(commands->arg[0], "export"))
+			export(commands, envp);
+		else
+			subprocess(commands, *envp, &fdinf, &ret);
 		commands = commands->next;
 	}
 	if (ret == 42)
