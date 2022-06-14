@@ -6,11 +6,28 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:16:27 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/13 23:34:26 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/14 22:31:05 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
+
+//	if the two string are equal			--> return 1
+//	if the two string are not equal		--> return 0
+//	if one of the two is null pointe	--> return -1
+int	ft_strcmp(char *s1, char *s2)
+{
+	if (s1 == 0 || s2 == 0)
+		return (-1);
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	if (*s1 == 0 && *s2 == 0)
+		return (1);
+	return (0);
+}
 
 char	*str_dup(char *s)
 {
