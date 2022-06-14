@@ -19,7 +19,7 @@ void	echo(t_cmd *cmd1)
 	i = 0;
 	if (cmd1->arg[1] != NULL)
 	{
-		if (str_cmp(cmd1->arg[++i], "-n") != 0)
+		if (ft_strcmp(cmd1->arg[++i], "-n") != 0)
 		{
 			while (cmd1->arg[++i])
 			{

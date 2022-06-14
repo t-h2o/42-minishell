@@ -100,7 +100,7 @@ void	free_inputs(t_line *inputs);
 void	errmsg(char *msg, char *cmd);
 char	*str_dup(char *s);
 char	**split(char *line, char *sep);
-int		str_cmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
 int		ft_strlen(char *s);
 

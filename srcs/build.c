@@ -18,21 +18,21 @@ int	check_build(t_cmd *cmd1, char **envp)
 {
 	if (cmd1->arg == 0)
 		return (0);
-	if (str_cmp(cmd1->arg[0], "exit"))
+	if (ft_strcmp(cmd1->arg[0], "exit"))
 	{
 		return (2);
 	}
-	if (str_cmp(cmd1->arg[0], "pwd"))
+	if (ft_strcmp(cmd1->arg[0], "pwd"))
 	{
 		pwd();
 		return (0);
 	}
-	if (str_cmp(cmd1->arg[0], "env"))
+	if (ft_strcmp(cmd1->arg[0], "env"))
 	{
 		env(envp);
 		return (0);
 	}
-	if (str_cmp(cmd1->arg[0], "echo"))
+	if (ft_strcmp(cmd1->arg[0], "echo"))
 	{
 		echo(cmd1);
 		return (0);

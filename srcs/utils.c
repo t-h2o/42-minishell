@@ -15,7 +15,7 @@
 //	if the two string are equal			--> return 1
 //	if the two string are not equal		--> return 0
 //	if one of the two is null pointe	--> return -1
-int	str_cmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
 	if (s1 == 0 || s2 == 0)
 		return (-1);

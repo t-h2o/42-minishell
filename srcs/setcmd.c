@@ -117,17 +117,17 @@ void	setcmd(t_line *input, char **split)
 	input->cmds = ptr;
 	while (split[n])
 	{
-		if (str_cmp(split[n], "<") && ++n)
+		if (ft_strcmp(split[n], "<") && ++n)
 		{
 			input->inf.file = str_dup(split[n++]);
 			input->inf.flag = O_RDONLY;
 		}
-		if (split[n] && str_cmp(split[n], ">") && ++n)
+		if (split[n] && ft_strcmp(split[n], ">") && ++n)
 		{
 			input->ouf.file = str_dup(split[n++]);
 			input->ouf.flag = O_CREAT | O_RDWR | O_TRUNC;
 		}
-		if (split[n] && str_cmp(split[n], "|") && ++n)
+		if (split[n] && ft_strcmp(split[n], "|") && ++n)
 		{
 			ptr->next = new_cmd();
 			ptr = ptr->next;

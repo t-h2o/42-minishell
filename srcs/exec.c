@@ -80,9 +80,9 @@ void	exec_cmd(t_line *inputs, char ***envp)
 	commands = inputs->cmds;
 	while (commands != NULL)
 	{
-		if (str_cmp(commands->arg[0], "export"))
+		if (ft_strcmp(commands->arg[0], "export"))
 			export(commands, envp);
-		else if (str_cmp(commands->arg[0], "cd"))
+		else if (ft_strcmp(commands->arg[0], "cd"))
 			cd(commands);
 		else
 			subprocess(commands, *envp, &fdinf, &ret);
