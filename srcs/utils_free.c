@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 23:34:11 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/13 23:34:19 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/17 10:58:10 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ static void	free_cmds(t_cmd *command)
 void	free_inputs(t_line *inputs)
 {
 	free_str(&(inputs->inf.file));
+	inputs->inf.flag = 0;
 	free_str(&(inputs->ouf.file));
+	inputs->ouf.flag = 0;
 	if (inputs->cmds)
 	{
 		free_cmds(inputs->cmds);
