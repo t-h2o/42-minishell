@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/13 23:24:38 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/17 12:53:12 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ char	*parse(t_line *inputs, char *line)
 {
 	char	**split;
 
-	// what is the use of this check you already verify beforehand whether or not the string is null
 	if (line[0] == 0)
 		return (0);
 	line = line_env(line);
-	if (line)
-	{
-		split = line_sep(line);
-		if (split)
-			setcmd(inputs, split);
-	}
+	if (line == 0)
+		return (0);
+	line = line_space(line);
+	if (line == 0)
+		return (0);
+	split = line_sep(line);
+	if (split == 0)
+		return (0);
+	setcmd(inputs, split);
 	return (line);
 }
