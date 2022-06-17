@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/17 14:47:22 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/17 23:27:06 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,12 @@ void	setcmd(t_line *input, char **split)
 	input->cmds = ptr;
 	while (split[n])
 	{
-		if (ft_strcmp(split[n], "<") && ++n)
+		if (split[n] && ft_strcmp(split[n], "<") && ++n)
 		{
 			input->inf.file = str_dup(split[n++]);
 			input->inf.flag = O_RDONLY;
 		}
-		if (ft_strcmp(split[n], "<<") && ++n)
+		if (split[n] && ft_strcmp(split[n], "<<") && ++n)
 		{
 			input->inf.file = str_dup("/tmp/.minishell-here_doc");
 			input->inf.eof = str_dup(split[n++]);

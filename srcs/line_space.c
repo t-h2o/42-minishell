@@ -6,11 +6,33 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:05:56 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/17 13:21:03 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/18 00:31:55 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	loop_char(char *line, int *i, int *n, char c)
+{
+	int	check;
+
+	check = 0;
+	if (*i > 0 && line[*i - 1] != ' ')
+		++(*n);
+	while (line[*i] && line[*i] == c)
+	{
+		if (line[*i + 1] == 0)
+			return (-1);
+		++(*n);
+		++(*i);
+		++check;
+		if (check == 3)
+			return (-1);
+		if (line[*i] && line[*i] != ' ' && line[*i] != c)
+			++(*n);
+	}
+	return (0);
+}
 
 // count the number of char of line and add +1 sometime:
 // <c   -> +1
@@ -19,7 +41,6 @@
 // << c -> +0
 static int	count(char *line)
 {
-	int	check;
 	int	n;
 	int	i;
 
@@ -27,17 +48,12 @@ static int	count(char *line)
 	n = 0;
 	while (line[i])
 	{
-		check = 0;
-		while (line[i] && line[i] == '<')
-		{
-			++n;
-			++i;
-			++check;
-			if (check == 3)
+		if (line[i] == '<')
+			if (loop_char(line, &i, &n, '<'))
 				return (-1);
-			if (line[i] && line[i] != ' ' && line[i] != '<')
-				++n;
-		}
+		if (line[i] == '>')
+			if (loop_char(line, &i, &n, '>'))
+				return (-1);
 		++i;
 		++n;
 	}
@@ -56,14 +72,18 @@ static void	put_str(char *ret, char *line)
 	dec = 0;
 	while (line[i])
 	{
-		if (line[i] == '<' && line[i + 1] != ' ' && line[i + 1] != '<')
-		{
-			ret[i + dec++] = line[i];
-			ret[i + dec] = ' ';
-		}
-		else
-			ret[i + dec] = line[i];
-		++i;
+		ret[i + dec] = line[i];
+		if (line[i] != '>' && line[i] != '<' && \
+			line[i] != ' ' && line[i + 1] && \
+			(line[i + 1] == '>' || line[i + 1] == '<'))
+			ret[i + ++dec] = ' ';
+		if (line[i] == '<' && line[i + 1] && \
+			line[i + 1] != '<' && line[i + 1] != ' ')
+			ret[i + ++dec] = ' ';
+		if (line[i] == '>' && line[i + 1] && \
+			line[i + 1] != '>' && line[i + 1] != ' ')
+			ret[i + ++dec] = ' ';
+		i++;
 	}
 }
 
