@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/17 14:31:04 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/18 00:23:05 by melogr@phy       ###   ########.fr       */
 /*   Updated: 2022/06/12 17:07:32 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -64,10 +64,7 @@ static int	open_infile(t_file inf)
 	int	fd;
 
 	if (inf.eof)
-	{
 		here_doc(inf.eof);
-		free_str(&(inf.eof));
-	}
 	if (inf.file == 0)
 		return (0);
 	fd = open(inf.file, inf.flag);
