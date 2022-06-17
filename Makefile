@@ -46,6 +46,7 @@ SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/setcmd.c     \
 			$(DIR_SRC)/echo.c       \
 			$(DIR_SRC)/signals.c    \
+			$(DIR_SRC)/heredoc.c    \
 			$(DIR_SRC)/get_next_line.c
 
 #	OBJETS

@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/10 15:10:10 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/17 14:47:22 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,6 @@ static char
 		ret[n] = args[n];
 	free(args);
 	return (ret);
-
-	// 0: "12"
-	// 1: 0
 }
 
 // set the line in cmd struct
@@ -120,6 +117,12 @@ void	setcmd(t_line *input, char **split)
 		if (ft_strcmp(split[n], "<") && ++n)
 		{
 			input->inf.file = str_dup(split[n++]);
+			input->inf.flag = O_RDONLY;
+		}
+		if (ft_strcmp(split[n], "<<") && ++n)
+		{
+			input->inf.file = str_dup("/tmp/.minishell-here_doc");
+			input->inf.eof = str_dup(split[n++]);
 			input->inf.flag = O_RDONLY;
 		}
 		if (split[n] && ft_strcmp(split[n], ">") && ++n)

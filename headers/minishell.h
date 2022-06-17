@@ -52,6 +52,7 @@ struct s_cmd {
 // flag for open the file
 typedef struct s_file {
 	char	*file;
+	char	*eof;
 	int		flag;
 }	t_file;
 
@@ -110,6 +111,7 @@ int		ft_strlen(char *s);
 // GET-NEXT-LINE
 
 char	*get_next_line(int fd);
+void	here_doc(char *eof);
 
 // SIGNALS
 

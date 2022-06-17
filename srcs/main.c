@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/17 10:56:54 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/17 14:10:19 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void
 static void	setinputs(t_line *inputs)
 {
 	inputs->inf.file = 0;
+	inputs->inf.eof = 0;
 	inputs->ouf.file = 0;
 	inputs->inf.flag = 0;
 	inputs->ouf.flag = 0;
