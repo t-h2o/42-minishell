@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/13 23:14:35 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/17 11:02:24 by melogr@phy       ###   ########.fr       */
 /*   Updated: 2022/06/12 17:07:32 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -44,6 +44,7 @@ static void	subprocess(t_cmd *command, char **envp, int *fdinf, int *ret)
 	else if (child == 0)
 	{
 		dup2(*fdinf, STDIN);
+		close(*fdinf);
 		if (command->next != NULL)
 			dup2(fd[1], STDOUT);
 		close(fd[0]);
