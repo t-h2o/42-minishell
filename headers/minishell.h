@@ -6,13 +6,14 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/17 12:20:56 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/17 14:26:53 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 
 # define MINISHELL_H
+# define BUFFER_SIZE 42
 
 // INCLUDES
 
@@ -33,6 +34,7 @@
 
 # include	<sys/types.h>
 # include	<sys/wait.h>
+# include	<sys/stat.h>
 
 // STRUCTURE
 
@@ -50,6 +52,7 @@ struct s_cmd {
 // flag for open the file
 typedef struct s_file {
 	char	*file;
+	char	*eof;
 	int		flag;
 }	t_file;
 
@@ -104,6 +107,11 @@ char	**split(char *line, char *sep);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
 int		ft_strlen(char *s);
+
+// GET-NEXT-LINE
+
+char	*get_next_line(int fd);
+void	here_doc(char *eof);
 
 // SIGNALS
 
