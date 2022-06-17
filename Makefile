@@ -41,6 +41,7 @@ SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/brexit.c     \
 			$(DIR_SRC)/export.c     \
 			$(DIR_SRC)/line_env.c   \
+			$(DIR_SRC)/line_space.c \
 			$(DIR_SRC)/line_sep.c   \
 			$(DIR_SRC)/setcmd.c     \
 			$(DIR_SRC)/echo.c       \
