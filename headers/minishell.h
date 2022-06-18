@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/18 17:34:08 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/18 20:10:34 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	exec_cmd(t_line *inputs, char ***envp);
 char	**dup_envp(char **envp);
 void	export(t_cmd *command, char ***envp);
 void	print_export(char **envp);
-
+void	unset(t_cmd *command, char ***envp);
 //	UTILS
 
 void	free_tab(char ***tab);
