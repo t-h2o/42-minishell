@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/13 23:05:37 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/18 17:11:13 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ static char	**dup_add_table(char **table, char **add)
 
 void	export(t_cmd *command, char ***envp)
 {
-	*envp = dup_add_table(*envp, command->arg);
+	if (command->arg[1] == 0)
+		print_export(*envp);
+	else
+		*envp = dup_add_table(*envp, command->arg);
 }
