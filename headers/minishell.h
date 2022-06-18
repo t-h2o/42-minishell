@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/19 13:36:49 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 19:39:42 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char	**dup_envp(char **envp);
 void	export(t_cmd *command, char ***envp);
 void	print_export(char **envp);
 void	unset(t_cmd *command, char ***envp);
+char	*my_getenv(char *s, char **envp);
 
 //	UTILS
 
