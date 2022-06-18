@@ -6,7 +6,7 @@
 /*   By: lgyger <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 19:58:43 by lgyger            #+#    #+#             */
-/*   Updated: 2022/06/18 20:45:35 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/18 20:49:36 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 static	int	getpos(const char *str, const char c)
 {
-	return ft_strchr(str, c) - str;
+	return (ft_strchr(str, c) - str);
 }
 
-static int	get_index(char *tf, char  **ev)
+static int	get_index(char *tf, char	**ev)
 {
 	size_t	i;
 
 	i = 0;
 	while (ev[i])
 	{
-		if (!ft_strncmp(tf, ev[i], ft_strlen(tf)) && getpos(ev[i], '=') == ft_strlen(tf))
-			return i;
+		if (!ft_strncmp(tf, ev[i], ft_strlen(tf))
+			&& getpos(ev[i], '=') == ft_strlen(tf))
+			return (i);
 		++i;
 	}
-	return -1;
+	return (-1);
 }
 
 size_t	nbr_bytes( char **ev, const int pos)
 {
 	size_t	ret;
-	int	i;
+	int		i;
 
 	i = 0;
 	ret = 0;
@@ -43,10 +44,10 @@ size_t	nbr_bytes( char **ev, const int pos)
 		ret += sizeof(ev[i]);
 		++i;
 	}
-	return ret;
+	return (ret);
 }
 
-char **crt_nenv(char **ev, const size_t pos)
+char	**crt_nenv(char **ev, const size_t pos)
 {
 	size_t	len;
 	char	**new_env;
@@ -58,13 +59,13 @@ char **crt_nenv(char **ev, const size_t pos)
 	new_env[len - 1] = NULL;
 	ft_memcpy(new_env, ev, nbr_bytes(ev, pos));
 	ft_memcpy(new_env + pos, ev + pos + 1, nbr_bytes(ev + pos + 1, -1));
-	return new_env;
+	return (new_env);
 }
 
 void	unset(t_cmd *command, char ***envp)
 {
-	int 	i;
-	int 	pos;
+	int		i;
+	int		pos;
 	char	**new_env;
 
 	if (!envp[0])
