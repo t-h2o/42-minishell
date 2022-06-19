@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/17 23:27:06 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/19 13:37:04 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,6 @@ static t_cmd	*new_cmd(void)
 	new->cmd = 0;
 	new->arg = 0;
 	return (new);
-}
-
-static char
-	**append_arg(char **args, char *app)
-{
-	char	**ret;
-	int		n;
-
-	n = 0;
-	if (args)
-	{
-		while (args[n])
-			n++;
-	}
-	ret = malloc((n + 2) * sizeof(char *));
-	ret[n + 1] = 0;
-	ret[n] = str_dup(app);
-	while (n--)
-		ret[n] = args[n];
-	free(args);
-	return (ret);
 }
 
 // set the line in cmd struct
