@@ -6,7 +6,8 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/18 17:34:08 by melogr@phy       ###   ########.fr       */
+
+/*   Updated: 2022/06/19 13:34:17 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +97,7 @@ void	exec_cmd(t_line *inputs, char ***envp);
 char	**dup_envp(char **envp);
 void	export(t_cmd *command, char ***envp);
 void	print_export(char **envp);
+void	unset(t_cmd *command, char ***envp);
 
 //	UTILS
 
@@ -107,6 +109,9 @@ char	*str_dup(char *s);
 char	**split(char *line, char *sep);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
+void	*ft_memcpy(void *dst, const void *src, size_t	n);
+char	*ft_strchr(const char *s, int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *s);
 
 // GET-NEXT-LINE

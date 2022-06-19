@@ -29,6 +29,10 @@ LIB		+=	-I $(DIR_INC)
 
 DIR_SRC	=	./srcs
 SRCS	=	$(DIR_SRC)/main.c       \
+			$(DIR_SRC)/ft_memcpy.c	\
+			$(DIR_SRC)/ft_strncmp.c	\
+			$(DIR_SRC)/ft_strchr.c	\
+			$(DIR_SRC)/unset.c		\
 			$(DIR_SRC)/build.c      \
 			$(DIR_SRC)/utils.c      \
 			$(DIR_SRC)/utils_free.c \
