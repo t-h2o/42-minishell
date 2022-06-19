@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/19 13:35:02 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/19 13:19:41 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	print_export(char **envp)
 	char	**table;
 	int		tmp;
 	int		n;
+
 	if (!envp || !envp[0])
 		return ;
 	n = count(envp);
