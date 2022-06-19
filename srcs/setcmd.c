@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/19 13:37:04 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/19 14:01:57 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,26 @@ static t_cmd	*new_cmd(void)
 	return (new);
 }
 
+static void	fill_line(t_line *input, char **split, int *n)
+{
+	if (split[*n] && ft_strcmp(split[*n], "<") && ++(*n))
+	{
+		input->inf.file = str_dup(split[(*n)++]);
+		input->inf.flag = O_RDONLY;
+	}
+	if (split[*n] && ft_strcmp(split[*n], "<<") && ++(*n))
+	{
+		input->inf.file = str_dup("/tmp/.minishell-here_doc");
+		input->inf.eof = str_dup(split[(*n)++]);
+		input->inf.flag = O_RDONLY;
+	}
+	if (split[*n] && ft_strcmp(split[*n], ">") && ++(*n))
+	{
+		input->ouf.file = str_dup(split[(*n)++]);
+		input->ouf.flag = O_CREAT | O_RDWR | O_TRUNC;
+	}
+}
+
 // set the line in cmd struct
 void	setcmd(t_line *input, char **split)
 {
@@ -93,22 +113,7 @@ void	setcmd(t_line *input, char **split)
 	input->cmds = ptr;
 	while (split[n])
 	{
-		if (split[n] && ft_strcmp(split[n], "<") && ++n)
-		{
-			input->inf.file = str_dup(split[n++]);
-			input->inf.flag = O_RDONLY;
-		}
-		if (split[n] && ft_strcmp(split[n], "<<") && ++n)
-		{
-			input->inf.file = str_dup("/tmp/.minishell-here_doc");
-			input->inf.eof = str_dup(split[n++]);
-			input->inf.flag = O_RDONLY;
-		}
-		if (split[n] && ft_strcmp(split[n], ">") && ++n)
-		{
-			input->ouf.file = str_dup(split[n++]);
-			input->ouf.flag = O_CREAT | O_RDWR | O_TRUNC;
-		}
+		fill_line(input, split, &n);
 		if (split[n] && ft_strcmp(split[n], "|") && ++n)
 		{
 			ptr->next = new_cmd();
