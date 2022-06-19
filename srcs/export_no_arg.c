@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/18 17:45:55 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/19 13:35:02 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	compare(char *s1, char *s2)
 }
 
 // Swap the address
-static void	swap(char **a, char **b)
+static inline void	swap(char **a, char **b)
 {
 	char	*tmp;
 
@@ -82,7 +82,8 @@ void	print_export(char **envp)
 	char	**table;
 	int		tmp;
 	int		n;
-
+	if (!envp || !envp[0])
+		return ;
 	n = count(envp);
 	table = malloc((n + 1) * sizeof(char *));
 	table[n] = 0;
