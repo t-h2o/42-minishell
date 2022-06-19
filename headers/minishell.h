@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/18 17:34:08 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/19 13:36:49 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char	**split(char *line, char *sep);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
 int		ft_strlen(char *s);
+char	**append_arg(char **args, char *app);
 
 // GET-NEXT-LINE
 
