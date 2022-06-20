@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgyger <marvin@42lausanne.ch>              +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 19:58:43 by lgyger            #+#    #+#             */
-/*   Updated: 2022/06/18 20:49:36 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/20 21:19:31 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ char	**crt_nenv(char **ev, const size_t pos)
 	char	**new_env;
 
 	len = 0;
-        ++pos;
-	ft_memcpy(new_env + pos - 1,  ev + pos, nbr_bytes(ev + pos ,  -1));
+	while (ev[len])
+		++len;
+	new_env = malloc(sizeof(char *) * len + 1);
+	new_env[len] = NULL;
+	ft_memcpy(new_env, ev, nbr_bytes(ev, pos + 1));
+	ft_memcpy(new_env + pos, ev + pos + 1, nbr_bytes(ev + pos, pos));
 	free(ev);
-	free(*(ev + pos - 1));
+	free(*(ev + pos));
 	return (new_env);
 }
 
