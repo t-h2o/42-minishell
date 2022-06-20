@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/18 00:23:05 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/20 19:47:03 by melogr@phy       ###   ########.fr       */
 /*   Updated: 2022/06/12 17:07:32 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -15,6 +15,9 @@
 
 #define STDIN 0
 #define STDOUT 1
+
+#define PIPE_WRITE 1
+#define PIPE_READ 0
 
 static void	execution(t_cmd *command, char **envp, int *ret)
 {
@@ -32,54 +35,64 @@ static void	execution(t_cmd *command, char **envp, int *ret)
 		exit(1);
 }
 
-static void	subprocess(t_cmd *command, char **envp, int *fdinf, int *ret)
+static void	subprocess(t_cmd *command, char **envp, int fd_inf_ouf[2], int *ret)
 {
 	pid_t	child;
 	int		fd[2];
 
-	pipe(fd);
+	if (command->next != NULL)
+		pipe(fd);
 	child = fork();
 	if (child == -1)
 		printf("child ERROR\n");
 	else if (child == 0)
 	{
-		dup2(*fdinf, STDIN);
-		close(*fdinf);
+		dup2(fd_inf_ouf[0], STDIN);
 		if (command->next != NULL)
-			dup2(fd[1], STDOUT);
-		close(fd[0]);
+			dup2(fd[PIPE_WRITE], STDOUT);
+		else
+			dup2(fd_inf_ouf[1], STDOUT);
+		close(fd[PIPE_READ]);
 		execution(command, envp, ret);
 	}
 	else
 	{
 		waitpid(child, ret, 0);
 		*ret = WEXITSTATUS(*ret);
-		close(fd[1]);
-		*fdinf = fd[0];
+		close(fd[PIPE_WRITE]);
+		fd_inf_ouf[0] = fd[PIPE_READ];
 	}
 }
 
-static int	open_infile(t_file inf)
+static void	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
 {
 	int	fd;
 
-	if (inf.eof)
-		here_doc(inf.eof);
-	if (inf.file == 0)
-		return (0);
-	fd = open(inf.file, inf.flag);
-	if (fd == -1)
-		return (0);
-	return (fd);
+	if (inf.file != 0)
+	{
+		fd = open(inf.file, inf.flag);
+		if (fd == -1)
+			fd_inf_ouf[0] = STDIN;
+		else
+			fd_inf_ouf[0] = fd;
+	}
+	if (ouf.file != 0)
+	{
+		fd = open(ouf.file,O_CREAT | O_RDWR | O_TRUNC, 0644);
+		if (fd == -1)
+			fd_inf_ouf[1] = STDOUT;
+		else
+			fd_inf_ouf[1] = fd;
+	}
 }
 
 void	exec_cmd(t_line *inputs, char ***envp)
 {
 	t_cmd	*commands;
 	int		ret;
-	int		fdinf;
+	int		fd_inf_ouf[2];
 
-	fdinf = open_infile(inputs->inf);
+	open_infile(inputs->inf, inputs->ouf, fd_inf_ouf);
 	commands = inputs->cmds;
 	while (commands != NULL)
 	{
@@ -88,9 +101,11 @@ void	exec_cmd(t_line *inputs, char ***envp)
 		else if (ft_strcmp(commands->arg[0], "cd"))
 			cd(commands);
 		else
-			subprocess(commands, *envp, &fdinf, &ret);
+			subprocess(commands, *envp, fd_inf_ouf, &ret);
 		commands = commands->next;
 	}
+	if (fd_inf_ouf[1] != 1)
+		close(fd_inf_ouf[1]);
 	if (ret == 42)
 		inputs->loop = 0;
 }
