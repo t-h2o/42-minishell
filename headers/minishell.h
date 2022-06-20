@@ -96,6 +96,7 @@ void	exec_cmd(t_line *inputs, char ***envp);
 char	**dup_envp(char **envp);
 void	export(t_cmd *command, char ***envp);
 void	print_export(char **envp);
+void	unset(t_cmd *command, char ***envp);
 
 //	UTILS
 
@@ -107,6 +108,9 @@ char	*str_dup(char *s);
 char	**split(char *line, char *sep);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
+void	*ft_memcpy(void *dst, const void *src, size_t	n);
+char	*ft_strchr(const char *s, int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *s);
 char	**append_arg(char **args, char *app);
 
