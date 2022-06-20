@@ -6,8 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-
-/*   Updated: 2022/06/19 13:34:17 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/19 13:36:49 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +112,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t	n);
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *s);
+char	**append_arg(char **args, char *app);
 
 // GET-NEXT-LINE
 
