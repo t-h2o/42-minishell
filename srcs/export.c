@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 22:20:03 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 22:44:28 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static	inline int	getpos(const char *str, const char c)
 {
 	int	pos;
-	
+
 	pos = ft_strchr(str, c) - str;
 	if (pos == 0)
 		return (ft_strlen((char *)str));
@@ -36,7 +36,7 @@ static int	get_index(char *tf, char	**ev)
 static char	**dup_add_table(char **envp, char *add, int pos)
 {
 	char	**new_env;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (envp[i])
@@ -44,14 +44,20 @@ static char	**dup_add_table(char **envp, char *add, int pos)
 	if (pos == -1)
 	{
 		new_env = malloc((i + 1 + 1) * sizeof(char *));
+		if (new_env == 0)
+			return (0);
 		new_env[i + 1] = 0;
 		new_env[i] = str_dup(add);
+		if (new_env[i] == 0)
+			return (0);
 		while (i-- > 0)
 			new_env[i] = envp[i];
 	}
 	else
 	{
 		new_env = malloc((i + 1) * sizeof(char *));
+		if (new_env == 0)
+			return (0);
 		new_env[i] = 0;
 		while (i-- > (pos + 1))
 			new_env[i] = envp[i];
