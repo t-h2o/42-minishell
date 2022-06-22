@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_no_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/19 13:53:23 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 21:27:40 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	print_export(char **envp)
 		return ;
 	n = count(envp);
 	table = malloc((n + 1) * sizeof(char *));
+	if (!table)
+		return (NULL);
 	table[n] = 0;
 	tmp = n;
 	while (tmp--)
