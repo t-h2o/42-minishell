@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 21:27:40 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:34:54 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,19 @@ void	print_export(char **envp)
 		return ;
 	n = count(envp);
 	table = malloc((n + 1) * sizeof(char *));
-	if (!table)
-		return (NULL);
-	table[n] = 0;
-	tmp = n;
-	while (tmp--)
-		table[tmp] = envp[tmp];
-	sort(table);
-	n = 0;
-	while (table[n])
+	if (table)
 	{
-		printf("declare -x %s\n", table[n]);
-		++n;
+		table[n] = 0;
+		tmp = n;
+		while (tmp--)
+			table[tmp] = envp[tmp];
+		sort(table);
+		n = 0;
+		while (table[n])
+		{
+			printf("declare -x %s\n", table[n]);
+			++n;
+		}
+		free(table);
 	}
-	free(table);
 }
