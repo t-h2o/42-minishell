@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 15:30:02 by theo              #+#    #+#             */
-/*   Updated: 2022/06/14 22:31:08 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 21:06:58 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int	check_build(t_cmd *cmd1, char **envp)
 	if (ft_strcmp(cmd1->arg[0], "echo"))
 	{
 		echo(cmd1);
+		return (0);
+	}
+	if (ft_strcmp(cmd1->arg[0], "export"))
+	{
+		print_export(envp);
 		return (0);
 	}
 	return (1);
