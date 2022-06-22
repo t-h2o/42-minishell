@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 21:07:20 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 22:22:40 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,14 +95,17 @@ void	exec_cmd(t_line *inputs, char ***envp)
 	commands = inputs->cmds;
 	while (commands != NULL)
 	{
-		if (ft_strcmp(commands->arg[0], "export") && commands->arg[1] != 0)
-			export(commands, envp);
-		else if (ft_strcmp(commands->arg[0], "cd"))
-			cd(commands, *envp);
-		else if (ft_strcmp(commands->arg[0], "unset"))
-			unset(commands, envp);
-		else
-			subprocess(commands, *envp, fd_inf_ouf, &ret);
+		if (commands->arg)
+		{
+			if (ft_strcmp(commands->arg[0], "export") && commands->arg[1] != 0)
+				export(commands, envp);
+			else if (ft_strcmp(commands->arg[0], "cd"))
+				cd(commands, *envp);
+			else if (ft_strcmp(commands->arg[0], "unset"))
+				unset(commands, envp);
+			else
+				subprocess(commands, *envp, fd_inf_ouf, &ret);
+		}
 		commands = commands->next;
 	}
 	if (fd_inf_ouf[1] != 1)

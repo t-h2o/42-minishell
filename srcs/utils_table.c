@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_table.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:35:08 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/19 13:35:41 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 22:23:07 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char
 			n++;
 	}
 	ret = malloc((n + 2) * sizeof(char *));
+	if (!ret)
+		return (NULL);
 	ret[n + 1] = 0;
 	ret[n] = str_dup(app);
 	while (n--)
