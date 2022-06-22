@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/18 17:11:13 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 21:32:32 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static char	**dup_add_table(char **table, char **add)
 
 	set_index(ind, table, add);
 	ret = malloc((ind[1] + ind[2] + 1) * sizeof(char *));
+	if (!ret)
+		return (NULL);
 	ret[(ind[1])-- + ind[2]] = 0;
 	while ((ind[0])--)
 		if (check_valid(add[ind[0]]))
