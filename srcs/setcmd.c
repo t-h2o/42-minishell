@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setcmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 22:12:23 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:04:18 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ static t_cmd	*new_cmd(void)
 	t_cmd	*new;
 
 	new = malloc(sizeof(t_cmd));
-	if (!new)
-		return (NULL);
 	new->next = 0;
 	new->cmd = 0;
 	new->arg = 0;
@@ -114,26 +112,23 @@ void	setcmd(t_line *input, char **split, char **envp)
 
 	n = 0;
 	ptr = new_cmd();
-	if (ptr)
+	input->cmds = ptr;
+	while (split[n])
 	{
-		input->cmds = ptr;
-		while (split[n])
+		fill_line(input, split, &n);
+		if (split[n] && ft_strcmp(split[n], "|") && ++n)
 		{
-			fill_line(input, split, &n);
-			if (split[n] && ft_strcmp(split[n], "|") && ++n)
-			{
-				ptr->next = new_cmd();
-				ptr = ptr->next;
-			}
-			if (split[n] && ptr->cmd == 0)
-			{
-				ptr->cmd = str_dup(split[n]);
-				if (access(ptr->cmd, X_OK) != 0)
-					getpath(ptr, envp);
-			}
-			if (split[n])
-				ptr->arg = append_arg(ptr->arg, split[n++]);
+			ptr->next = new_cmd();
+			ptr = ptr->next;
 		}
+		if (split[n] && ptr->cmd == 0)
+		{
+			ptr->cmd = str_dup(split[n]);
+			if (access(ptr->cmd, X_OK) != 0)
+				getpath(ptr, envp);
+		}
+		if (split[n])
+			ptr->arg = append_arg(ptr->arg, split[n++]);
 	}
 	free_tab(&split);
 }
