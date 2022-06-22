@@ -81,10 +81,7 @@ int
 	signal(SIGQUIT, sig_quit);
 	envp = dup_envp(envp);
 	if (envp)
-	{
 		loop(&envp);
-		free_tab(&envp);
-	}
 	tcsetattr(STDIN_FILENO, 0, &save);
 	return (0);
 }
