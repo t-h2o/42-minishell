@@ -35,6 +35,7 @@ SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/unset.c		\
 			$(DIR_SRC)/build.c      \
 			$(DIR_SRC)/utils.c      \
+			$(DIR_SRC)/utils_env.c  \
 			$(DIR_SRC)/utils_free.c \
 			$(DIR_SRC)/utils_table.c\
 			$(DIR_SRC)/parse.c      \
