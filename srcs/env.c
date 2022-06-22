@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:33:49 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 21:25:24 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/22 22:51:24 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ char	**dup_envp(char **envp)
 		return (NULL);
 	ret[n] = 0;
 	while (n--)
+	{
 		ret[n] = str_dup(envp[n]);
+		if (ret[n] == 0)
+			return (0);
+	}
 	return (ret);
 }
 
