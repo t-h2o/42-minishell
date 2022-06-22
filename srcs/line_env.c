@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/13 23:25:41 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 19:48:34 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	name_env(char c)
 }
 
 //	get length of the enviromnent variable
-static char	*get_envlen(char *line, int *i, int *len)
+static char	*get_envlen(char *line, char **envp, int *i, int *len)
 {
 	char	*env;
 	char	*var;
@@ -49,7 +49,7 @@ static char	*get_envlen(char *line, int *i, int *len)
 		(*i)++;
 	}
 	var = ft_strndup((line + start), *i - start);
-	env = getenv(var);
+	env = my_getenv(var, envp);
 	free(var);
 	if (len)
 		*len += ft_strlen(env);
@@ -57,7 +57,7 @@ static char	*get_envlen(char *line, int *i, int *len)
 }
 
 //	get length of the line if we replace all environment variable
-static int	get_len(char *line)
+static int	get_len(char *line, char **envp)
 {
 	int		i;
 	int		len;
@@ -80,7 +80,7 @@ static int	get_len(char *line)
 			i++;
 		}
 		while (line[i] == '$' && ++i)
-			get_envlen(line, &i, &len);
+			get_envlen(line, envp, &i, &len);
 		while (line[i] && line[i] != '\"' && (line[i] != '\'' || !td)
 			&& line[i] != '$' && ++i)
 			len++;
@@ -91,7 +91,7 @@ static int	get_len(char *line)
 }
 
 //	return new line where the environment variable are replaced
-char	*line_env(char *line)
+char	*line_env(char *line, char **envp)
 {
 	int		i;
 	int		r;
@@ -100,7 +100,7 @@ char	*line_env(char *line)
 	char	*ret;
 	int		td;
 
-	len = get_len(line);
+	len = get_len(line, envp);
 	if (len < 0)
 	{
 		free(line);
@@ -132,7 +132,7 @@ char	*line_env(char *line)
 		}
 		while (line[i] == '$' && ++i)
 		{
-			env = get_envlen(line, &i, 0);
+			env = get_envlen(line, envp, &i, 0);
 			strncpy(ret + r, env, ft_strlen(env));
 		}
 		while (line[i] && (line[i] != '\"' || !td)
