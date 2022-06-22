@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 19:46:27 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 19:59:55 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		check_build(t_cmd *cmd1, char **env);
 void	pwd(void);
 void	env(char **envp);
 void	echo(t_cmd *cmd1);
-void	cd(t_cmd *command);
+void	cd(t_cmd *command, char **envp);
 
 // PARSING
 
