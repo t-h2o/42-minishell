@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/19 14:01:57 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 20:04:18 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ static char	*append(char *s1, char *s2)
 //	test each path to check which path is the good one
 //	PATH=path/bin1:path/bin2
 //	we need split PATH by ':'
-static void	getpath(t_cmd *cmd1)
+static void	getpath(t_cmd *cmd1, char **envp)
 {
 	int		i;
 	char	*pcmd;
 	char	*path;
 	char	**pathall;
 
-	path = getenv("PATH");
+	path = my_getenv("PATH", envp);
+	if (path == 0)
+		return ;
 	pathall = split(path, ":");
 	if (pathall == 0)
 		return ;
@@ -103,7 +105,7 @@ static void	fill_line(t_line *input, char **split, int *n)
 }
 
 // set the line in cmd struct
-void	setcmd(t_line *input, char **split)
+void	setcmd(t_line *input, char **split, char **envp)
 {
 	int		n;
 	t_cmd	*ptr;
@@ -123,7 +125,7 @@ void	setcmd(t_line *input, char **split)
 		{
 			ptr->cmd = str_dup(split[n]);
 			if (access(ptr->cmd, X_OK) != 0)
-				getpath(ptr);
+				getpath(ptr, envp);
 		}
 		if (split[n])
 			ptr->arg = append_arg(ptr->arg, split[n++]);

@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 19:59:55 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 20:01:35 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*parse(t_line *inputs, char *line, char **envp);
 char	*line_env(char *line, char **envp);
 char	*line_space(char *line);
 char	**line_sep(char *line);
-void	setcmd(t_line *inputs, char **split);
+void	setcmd(t_line *inputs, char **split, char **envp);
 
 // EXECUTION
 
