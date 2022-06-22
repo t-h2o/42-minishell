@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:18:09 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/04/12 00:32:23 by theo             ###   ########.fr       */
+/*   Updated: 2022/06/22 22:02:29 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,21 @@ void
 	unsigned int	i;
 
 	pwd = malloc(BS_CWD);
-	getcwd(pwd, BS_CWD);
-	i = 2;
-	while (errno == ERANGE)
+	if (pwd)
 	{
+		getcwd(pwd, BS_CWD);
+		i = 2;
+		while (errno == ERANGE)
+		{
+			free(pwd);
+			errno = 0;
+			pwd = malloc(BS_CWD * i);
+			if (!pwd)
+				break ;
+			getcwd(pwd, BS_CWD * i);
+			i++;
+		}
+		printf("%s\n", pwd);
 		free(pwd);
-		errno = 0;
-		pwd = malloc(BS_CWD * i);
-		getcwd(pwd, BS_CWD * i);
-		i++;
 	}
-	printf("%s\n", pwd);
-	free(pwd);
 }
