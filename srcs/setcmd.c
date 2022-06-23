@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 22:35:31 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/24 00:45:53 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,11 @@ static void	fill_line(t_line *input, char **split, int *n)
 	{
 		input->ouf.file = ft_strdup(split[(*n)++]);
 		input->ouf.flag = O_CREAT | O_RDWR | O_TRUNC;
+	}
+	if (split[*n] && ft_strcmp(split[*n], ">>") && ++(*n))
+	{
+		input->ouf.file = ft_strdup(split[(*n)++]);
+		input->ouf.flag = O_CREAT | O_APPEND | O_WRONLY;
 	}
 }
 
