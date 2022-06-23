@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 20:01:35 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/23 23:46:26 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ void	rl_replace_line(const char *, int);
 // BUILD
 
 int		check_build(t_cmd *cmd1, char **env);
+char	*getpwd(void);
 void	pwd(void);
 void	env(char **envp);
 void	echo(t_cmd *cmd1);
-void	cd(t_cmd *command, char **envp);
+void	cd(t_cmd *command, char ***envp);
 
 // PARSING
 
@@ -96,6 +97,7 @@ void	exec_cmd(t_line *inputs, char ***envp);
 char	**dup_envp(char **envp);
 void	export(t_cmd *command, char ***envp);
 void	print_export(char **envp);
+void	export_pwd(char ***envp, char *newpath);
 void	unset(t_cmd *command, char ***envp);
 char	*my_getenv(char *s, char **envp);
 

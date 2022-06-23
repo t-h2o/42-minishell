@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 22:44:28 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/24 00:02:09 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,17 @@ static char	**dup_add_table(char **envp, char *add, int pos)
 	}
 	free(envp);
 	return (new_env);
+}
+
+void	export_pwd(char ***envp, char *newpwd)
+{
+	int		pos;
+
+	pos = get_index(newpwd, *envp);
+	if (pos != -1)
+	{
+		*envp = dup_add_table(*envp, newpwd, pos);
+	}
 }
 
 void	export(t_cmd *command, char ***envp)
