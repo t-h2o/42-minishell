@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 19:45:18 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/23 22:55:35 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,9 @@ int
 	signal(SIGINT, sig_int);
 	signal(SIGQUIT, sig_quit);
 	envp = dup_envp(envp);
-	loop(&envp);
-	tcsetattr(STDIN_FILENO, 0, &save);
+	if (envp)
+		loop(&envp);
 	free_tab(&envp);
+	tcsetattr(STDIN_FILENO, 0, &save);
 	return (0);
 }
