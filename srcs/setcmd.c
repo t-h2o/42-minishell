@@ -90,18 +90,18 @@ static void	fill_line(t_line *input, char **split, int *n)
 {
 	if (split[*n] && ft_strcmp(split[*n], "<") && ++(*n))
 	{
-		input->inf.file = str_dup(split[(*n)++]);
+		input->inf.file = ft_strdup(split[(*n)++]);
 		input->inf.flag = O_RDONLY;
 	}
 	if (split[*n] && ft_strcmp(split[*n], "<<") && ++(*n))
 	{
-		input->inf.file = str_dup("/tmp/.minishell-here_doc");
-		input->inf.eof = str_dup(split[(*n)++]);
+		input->inf.file = ft_strdup("/tmp/.minishell-here_doc");
+		input->inf.eof = ft_strdup(split[(*n)++]);
 		input->inf.flag = O_RDONLY;
 	}
 	if (split[*n] && ft_strcmp(split[*n], ">") && ++(*n))
 	{
-		input->ouf.file = str_dup(split[(*n)++]);
+		input->ouf.file = ft_strdup(split[(*n)++]);
 		input->ouf.flag = O_CREAT | O_RDWR | O_TRUNC;
 	}
 }
@@ -129,7 +129,7 @@ void	setcmd(t_line *input, char **split, char **envp)
 		}
 		if (split[n] && ptr->cmd == 0)
 		{
-			ptr->cmd = str_dup(split[n]);
+			ptr->cmd = ft_strdup(split[n]);
 			if (access(ptr->cmd, X_OK) != 0)
 				getpath(ptr, envp);
 		}

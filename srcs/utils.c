@@ -29,7 +29,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-char	*str_dup(char *s)
+char	*ft_strdup(char *s)
 {
 	int		len;
 	char	*ret;

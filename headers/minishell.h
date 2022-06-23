@@ -105,7 +105,7 @@ void	free_tab(char ***tab);
 void	free_str(char **s);
 void	free_inputs(t_line *inputs);
 void	errmsg(char *msg, char *cmd);
-char	*str_dup(char *s);
+char	*ft_strdup(char *s);
 char	**split(char *line, char *sep);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int n);
