@@ -6,70 +6,81 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/18 17:11:13 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 22:44:28 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Check if the environmnent is valid or not
-// valid --> 1
-// not valid --> 0
-static int	check_valid(char *envv)
+static	inline int	getpos(const char *str, const char c)
 {
-	int	equal;
+	int	pos;
 
-	equal = 0;
-	while (*envv)
-	{
-		if (*envv == '=')
-			equal = 1;
-		envv++;
-	}
-	if (equal)
-		return (1);
-	return (0);
+	pos = ft_strchr(str, c) - str;
+	if (pos == 0)
+		return (ft_strlen((char *)str));
+	return (pos);
 }
 
-static void	set_index(int ind[3], char **table, char **add)
+static int	get_index(char *tf, char	**ev)
 {
-	ind[0] = 0;
-	ind[1] = 0;
-	ind[2] = 0;
-	while (add[++(ind[0])])
-		if (check_valid(add[ind[0]]))
-			ind[1]++;
-	while (table[ind[2]])
-		(ind[2])++;
+	size_t	i;
+
+	i = -1;
+	while (ev[++i])
+		if (!ft_strncmp(tf, ev[i], getpos(tf, '=')))
+			return (i);
+	return (-1);
 }
 
-static char	**dup_add_table(char **table, char **add)
+static char	**dup_add_table(char **envp, char *add, int pos)
 {
-	char	**ret;
-	int		ind[3];
+	char	**new_env;
+	int		i;
 
-	set_index(ind, table, add);
-	ret = malloc((ind[1] + ind[2] + 1) * sizeof(char *));
-	ret[(ind[1])-- + ind[2]] = 0;
-	while ((ind[0])--)
-		if (check_valid(add[ind[0]]))
-			ret[ind[2] + (ind[1])--] = str_dup(add[ind[0]]);
-	while ((ind[2])--)
+	i = 0;
+	while (envp[i])
+		++i;
+	if (pos == -1)
 	{
-		if (ind[2])
-			ret[ind[2]] = table[ind[2]];
-		else
-			ret[0] = str_dup(table[0]);
+		new_env = malloc((i + 1 + 1) * sizeof(char *));
+		if (new_env == 0)
+			return (0);
+		new_env[i + 1] = 0;
+		new_env[i] = str_dup(add);
+		if (new_env[i] == 0)
+			return (0);
+		while (i-- > 0)
+			new_env[i] = envp[i];
 	}
-	free(*table);
-	free(table);
-	return (ret);
+	else
+	{
+		new_env = malloc((i + 1) * sizeof(char *));
+		if (new_env == 0)
+			return (0);
+		new_env[i] = 0;
+		while (i-- > (pos + 1))
+			new_env[i] = envp[i];
+		free(envp[i]);
+		new_env[i] = str_dup(add);
+		while (i-- > 0)
+			new_env[i] = envp[i];
+	}
+	free(envp);
+	return (new_env);
 }
 
 void	export(t_cmd *command, char ***envp)
 {
-	if (command->arg[1] == 0)
-		print_export(*envp);
-	else
-		*envp = dup_add_table(*envp, command->arg);
+	int		i;
+	int		pos;
+
+	if (*envp == 0)
+		return ;
+	i = 0;
+	while (command->arg[++i])
+	{
+		pos = get_index(command->arg[i], *envp);
+		*envp = dup_add_table(*envp, command->arg[i], pos);
+	}
 }
