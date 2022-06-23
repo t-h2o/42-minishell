@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 21:07:20 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/23 23:36:42 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	exec_cmd(t_line *inputs, char ***envp)
 		if (ft_strcmp(commands->arg[0], "export") && commands->arg[1] != 0)
 			export(commands, envp);
 		else if (ft_strcmp(commands->arg[0], "cd"))
-			cd(commands, *envp);
+			cd(commands, envp);
 		else if (ft_strcmp(commands->arg[0], "unset"))
 			unset(commands, envp);
 		else
