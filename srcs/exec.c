@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/23 23:36:42 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/24 00:46:38 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
 	}
 	if (ouf.file != 0)
 	{
-		fd = open(ouf.file,O_CREAT | O_RDWR | O_TRUNC, 0644);
+		fd = open(ouf.file, ouf.flag, 0644);
 		if (fd == -1)
 			fd_inf_ouf[1] = STDOUT;
 		else
