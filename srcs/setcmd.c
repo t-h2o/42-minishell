@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 20:04:18 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/22 22:35:31 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ static t_cmd	*new_cmd(void)
 	t_cmd	*new;
 
 	new = malloc(sizeof(t_cmd));
+	if (new == 0)
+		return (0);
 	new->next = 0;
 	new->cmd = 0;
 	new->arg = 0;
@@ -112,6 +114,8 @@ void	setcmd(t_line *input, char **split, char **envp)
 
 	n = 0;
 	ptr = new_cmd();
+	if (ptr == 0)
+		return ;
 	input->cmds = ptr;
 	while (split[n])
 	{
@@ -119,6 +123,8 @@ void	setcmd(t_line *input, char **split, char **envp)
 		if (split[n] && ft_strcmp(split[n], "|") && ++n)
 		{
 			ptr->next = new_cmd();
+			if (ptr->next == 0)
+				return ;
 			ptr = ptr->next;
 		}
 		if (split[n] && ptr->cmd == 0)
