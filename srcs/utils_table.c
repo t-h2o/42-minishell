@@ -26,7 +26,7 @@ char
 	}
 	ret = malloc((n + 2) * sizeof(char *));
 	ret[n + 1] = 0;
-	ret[n] = str_dup(app);
+	ret[n] = ft_strdup(app);
 	while (n--)
 		ret[n] = args[n];
 	free(args);

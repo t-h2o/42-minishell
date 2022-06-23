@@ -47,7 +47,7 @@ static char	**dup_add_table(char **envp, char *add, int pos)
 		if (new_env == 0)
 			return (0);
 		new_env[i + 1] = 0;
-		new_env[i] = str_dup(add);
+		new_env[i] = ft_strdup(add);
 		if (new_env[i] == 0)
 			return (0);
 		while (i-- > 0)
@@ -62,7 +62,7 @@ static char	**dup_add_table(char **envp, char *add, int pos)
 		while (i-- > (pos + 1))
 			new_env[i] = envp[i];
 		free(envp[i]);
-		new_env[i] = str_dup(add);
+		new_env[i] = ft_strdup(add);
 		while (i-- > 0)
 			new_env[i] = envp[i];
 	}

@@ -29,7 +29,7 @@ char	**dup_envp(char **envp)
 	ret[n] = 0;
 	while (n--)
 	{
-		ret[n] = str_dup(envp[n]);
+		ret[n] = ft_strdup(envp[n]);
 		if (ret[n] == 0)
 			return (0);
 	}
