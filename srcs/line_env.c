@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/22 19:48:34 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/24 14:35:02 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,12 @@
 // an enviromnent variable [A-Z] or [a-z] or '_'
 static int	name_env(char c)
 {
-	char	t;
-
 	if (c == '_')
 		return (1);
-	t = 'a';
-	while (t <= 'z')
-	{
-		if (c == t)
-			return (1);
-		t++;
-	}
-	t = 'A';
-	while (t <= 'Z')
-	{
-		if (c == t)
-			return (1);
-		t++;
-	}
+	if ('a' <= c && c <= 'z')
+		return (1);
+	if ('A' <= c && c <= 'Z')
+		return (1);
 	return (0);
 }
 
@@ -91,6 +79,8 @@ static int	get_len(char *line, char **envp)
 }
 
 //	return new line where the environment variable are replaced
+// 1. measure lenght for the new allocation.
+// 2. replace envp with their value.
 char	*line_env(char *line, char **envp)
 {
 	int		i;
