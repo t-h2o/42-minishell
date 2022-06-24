@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 14:22:32 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/24 15:12:18 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	replace(char *ret, char *line, char *ev_str)
 		}
 	}
 }
+
 // ev - exit value
 char	*line_exitval(char *line)
 {
@@ -66,15 +67,12 @@ char	*line_exitval(char *line)
 	char	*ev_str;
 	char	*ret;
 
-	ev_str = ft_itoa(exit_value);
+	ev_str = ft_itoa(g_exit_value);
 	ev_len = ft_strlen(ev_str);
-
 	ret_len = count(line, ev_len);
 	ret = malloc(ret_len + 1);
 	ret[ret_len] = 0;
-
 	replace(ret, line, ev_str);
-
 	free(line);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 19:58:43 by lgyger            #+#    #+#             */
-/*   Updated: 2022/06/22 19:25:49 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/24 15:19:24 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	unset(t_cmd *command, char ***envp)
 {
 	int		i;
 	int		pos;
+
 	if (!envp[0])
 		return ;
 	i = 0;
