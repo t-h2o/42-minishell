@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 15:11:59 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/24 15:18:28 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,18 @@
 # include	<sys/wait.h>
 # include	<sys/stat.h>
 
-int	g_exit_value;
+int		g_exit_value;
 
 // STRUCTURE
 
 // cmd:  name of the command
 // arg:  arguments of the command
 // next: pointer on the next command
-typedef struct s_cmd	t_cmd;
-struct s_cmd {
-	char	*cmd;
-	char	**arg;
-	t_cmd	*next;
-};
+typedef struct s_cmd {
+	char			*cmd;
+	char			**arg;
+	struct s_cmd	*next;
+}	t_cmd;
 
 // file is the path of the file
 // flag for open the file
@@ -71,7 +70,7 @@ typedef struct s_line {
 
 // READLINE
 
-void	rl_replace_line(const char *, int);
+void	rl_replace_line(const char *s, int n);
 
 // BUILD
 
