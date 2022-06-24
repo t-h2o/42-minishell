@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/24 00:46:38 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/24 09:48:22 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,12 @@ void	exec_cmd(t_line *inputs, char ***envp)
 			cd(commands, envp);
 		else if (ft_strcmp(commands->arg[0], "unset"))
 			unset(commands, envp);
+		else if (ft_strcmp(commands->arg[0], "exit") && commands->next == 0)
+			inputs->loop = 0;
 		else
 			subprocess(commands, *envp, fd_inf_ouf, &ret);
 		commands = commands->next;
 	}
 	if (fd_inf_ouf[1] != 1)
 		close(fd_inf_ouf[1]);
-	if (ret == 42)
-		inputs->loop = 0;
 }
