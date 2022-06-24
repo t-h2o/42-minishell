@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   line_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 14:35:02 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/24 14:57:26 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
-#include <string.h>
+
 // an enviromnent variable [A-Z] or [a-z] or '_'
 static int	name_env(char c)
 {
@@ -116,14 +116,14 @@ char	*line_env(char *line, char **envp)
 			len = i;
 			while (line[len] && line[len] != '\'')
 				len++;
-			strncpy(ret + r, line - 1 + i, len - i + 1);
+			ft_strlcpy(ret + r, line - 1 + i, len - i + 1);
 			i = len;
 			ret[r++] = line[i++];
 		}
 		while (line[i] == '$' && ++i)
 		{
 			env = get_envlen(line, envp, &i, 0);
-			strncpy(ret + r, env, ft_strlen(env));
+			ft_strlcpy(ret + r, env, ft_strlen(env));
 		}
 		while (line[i] && (line[i] != '\"' || !td)
 			&& (line[i] != '\'' || !td) && line[i] != '$')
