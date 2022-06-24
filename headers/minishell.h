@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 10:45:37 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/24 15:11:59 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # include	<sys/wait.h>
 # include	<sys/stat.h>
 
-int	exit_value;
+int	g_exit_value;
 
 // STRUCTURE
 
