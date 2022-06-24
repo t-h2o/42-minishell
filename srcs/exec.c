@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/24 15:12:37 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/24 15:25:17 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static void	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
 
 	if (inf.file != 0)
 	{
+		if (inf.eof)
+			here_doc(inf.eof);
 		fd = open(inf.file, inf.flag);
 		if (fd == -1)
 			fd_inf_ouf[0] = STDIN;
