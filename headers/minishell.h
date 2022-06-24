@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 14:16:08 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/24 10:45:37 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *s);
 char	*ft_itoa(int n);
 char	**append_arg(char **args, char *app);
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 
 // GET-NEXT-LINE
 
