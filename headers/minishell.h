@@ -36,6 +36,8 @@
 # include	<sys/wait.h>
 # include	<sys/stat.h>
 
+int	exit_value;
+
 // STRUCTURE
 
 // cmd:  name of the command
@@ -84,6 +86,7 @@ void	cd(t_cmd *command, char ***envp);
 
 char	*parse(t_line *inputs, char *line, char **envp);
 char	*line_env(char *line, char **envp);
+char	*line_exitval(char *line);
 char	*line_space(char *line);
 char	**line_sep(char *line);
 void	setcmd(t_line *inputs, char **split, char **envp);
@@ -115,6 +118,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t	n);
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *s);
+char	*ft_itoa(int n);
 char	**append_arg(char **args, char *app);
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 

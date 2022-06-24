@@ -29,6 +29,7 @@ LIB		+=	-I $(DIR_INC)
 
 DIR_SRC	=	./srcs
 SRCS	=	$(DIR_SRC)/main.c       \
+			$(DIR_SRC)/ft_itoa.c	\
 			$(DIR_SRC)/ft_memcpy.c	\
 			$(DIR_SRC)/ft_strncmp.c	\
 			$(DIR_SRC)/ft_strchr.c	\
@@ -49,6 +50,7 @@ SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/export.c     \
 			$(DIR_SRC)/export_no_arg.c \
 			$(DIR_SRC)/line_env.c   \
+			$(DIR_SRC)/line_exitval.c   \
 			$(DIR_SRC)/line_space.c \
 			$(DIR_SRC)/line_sep.c   \
 			$(DIR_SRC)/setcmd.c     \

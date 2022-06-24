@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/24 09:48:22 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/24 09:53:19 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ static void	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
 void	exec_cmd(t_line *inputs, char ***envp)
 {
 	t_cmd	*commands;
-	int		ret;
 	int		fd_inf_ouf[2];
 
 	open_infile(inputs->inf, inputs->ouf, fd_inf_ouf);
@@ -104,7 +103,7 @@ void	exec_cmd(t_line *inputs, char ***envp)
 		else if (ft_strcmp(commands->arg[0], "exit") && commands->next == 0)
 			inputs->loop = 0;
 		else
-			subprocess(commands, *envp, fd_inf_ouf, &ret);
+			subprocess(commands, *envp, fd_inf_ouf, &exit_value);
 		commands = commands->next;
 	}
 	if (fd_inf_ouf[1] != 1)

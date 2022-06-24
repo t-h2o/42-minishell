@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:00:20 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 19:52:04 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/24 14:49:39 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*my_getenv(char *s, char **envp)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (envp[i])
