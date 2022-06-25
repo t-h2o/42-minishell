@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 15:12:18 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/25 12:30:47 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char	*line_exitval(char *line)
 	ret = malloc(ret_len + 1);
 	ret[ret_len] = 0;
 	replace(ret, line, ev_str);
+	free(ev_str);
 	free(line);
 	return (ret);
 }
