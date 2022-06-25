@@ -32,6 +32,7 @@ char	*trim_space(char *line)
 	while (line[++pos])
 		str[++i] = line[pos];
 	str[i + 1] = 0;
+	free(line);
 	line = str;
 	return (line);
 }
