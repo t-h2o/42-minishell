@@ -33,7 +33,6 @@ SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/ft_memcpy.c	\
 			$(DIR_SRC)/ft_strncmp.c	\
 			$(DIR_SRC)/ft_strchr.c	\
-			$(DIR_SRC)/ft_strncpy.c	\
 			$(DIR_SRC)/unset.c		\
 			$(DIR_SRC)/build.c      \
 			$(DIR_SRC)/utils.c      \
