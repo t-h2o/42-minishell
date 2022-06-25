@@ -51,6 +51,7 @@ SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/line_env.c   \
 			$(DIR_SRC)/line_exitval.c   \
 			$(DIR_SRC)/line_space.c \
+			$(DIR_SRC)/line_space_pipe.c \
 			$(DIR_SRC)/line_sep.c   \
 			$(DIR_SRC)/setcmd.c     \
 			$(DIR_SRC)/echo.c       \
