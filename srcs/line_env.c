@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/25 13:27:54 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:57:07 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char	*line_env(char *line, char **envp)
 	char	*env;
 	char	*ret;
 	int		td;
+	int		e;
 
 	len = get_len(line, envp);
 	if (len < 0)
@@ -123,7 +124,9 @@ char	*line_env(char *line, char **envp)
 		while (line[i] == '$' && ++i)
 		{
 			env = get_envlen(line, envp, &i, 0);
-			ft_strncpy(ret + r, env, ft_strlen(env));
+			e = 0;
+			while (env && env[e])
+				ret[r++] = env[e++];
 		}
 		while (line[i] && (line[i] != '\"' || !td)
 			&& (line[i] != '\'' || !td) && line[i] != '$')
