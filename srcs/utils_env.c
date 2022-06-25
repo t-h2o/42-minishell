@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:00:20 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/25 12:40:31 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:36:00 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ char	*my_getenv(char *s, char **envp)
 {
 	int		i;
 	int		j;
+	int		len;
 
 	i = 0;
+	len = ft_strlen(s);
+	if (len == 0)
+		return (0);
 	while (envp[i])
 	{
-		if (ft_strncmp(s, envp[i], ft_strlen(s)) == 0)
+		if (ft_strncmp(s, envp[i], len) == 0)
 			break ;
 		++i;
 	}
