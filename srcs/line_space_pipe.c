@@ -6,19 +6,18 @@
 /*   By: lgyger <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:52:12 by lgyger            #+#    #+#             */
-/*   Updated: 2022/06/25 20:50:57 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/25 20:53:01 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <string.h>
 
-
 static	int	get_size(char *line)
 {
 	char	*buf;
 	int		i;
-	
+
 	i = 0;
 	buf = strchr(line, '|');
 	while (buf)
@@ -34,7 +33,7 @@ char	*trim_space(char *line)
 	int		i;
 	int		pos;
 	char	*str;
-	
+
 	i = get_size(line);
 	if (i == 0)
 		return (line);
@@ -57,5 +56,3 @@ char	*trim_space(char *line)
 	line = str;
 	return (line);
 }
-
-
