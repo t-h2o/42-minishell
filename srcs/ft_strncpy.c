@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 15:04:08 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 15:04:15 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/25 13:27:41 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+char	*ft_strncpy(char *dst, char *src, size_t n)
 {
-	size_t	srcsize;
+	size_t	i;
 
-	srcsize = ft_strlen(src);
-	if (srcsize + 1 < dstsize)
-		ft_memcpy(dst, src, srcsize + 1);
-	else if (dstsize != 0)
+	i = 0;
+	while (src[i] != '\0' && i < n)
 	{
-		ft_memcpy(dst, src, dstsize - 1);
-		dst[dstsize - 1] = 0;
+		dst[i] = src[i];
+		i++;
 	}
-	return (srcsize);
+	while (i < n)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
 }
