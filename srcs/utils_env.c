@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:00:20 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/24 14:49:39 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/25 12:40:31 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,17 @@ char	*my_getenv(char *s, char **envp)
 	while (s[j])
 		++j;
 	return (&(envp[i][j + 1]));
+}
+
+int	check_equal(char *env)
+{
+	int	i;
+
+	i = -1;
+	while (env[++i])
+	{
+		if (env[i] == '=')
+			return (1);
+	}
+	return (0);
 }
