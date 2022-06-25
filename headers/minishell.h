@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 15:18:28 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/25 12:40:49 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int		ft_strlen(char *s);
 char	*ft_itoa(int n);
 char	**append_arg(char **args, char *app);
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
+int		check_equal(char *env);
 
 // GET-NEXT-LINE
 
