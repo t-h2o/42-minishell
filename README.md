@@ -21,7 +21,7 @@ Create a shell with a team of two
 	- [ ] line_exitval.c
 	- [ ] unset.c
 	- [ ] utils_table.c
-- [ ] Fix echo $HOME
+- [ ] Fix line_env.c
 - [ ] Norminette proof
 
 ## Library
