@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 15:30:16 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/24 00:02:09 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/25 15:06:25 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,14 @@ static char	**dup_add_table(char **envp, char *add, int pos)
 		++i;
 	if (pos == -1)
 	{
-		new_env = malloc((i + 1 + 1) * sizeof(char *));
-		if (new_env == 0)
+		if (!dup_add_table_short(&new_env, add, &i, envp))
 			return (0);
-		new_env[i + 1] = 0;
-		new_env[i] = ft_strdup(add);
-		if (new_env[i] == 0)
-			return (0);
-		while (i-- > 0)
-			new_env[i] = envp[i];
 	}
 	else
 	{
-		new_env = malloc((i + 1) * sizeof(char *));
-		if (new_env == 0)
+		if (!dup_table(&new_env, &i, pos, envp))
 			return (0);
-		new_env[i] = 0;
-		while (i-- > (pos + 1))
-			new_env[i] = envp[i];
-		free(envp[i]);
-		new_env[i] = ft_strdup(add);
-		while (i-- > 0)
-			new_env[i] = envp[i];
+		add_table(&new_env, add, &i, envp);
 	}
 	free(envp);
 	return (new_env);
