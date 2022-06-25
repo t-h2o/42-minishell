@@ -16,14 +16,13 @@ Create a shell with a team of two
 
 ## TODO
 
-- [ ] export
-- [ ] unset
-- [ ] redirections
-	- [ ] input <
-	- [ ] output >
-	- [ ] <<
-	- [ ] >>
-- [ ] pipe
+- [ ] Protect mallocs
+	- [ ] export_no_arg.c
+	- [ ] line_exitval.c
+	- [ ] unset.c
+	- [ ] utils_table.c
+- [ ] Fix line_env.c
+- [ ] Norminette proof
 
 ## Library
 

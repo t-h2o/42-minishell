@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 23:33:49 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/22 22:51:24 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/25 12:41:49 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	env(char **envp)
 		return ;
 	while (*envp)
 	{
-		printf("%s\n", *envp);
+		if (check_equal(*envp))
+			printf("%s\n", *envp);
 		envp++;
 	}
 }
