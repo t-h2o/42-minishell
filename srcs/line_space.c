@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:05:56 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/25 20:51:13 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/26 16:48:26 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,19 @@ static void	put_str(char *ret, char *line)
 	while (line[i])
 	{
 		ret[i + dec] = line[i];
-		if (line[i] != '>' && line[i] != '<' && \
-			line[i] != ' ' && line[i + 1] && \
-			(line[i + 1] == '>' || line[i + 1] == '<'))
-			ret[i + ++dec] = ' ';
-		if (line[i] == '<' && line[i + 1] && \
-			line[i + 1] != '<' && line[i + 1] != ' ')
-			ret[i + ++dec] = ' ';
-		if (line[i] == '>' && line[i + 1] && \
-			line[i + 1] != '>' && line[i + 1] != ' ')
-			ret[i + ++dec] = ' ';
+		if (can_i_touch(line, &line[i]) == 1)
+		{
+			if (line[i] != '>' && line[i] != '<' && \
+				line[i] != ' ' && line[i + 1] && \
+				(line[i + 1] == '>' || line[i + 1] == '<'))
+				ret[i + ++dec] = ' ';
+			if (line[i] == '<' && line[i + 1] && \
+				line[i + 1] != '<' && line[i + 1] != ' ')
+				ret[i + ++dec] = ' ';
+			if (line[i] == '>' && line[i + 1] && \
+				line[i + 1] != '>' && line[i + 1] != ' ')
+				ret[i + ++dec] = ' ';
+		}
 		i++;
 	}
 }

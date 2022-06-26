@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/25 16:43:10 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/26 16:44:08 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		ft_strlen(char *s);
 char	*ft_itoa(int n);
 char	**append_arg(char **args, char *app);
 int		check_equal(char *env);
-
+int		can_i_touch(char *line, char *pos);
 // GET-NEXT-LINE
 
 char	*get_next_line(int fd);
