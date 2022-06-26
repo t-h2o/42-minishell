@@ -13,6 +13,20 @@
 #include "minishell.h"
 #include <string.h>
 
+static	int	can_i_touch(char *line, char *pos)
+{
+	char	*first;
+	char	*last;
+
+	first = strchr(line, '\"');
+	if (!first)
+		return 1;
+	last = strchr(first + 1, '\"');
+	if (!last)
+		return -1; // quotes aren't ended
+	return (pos > first && pos < last) ? 0 : 1;
+}
+
 static	int	get_size(char *line)
 {
 	char	*buf;
@@ -42,7 +56,7 @@ char	*trim_space(char *line)
 	pos = -1;
 	while (line[++pos] && ++i >= 0)
 	{
-		if (line[pos] == '|')
+		if (line[pos] == '|' && can_i_touch(line, &line[pos]) == 1)
 		{
 			str[i++] = ' ';
 			str[i++] = '|';

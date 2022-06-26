@@ -54,7 +54,6 @@ static void
 			break ;
 		}
 		add_history(line);
-		line = trim_space(line);
 		line = parse(&inputs, line, *envp);
 		if (line)
 			exec_cmd(&inputs, envp);
