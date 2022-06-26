@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:05:56 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/25 16:44:25 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/25 20:51:13 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ char	*line_space(char *line)
 	if (ret == 0)
 		return (0);
 	ret[n] = 0;
-	line = trim_space(line);
 	put_str(ret, line);
 	free(line);
 	return (ret);
