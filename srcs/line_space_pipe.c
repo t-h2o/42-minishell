@@ -20,11 +20,11 @@ inline	int	can_i_touch(char *line, char *pos)
 
 	first = strchr(line, '\"');
 	if (!first)
-		return true;
+		return 1;
 	last = strchr(first + 1, '\"');
 	if (!last)
 		return -1; // quotes aren't ended
-	return (pos > first && pos < last) ? false : true;
+	return (pos > first && pos < last) ? 0 : 1;
 }
 
 static	int	get_size(char *line)
