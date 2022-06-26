@@ -56,7 +56,7 @@ char	*trim_space(char *line)
 	pos = -1;
 	while (line[++pos] && ++i >= 0)
 	{
-		if (line[pos] == '|')
+		if (line[pos] == '|' && can_i_touch(line, &line[pos]) == 1)
 		{
 			str[i++] = ' ';
 			str[i++] = '|';
