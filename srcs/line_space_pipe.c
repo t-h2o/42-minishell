@@ -13,7 +13,7 @@
 #include "minishell.h"
 #include <string.h>
 
-inline	int	can_i_touch(char *line, char *pos)
+static	int	can_i_touch(char *line, char *pos)
 {
 	char	*first;
 	char	*last;
