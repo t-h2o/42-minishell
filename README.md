@@ -17,11 +17,11 @@ Create a shell with a team of two
 ## TODO
 
 - [ ] Protect mallocs
-	- [ ] export_no_arg.c
-	- [ ] line_exitval.c
-	- [ ] unset.c
-	- [ ] utils_table.c
-- [ ] Fix line_env.c
+	- [x] export_no_arg.c
+	- [x] line_exitval.c
+	- [x] unset.c
+	- [x] utils_table.c
+- [x] Fix line_env.c
 - [ ] Norminette proof
 
 ## Library
