@@ -24,6 +24,7 @@ char	*parse(t_line *inputs, char *line, char **envp)
 
 	if (line[0] == 0)
 		return (0);
+        line = trim_space(line);
 	line = line_exitval(line);
 	if (line[0] == 0)
 		return (0);
