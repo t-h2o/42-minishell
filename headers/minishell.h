@@ -122,6 +122,7 @@ char	*ft_itoa(int n);
 char	**append_arg(char **args, char *app);
 int		check_equal(char *env);
 int		can_i_touch(char *line, char *pos);
+
 // GET-NEXT-LINE
 
 char	*get_next_line(int fd);
