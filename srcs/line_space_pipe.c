@@ -6,25 +6,33 @@
 /*   By: lgyger <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:52:12 by lgyger            #+#    #+#             */
-/*   Updated: 2022/06/25 20:53:01 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/26 16:46:59 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <string.h>
 
-static	int	can_i_touch(char *line, char *pos)
+int	can_i_touch(char *line, char *pos)
 {
 	char	*first;
 	char	*last;
 
 	first = strchr(line, '\"');
-	if (!first)
-		return 1;
-	last = strchr(first + 1, '\"');
-	if (!last)
-		return -1; // quotes aren't ended
-	return (pos > first && pos < last) ? 0 : 1;
+	if (first)
+	{
+		last = strchr(first + 1, '\"');
+		if (pos > first && pos < last)
+			return (0);
+	}
+	first = strchr(line, '\'');
+	if (first)
+	{
+		last = strchr(first + 1, '\'');
+		if (pos > first && pos < last)
+			return (0);
+	}
+	return (1);
 }
 
 static	int	get_size(char *line)
