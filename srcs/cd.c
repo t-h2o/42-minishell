@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:01:54 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 15:19:57 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/27 17:41:59 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,11 @@ void	cd(t_cmd *command, char ***envp)
 	char	*oldpath;
 
 	oldpath = getpwd();
-	if (command->arg[1] != 0 && chdir(command->arg[1]) == 0)
-		change_envp(envp, oldpath);
+	if (command->arg[1] != 0)
+	{
+		if (chdir(command->arg[1]) != -1)
+			change_envp(envp, oldpath);
+	}
 	else
 	{
 		home = my_getenv("HOME", *envp);
