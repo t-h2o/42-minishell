@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/28 18:44:39 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:31:51 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	name_env(char c)
 }
 
 //	get length of the enviromnent variable
-static char	*get_envlen(char *line, char **envp, int *i, int *len)
+char	*get_envlen(char *line, char **envp, int *i, int *len)
 {
 	char	*env;
 	char	*var;
@@ -79,52 +79,17 @@ static int	get_len(char *line, char **envp)
 // 2. replace envp with their value.
 char	*line_env(char *line, char **envp)
 {
-	int		i;
-	int		r;
 	int		len;
-	char	*env;
 	char	*ret;
-	int		td;
-	int		e;
 
 	len = get_len(line, envp);
-	if (len < 0)
-	{
-		free(line);
+	if (check_len(len, line))
 		return (NULL);
-	}
 	ret = malloc(len + 1);
 	if (ret == 0)
 		return (0);
 	ret[len] = 0;
-	i = 0;
-	r = 0;
-	td = 1;
-	while (line[i])
-	{
-		if (line[i] == '\"')
-		{
-			ret[r++] = line[i++];
-			td = (td + 1) % 2;
-		}
-		while (line[i] == '\'' && td)
-		{
-			ret[r++] = line[i++];
-			while (line[i] && line[i] != '\'')
-				ret[r++] = line[i++];
-			ret[r++] = line[i++];
-		}
-		while (line[i] == '$' && ++i)
-		{
-			env = get_envlen(line, envp, &i, 0);
-			e = 0;
-			while (env && env[e])
-				ret[r++] = env[e++];
-		}
-		while (line[i] && (line[i] != '\"' || !td)
-			&& (line[i] != '\'' || !td) && line[i] != '$')
-			ret[r++] = line[i++];
-	}
+	line_env_util(line, envp, ret);
 	free(line);
 	return (ret);
 }
