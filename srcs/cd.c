@@ -6,15 +6,15 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:01:54 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/28 13:01:45 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/28 13:10:31 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static	void why(char *path)
+static void	why(char *path)
 {
-	struct	stat	file;
+	struct stat	file;
 
 	if (stat(path, &file) == -1)
 	{
@@ -26,7 +26,6 @@ static	void why(char *path)
 	else if (!(file.st_mode & S_IXUSR))
 		printf("cd: permission denied: %s\n", path);
 }
-
 
 static char
 	*ft_strjoin(char const *s1, char const *s2)
