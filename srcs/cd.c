@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:01:54 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/28 12:50:19 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/28 12:53:07 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static	void why(char *path)
 	stat(path, &file);
 	if (!(file.st_mode & S_IFDIR))
 		printf("cd: not a directory: %s\n", path);
+	else if (!(file.st_mode & S_IXUSR))
+		printf("cd: permission denied: %s\n", path);
 }
 
 
