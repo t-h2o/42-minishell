@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/26 16:44:08 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/28 20:39:51 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ typedef struct s_line {
 	int		loop;
 }	t_line;
 
+typedef struct s_params {
+	int		len;
+	int		tmp;
+	int		td;
+	int		type;
+}	t_params;
+
+
 // READLINE
 
 void	rl_replace_line(const char *s, int n);
@@ -122,6 +130,7 @@ char	*ft_itoa(int n);
 char	**append_arg(char **args, char *app);
 int		check_equal(char *env);
 int		can_i_touch(char *line, char *pos);
+void	init_params(t_params *p);
 
 // GET-NEXT-LINE
 
