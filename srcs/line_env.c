@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/25 14:11:16 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:44:39 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,8 @@ static int	get_len(char *line, char **envp)
 			td = (td + 1) % 2;
 		while (td && line[i] == '\'' && ++i)
 		{
-			len += 2;
-			while (line[i] && line[i] != '\'' && ++i)
-				len++;
-			if (line[i] == 0)
+			if (get_len_util(&len, line, &i))
 				return (-1);
-			i++;
 		}
 		while (line[i] == '$' && ++i)
 			get_envlen(line, envp, &i, &len);

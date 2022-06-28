@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/28 20:46:11 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/28 21:02:58 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ char	**append_arg(char **args, char *app);
 int		check_equal(char *env);
 int		can_i_touch(char *line, char *pos);
 void	init_params(t_params *p);
+int		get_len_util(int *len, char *line, int *i);
 
 // GET-NEXT-LINE
 
