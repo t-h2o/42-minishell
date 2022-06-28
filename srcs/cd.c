@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:01:54 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/28 12:53:07 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/28 12:57:21 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ static	void why(char *path)
 {
 	struct	stat	file;
 
-	stat(path, &file);
+	if (stat(path, &file) == -1)
+	{
+		printf("cd: %s: no such file or directory\n", path);
+		return ;
+	}
 	if (!(file.st_mode & S_IFDIR))
 		printf("cd: not a directory: %s\n", path);
 	else if (!(file.st_mode & S_IXUSR))
