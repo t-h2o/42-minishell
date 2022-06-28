@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/28 20:39:16 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/28 20:45:21 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,24 @@ static char	*put_str(char *s, int *i)
 	return (ret);
 }
 
+static void	count_utils(char *line, int *i)
+{
+	while (line[*i] == '\'' && ++(*i))
+	{
+		while (line[*i] != '\'')
+			(*i)++;
+		(*i)++;
+	}
+	while (line[*i] == '\"' && ++(*i))
+	{
+		while (line[*i] != '\"')
+			(*i)++;
+		(*i)++;
+	}
+	while (line[*i] && line[*i] != ' ' && line[*i] != '\'' && line[*i] != '\"')
+		(*i)++;
+}
+
 //	1.	"   "    \0 (double quote space)
 //	1.	""       \0 (double quote empty)
 //	1.	"""""""  \0 (many empty double quote)
@@ -94,20 +112,7 @@ static int	count(char *line)
 			if (line[i] == 0)
 				return (arg);
 		}
-		while (line[i] == '\'' && ++i)
-		{
-			while (line[i] != '\'')
-				i++;
-			i++;
-		}
-		while (line[i] == '\"' && ++i)
-		{
-			while (line[i] != '\"')
-				i++;
-			i++;
-		}
-		while (line[i] && line[i] != ' ' && line[i] != '\'' && line[i] != '\"')
-			i++;
+		count_utils(line, &i);
 		arg++;
 	}
 	return (arg);
