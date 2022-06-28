@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:01:54 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/28 12:57:21 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/28 13:01:45 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	cd(t_cmd *command, char ***envp)
 		home = my_getenv("HOME", *envp);
 		if (chdir(home) == 0)
 			change_envp(envp, oldpath);
+		else
+			why(home);
 	}
 	free(oldpath);
 }
