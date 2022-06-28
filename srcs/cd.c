@@ -6,11 +6,26 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:01:54 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/27 17:41:59 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/28 13:10:31 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	why(char *path)
+{
+	struct stat	file;
+
+	if (stat(path, &file) == -1)
+	{
+		printf("cd: %s: no such file or directory\n", path);
+		return ;
+	}
+	if (!(file.st_mode & S_IFDIR))
+		printf("cd: not a directory: %s\n", path);
+	else if (!(file.st_mode & S_IXUSR))
+		printf("cd: permission denied: %s\n", path);
+}
 
 static char
 	*ft_strjoin(char const *s1, char const *s2)
@@ -60,12 +75,16 @@ void	cd(t_cmd *command, char ***envp)
 	{
 		if (chdir(command->arg[1]) != -1)
 			change_envp(envp, oldpath);
+		else
+			why(command->arg[1]);
 	}
 	else
 	{
 		home = my_getenv("HOME", *envp);
 		if (chdir(home) == 0)
 			change_envp(envp, oldpath);
+		else
+			why(home);
 	}
 	free(oldpath);
 }
