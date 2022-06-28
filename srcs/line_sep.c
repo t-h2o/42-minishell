@@ -3,68 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   line_sep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 02:15:03 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/04 15:09:57 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/28 20:45:21 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
 
+static char	*copy_str(char *s, t_params *p, int *i)
+{
+	char	*ret;
+	int		jump;
+
+	ret = malloc(p->len - p->td + 1);
+	if (ret == 0)
+		return (0);
+	ret[p->len - p->td] = 0;
+	jump = 0;
+	while (p->len-- - p->td)
+	{
+		while (s[*i + p->len - jump] == '\"'
+			&& (p->type == 0 || p->type == 2))
+		{
+			p->type = (p->type + 2) % 4;
+			jump++;
+		}
+		while (s[*i + p->len - jump] == '\''
+			&& (p->type == 0 || p->type == 1))
+		{
+			p->type = (p->type + 1) % 2;
+			jump++;
+		}
+		ret[p->len - p->td] = s[*i + p->len - jump];
+	}
+	return (ret);
+}
+
 //	copy up to a white character
 //	if the function meet ' or ", count the white characters
 static char	*put_str(char *s, int *i)
 {
-	char	*ret;
-	int		len;
-	int		tmp;
-	int		td;
-	int		jump;
-	int		type;
+	t_params	p;
+	char		*ret;
 
-	td = 0;
-	len = 0;
-	tmp = 0;
-	type = 0;
 	if (s == 0)
 		return (0);
-	while (s[*i + len] && (s[*i + len] != ' ' || type))
+	init_params(&p);
+	while (s[*i + p.len] && (s[*i + p.len] != ' ' || p.type))
 	{
-		if (s[*i + len] == '\"' && (type == 0 || type == 2))
+		if (s[*i + p.len] == '\"' && (p.type == 0 || p.type == 2))
 		{
-			td++;
-			type = (type + 2) % 4;
+			p.td++;
+			p.type = (p.type + 2) % 4;
 		}
-		if (s[*i + len] == '\'' && (type == 0 || type == 1))
+		if (s[*i + p.len] == '\'' && (p.type == 0 || p.type == 1))
 		{
-			td++;
-			type = (type + 1) % 2;
+			p.td++;
+			p.type = (p.type + 1) % 2;
 		}
-		len++;
+		p.len++;
 	}
-	ret = malloc(len - td + 1);
-	if (ret == 0)
-		return (0);
-	ret[len - td] = 0;
-	tmp = len;
-	jump = 0;
-	while (len-- - td)
-	{
-		while (s[*i + len - jump] == '\"' && (type == 0 || type == 2))
-		{
-			type = (type + 2) % 4;
-			jump++;
-		}
-		while (s[*i + len - jump] == '\'' && (type == 0 || type == 1))
-		{
-			type = (type + 1) % 2;
-			jump++;
-		}
-		ret[len - td] = s[*i + len - jump];
-	}
-	*i += tmp;
+	p.tmp = p.len;
+	ret = copy_str(s, &p, i);
+	*i += p.tmp;
 	return (ret);
+}
+
+static void	count_utils(char *line, int *i)
+{
+	while (line[*i] == '\'' && ++(*i))
+	{
+		while (line[*i] != '\'')
+			(*i)++;
+		(*i)++;
+	}
+	while (line[*i] == '\"' && ++(*i))
+	{
+		while (line[*i] != '\"')
+			(*i)++;
+		(*i)++;
+	}
+	while (line[*i] && line[*i] != ' ' && line[*i] != '\'' && line[*i] != '\"')
+		(*i)++;
 }
 
 //	1.	"   "    \0 (double quote space)
@@ -90,20 +112,7 @@ static int	count(char *line)
 			if (line[i] == 0)
 				return (arg);
 		}
-		while (line[i] == '\'' && ++i)
-		{
-			while (line[i] != '\'')
-				i++;
-			i++;
-		}
-		while (line[i] == '\"' && ++i)
-		{
-			while (line[i] != '\"')
-				i++;
-			i++;
-		}
-		while (line[i] && line[i] != ' ' && line[i] != '\'' && line[i] != '\"')
-			i++;
+		count_utils(line, &i);
 		arg++;
 	}
 	return (arg);
