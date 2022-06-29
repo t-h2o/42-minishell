@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 19:39:37 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/29 19:58:44 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,12 @@
 //	an enviromnent variable [A-Z] or [a-z] or '_'
 static int	name_env(char c)
 {
-	char	t;
-
 	if (c == '_')
 		return (1);
-	t = 'a';
-	while (t <= 'z')
-	{
-		if (c == t)
-			return (1);
-		t++;
-	}
-	t = 'A';
-	while (t <= 'Z')
-	{
-		if (c == t)
-			return (1);
-		t++;
-	}
+	if ('a' <= c && c <= 'z')
+		return (1);
+	if ('A' <= c && c <= 'Z')
+		return (1);
 	return (0);
 }
 
