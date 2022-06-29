@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 20:53:40 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/29 20:59:19 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,17 @@ static inline void	simple_quote(char *ret, char *line, int ind[5])
 	ret[ind[1]++] = line[ind[0]++];
 }
 
+// While there is dollars in line
+static void	dollars(char *ret, char *line, int ind[5], char **envp)
+{
+	char	*env;
+
+	env = get_envlen(line, envp, &ind[0], 0);
+	ind[2] = 0;
+	while (env && env[ind[2]])
+		ret[ind[1]++] = env[ind[2]++];
+}
+
 // ind[0]: index of line
 // ind[1]: index of the return line
 // ind[2]: index of environment variable
@@ -116,10 +127,8 @@ static char	*init_index(int ind[5], char *line, char **envp)
 // env: the string of environment variable
 // ret: the returned string
 // ind: the table of index, lenght and toggle variable
-
 char	*line_env(char *line, char **envp)
 {
-	char	*env;
 	char	*ret;
 	int		ind[5];
 
@@ -137,12 +146,7 @@ char	*line_env(char *line, char **envp)
 		while (line[ind[0]] == '\'' && ind[3])
 			simple_quote(ret, line, ind);
 		while (line[ind[0]] == '$' && ++ind[0])
-		{
-			env = get_envlen(line, envp, &ind[0], 0);
-			ind[2] = 0;
-			while (env && env[ind[2]])
-				ret[ind[1]++] = env[ind[2]++];
-		}
+			dollars(ret, line, ind, envp);
 		while (line[ind[0]] && (line[ind[0]] != '\"' || ind[3])
 			&& (line[ind[0]] != '\'' || !ind[3]) && line[ind[0]] != '$')
 			ret[ind[1]++] = line[ind[0]++];
