@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 16:28:59 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/29 19:12:41 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ char	**append_arg(char **args, char *app);
 int		check_equal(char *env);
 int		can_i_touch(char *line, char *pos);
 void	init_params(t_params *p);
+int		dup_table(char ***new_env, int *i, int pos, char **envp);
+void	add_table(char ***new_env, char *add, int *i, char **envp);
+int		dup_add_table_short(char ***new_env, char *add, int *i, char **envp);
 
 // GET-NEXT-LINE
 
