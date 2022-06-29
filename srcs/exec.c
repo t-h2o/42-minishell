@@ -6,7 +6,7 @@
 /*   By: lucas <lucas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 23:55:29 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/24 15:25:17 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/29 16:29:32 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	subprocess(t_cmd *command, char **envp, int fd_inf_ouf[2], int *ret)
 	}
 }
 
-static void	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
+static int	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
 {
 	int	fd;
 
@@ -73,7 +73,7 @@ static void	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
 			here_doc(inf.eof);
 		fd = open(inf.file, inf.flag);
 		if (fd == -1)
-			fd_inf_ouf[0] = STDIN;
+			return (check_failure(inf.file));
 		else
 			fd_inf_ouf[0] = fd;
 	}
@@ -81,10 +81,11 @@ static void	open_infile(t_file inf, t_file ouf, int fd_inf_ouf[2])
 	{
 		fd = open(ouf.file, ouf.flag, 0644);
 		if (fd == -1)
-			fd_inf_ouf[1] = STDOUT;
+			return (check_failure(ouf.file));
 		else
 			fd_inf_ouf[1] = fd;
 	}
+	return (1);
 }
 
 void	exec_cmd(t_line *inputs, char ***envp)
@@ -92,7 +93,8 @@ void	exec_cmd(t_line *inputs, char ***envp)
 	t_cmd	*commands;
 	int		fd_inf_ouf[2];
 
-	open_infile(inputs->inf, inputs->ouf, fd_inf_ouf);
+	if (!open_infile(inputs->inf, inputs->ouf, fd_inf_ouf))
+		return ;
 	commands = inputs->cmds;
 	while (commands != NULL)
 	{
