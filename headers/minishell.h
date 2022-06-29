@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/28 20:46:11 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:28:59 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ char	*my_getenv(char *s, char **envp);
 
 void	free_tab(char ***tab);
 void	free_str(char **s);
+int		check_failure(char *file);
 void	free_inputs(t_line *inputs);
 void	errmsg(char *msg, char *cmd);
 char	*ft_strdup(char *s);
