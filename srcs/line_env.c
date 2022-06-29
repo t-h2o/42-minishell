@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 20:13:18 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/29 20:32:21 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,53 +79,54 @@ static int	get_len(char *line, char **envp)
 }
 
 // return new line where the environment variable are replaced
+// ind[0]: index of line
+// ind[1]: index of the return line
+// ind[2]: index of environment variable
+// ind[3]: toggle double quotes
+// ind[4]: lenght of the return string
 char	*line_env(char *line, char **envp)
 {
-	(void)envp;
-	int		i;
-	int		r;
-	int		e;
-	int		len;
 	char	*env;
 	char	*ret;
-	int		td;
+	int		ind[4];
 
-	len = get_len(line, envp);
-	if (len == -1)
+	ind[0] = 0;
+	ind[1] = 0;
+	ind[2] = 0;
+	ind[3] = 1;
+	ind[4] = get_len(line, envp);
+	if (ind[4] == -1)
 		free(line);
-	if (len == -1)
+	if (ind[4] == -1)
 		return (0);
-	ret = malloc(len + 1);
+	ret = malloc(ind[4] + 1);
 	if (ret == 0)
 		return (0);
-	ret[len] = 0;
-	i = 0;
-	r = 0;
-	td = 1;
-	while (line[i])
+	ret[ind[4]] = 0;
+	while (line[ind[0]])
 	{
-		if (line[i] == '\"')
+		if (line[ind[0]] == '\"')
 		{
-			ret[r++] = line[i++];
-			td = (td + 1) % 2;
+			ret[ind[1]++] = line[ind[0]++];
+			ind[3] = (ind[3] + 1) % 2;
 		}
-		while (line[i] == '\'' && td)
+		while (line[ind[0]] == '\'' && ind[3])
 		{
-			ret[r++] = line[i++];
-			while (line[i] && line[i] != '\'')
-				ret[r++] = line[i++];
-			ret[r++] = line[i++];
+			ret[ind[1]++] = line[ind[0]++];
+			while (line[ind[0]] && line[ind[0]] != '\'')
+				ret[ind[1]++] = line[ind[0]++];
+			ret[ind[1]++] = line[ind[0]++];
 		}
-		while (line[i] == '$' && ++i)
+		while (line[ind[0]] == '$' && ++ind[0])
 		{
-			env = get_envlen(line, envp, &i, 0);
-			e = 0;
-			while (env && env[e])
-				ret[r++] = env[e++];
+			env = get_envlen(line, envp, &ind[0], 0);
+			ind[2] = 0;
+			while (env && env[ind[2]])
+				ret[ind[1]++] = env[ind[2]++];
 		}
-		while (line[i] && (line[i] != '\"' || td)
-			&& (line[i] != '\'' || !td) && line[i] != '$')
-			ret[r++] = line[i++];
+		while (line[ind[0]] && (line[ind[0]] != '\"' || ind[3])
+			&& (line[ind[0]] != '\'' || !ind[3]) && line[ind[0]] != '$')
+			ret[ind[1]++] = line[ind[0]++];
 	}
 	free(line);
 	return (ret);
