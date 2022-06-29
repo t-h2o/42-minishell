@@ -42,6 +42,7 @@ SRCS	=	$(DIR_SRC)/main.c       \
 			$(DIR_SRC)/utils_line_sep.c\
 			$(DIR_SRC)/utils_export.c\
 			$(DIR_SRC)/utils_line_env.c\
+			$(DIR_SRC)/utils_setcmd.c\
 			$(DIR_SRC)/parse.c      \
 			$(DIR_SRC)/split.c      \
 			$(DIR_SRC)/exec.c       \
