@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 19:58:44 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/29 20:08:00 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,30 +101,30 @@ char	*line_env(char *line, char **envp)
 	i = 0;
 	r = 0;
 	td = 1;
-	while ((line)[i])
+	while (line[i])
 	{
-		if ((line)[i] == '\"')
+		if (line[i] == '\"')
 		{
-			ret[r++] = (line)[i++];
+			ret[r++] = line[i++];
 			td = (td + 1) % 2;
 		}
-		while ((line)[i] == '\'' && td)
+		while (line[i] == '\'' && td)
 		{
-			ret[r++] = (line)[i++];
-			while ((line)[i] && (line)[i] != '\'')
-				ret[r++] = (line)[i++];
-			ret[r++] = (line)[i++];
+			ret[r++] = line[i++];
+			while (line[i] && line[i] != '\'')
+				ret[r++] = line[i++];
+			ret[r++] = line[i++];
 		}
-		while ((line)[i] == '$' && ++i)
+		while (line[i] == '$' && ++i)
 		{
-			env = get_envlen((line), &i, 0);
+			env = get_envlen(line, &i, 0);
 			e = 0;
 			while (env && env[e])
 				ret[r++] = env[e++];
 		}
-		while ((line)[i] && ((line)[i] != '\"' || td) &&
-			((line)[i] != '\'' || !td) && (line)[i] != '$')
-			ret[r++] = (line)[i++];
+		while (line[i] && (line[i] != '\"' || td) &&
+			(line[i] != '\'' || !td) && line[i] != '$')
+			ret[r++] = line[i++];
 	}
 	free(line);
 	return (ret);
