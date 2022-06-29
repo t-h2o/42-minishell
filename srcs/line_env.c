@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 20:32:21 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/29 20:46:18 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,14 @@ static int	get_len(char *line, char **envp)
 	return (len);
 }
 
-// return new line where the environment variable are replaced
 // ind[0]: index of line
 // ind[1]: index of the return line
 // ind[2]: index of environment variable
 // ind[3]: toggle double quotes
 // ind[4]: lenght of the return string
-char	*line_env(char *line, char **envp)
+static char	*init_index(int ind[5], char *line, char **envp)
 {
-	char	*env;
 	char	*ret;
-	int		ind[4];
 
 	ind[0] = 0;
 	ind[1] = 0;
@@ -96,10 +93,27 @@ char	*line_env(char *line, char **envp)
 	ind[3] = 1;
 	ind[4] = get_len(line, envp);
 	if (ind[4] == -1)
+	{
 		free(line);
-	if (ind[4] == -1)
 		return (0);
+	}
 	ret = malloc(ind[4] + 1);
+	if (ret == 0)
+		return (0);
+	return (ret);
+}
+
+// return new line where the environment variable are replaced
+// env: the string of environment variable
+// ret: the returned string
+// ind: the table of index, lenght and toggle variable
+char	*line_env(char *line, char **envp)
+{
+	char	*env;
+	char	*ret;
+	int		ind[5];
+
+	ret = init_index(ind, line, envp);
 	if (ret == 0)
 		return (0);
 	ret[ind[4]] = 0;
