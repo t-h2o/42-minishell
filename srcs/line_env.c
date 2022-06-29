@@ -12,7 +12,7 @@
 
 #include	"minishell.h"
 
-//	an enviromnent variable [A-Z] or [a-z] or '_'
+// an enviromnent variable [A-Z] or [a-z] or '_'
 static int	name_env(char c)
 {
 	if (c == '_')
@@ -24,7 +24,7 @@ static int	name_env(char c)
 	return (0);
 }
 
-//	get length of the enviromnent variable
+// get length of the enviromnent variable
 static char	*get_envlen(char *line, int *i, int *len)
 {
 	char	*env;
@@ -44,7 +44,7 @@ static char	*get_envlen(char *line, int *i, int *len)
 	return (env);
 }
 
-//	get length of the line if we replace all environment variable
+// get length of the line if we replace all environment variable
 static int	get_len(char *line)
 {
 	int		i;
@@ -77,7 +77,7 @@ static int	get_len(char *line)
 	return (len);
 }
 
-//	return new line where the environment variable are replaced
+// return new line where the environment variable are replaced
 char	*line_env(char *line, char **envp)
 {
 	(void)envp;
