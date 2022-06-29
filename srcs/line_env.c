@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 20:08:15 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/29 20:13:18 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*get_envlen(char *line, char **envp, int *i, int *len)
 }
 
 // get length of the line if we replace all environment variable
-static int  get_len(char *line, char **envp)
+static int	get_len(char *line, char **envp)
 {
 	int		i;
 	int		len;
@@ -69,7 +69,8 @@ static int  get_len(char *line, char **envp)
 		}
 		while (line[i] == '$' && ++i)
 			get_envlen(line, envp, &i, &len);
-		while (line[i] && line[i] != '\"' && (line[i] != '\'' || !td) && line[i] != '$' && ++i)
+		while (line[i] && line[i] != '\"'
+			&& (line[i] != '\'' || !td) && line[i] != '$' && ++i)
 			len++;
 	}
 	if (td == 0)
@@ -122,8 +123,8 @@ char	*line_env(char *line, char **envp)
 			while (env && env[e])
 				ret[r++] = env[e++];
 		}
-		while (line[i] && (line[i] != '\"' || td) &&
-			(line[i] != '\'' || !td) && line[i] != '$')
+		while (line[i] && (line[i] != '\"' || td)
+			&& (line[i] != '\'' || !td) && line[i] != '$')
 			ret[r++] = line[i++];
 	}
 	free(line);
