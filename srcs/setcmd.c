@@ -6,7 +6,7 @@
 /*   By: tgrivel <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 00:45:53 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/06/30 15:33:17 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,15 @@ void	setcmd(t_line *input, char **split, char **envp)
 		fill_line(input, split, &n);
 		if (split[n] && ft_strcmp(split[n], "|") && ++n)
 		{
-			ptr->next = new_cmd();
-			if (ptr->next == 0)
-				return ;
-			ptr = ptr->next;
+			if (!split[n])
+				ptr->arg = append_arg(ptr->arg, split[n - 1]);
+			else
+			{
+				ptr->next = new_cmd();
+				if (ptr->next == 0)
+					return ;
+				ptr = ptr->next;
+			}
 		}
 		if (split[n] && ptr->cmd == 0)
 		{

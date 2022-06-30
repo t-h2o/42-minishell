@@ -6,7 +6,7 @@
 /*   By: lgyger <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:52:12 by lgyger            #+#    #+#             */
-/*   Updated: 2022/06/26 16:46:59 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/30 15:34:42 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ static	int	get_size(char *line)
 
 	i = 0;
 	buf = strchr(line, '|');
+	if (!buf)
+		return (0);
+	if ((*(buf - 1) == '\'' && *(buf + 1) == '\'')
+		|| (*(buf - 1) == '\"' && *(buf + 1) == '\"'))
+		return (0);
 	while (buf)
 	{
 		buf = strchr(buf + 1, '|');
