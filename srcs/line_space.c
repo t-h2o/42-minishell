@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:05:56 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/26 16:48:26 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/30 16:55:54 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,19 @@ static int	count(char *line)
 	return (n);
 }
 
+static inline int	check_prox(char *sign)
+{
+	if (*(sign) != '\'' && *(sign + 2) != '\'')
+	{
+		if (*(sign) != '\"' && *(sign + 2) != '\"')
+			return (1);
+	}
+	return (0);
+}
 // put line in ret,
 // if >>... -> >> ...
 // if >...  -> > ...
+
 static void	put_str(char *ret, char *line)
 {
 	int	i;
@@ -75,9 +85,10 @@ static void	put_str(char *ret, char *line)
 		ret[i + dec] = line[i];
 		if (can_i_touch(line, &line[i]) == 1)
 		{
-			if (line[i] != '>' && line[i] != '<' && \
-				line[i] != ' ' && line[i + 1] && \
-				(line[i + 1] == '>' || line[i + 1] == '<'))
+			if (line[i] != '>' && line[i] != '<' && line[i]
+				!= ' ' && line[i + 1] && \
+				((line[i + 1] == '>' || line[i + 1] == '<')
+					&& check_prox(&line[i])))
 				ret[i + ++dec] = ' ';
 			if (line[i] == '<' && line[i + 1] && \
 				line[i + 1] != '<' && line[i + 1] != ' ')
