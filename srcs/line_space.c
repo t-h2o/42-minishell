@@ -6,7 +6,7 @@
 /*   By: melogr@phy <tgrivel@student.42lausanne.ch  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:05:56 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/30 16:55:54 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/06/30 22:08:06 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,16 @@ char	*line_space(char *line)
 
 	n = count(line);
 	if (n == -1)
+	{
+		free(line);
 		return (0);
+	}
 	ret = malloc(n + 1);
 	if (ret == 0)
+	{
+		free(line);
 		return (0);
+	}
 	ret[n] = 0;
 	put_str(ret, line);
 	free(line);
