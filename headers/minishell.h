@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:13:48 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/29 19:12:41 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/06/30 08:26:09 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ void	init_params(t_params *p);
 int		dup_table(char ***new_env, int *i, int pos, char **envp);
 void	add_table(char ***new_env, char *add, int *i, char **envp);
 int		dup_add_table_short(char ***new_env, char *add, int *i, char **envp);
+int		get_len(char *line, char **envp);
+char	*get_envlen(char *line, char **envp, int *i, int *len);
 
 // GET-NEXT-LINE
 
