@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:09:46 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/24 15:03:35 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/06/30 22:52:13 by melogr@phy       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ static void
 			clear_history();
 			printf("exit\n");
 			inputs.loop = 0;
-			break ;
 		}
 		add_history(line);
-		line = parse(&inputs, line, *envp);
+		if (line)
+			line = parse(&inputs, line, *envp);
 		if (line)
 			exec_cmd(&inputs, envp);
 		free_inputs(&inputs);
