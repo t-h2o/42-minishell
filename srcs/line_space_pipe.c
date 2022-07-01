@@ -6,7 +6,7 @@
 /*   By: lgyger <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:52:12 by lgyger            #+#    #+#             */
-/*   Updated: 2022/06/30 15:34:42 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/07/01 13:11:57 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ static	int	get_size(char *line)
 	buf = strchr(line, '|');
 	if (!buf)
 		return (0);
+	if (buf == line)
+	{
+		*line = 0;
+		return (-1);
+	}
 	if ((*(buf - 1) == '\'' && *(buf + 1) == '\'')
 		|| (*(buf - 1) == '\"' && *(buf + 1) == '\"'))
 		return (0);
@@ -61,10 +66,9 @@ char	*trim_space(char *line)
 	int		pos;
 	char	*str;
 
-	i = get_size(line);
-	if (i == 0)
+	if (get_size(line) <= 0)
 		return (line);
-	str = malloc(strlen(line) + i + 1);
+	str = malloc(strlen(line) + get_size(line) + 1);
 	i = -1;
 	pos = -1;
 	while (line[++pos] && ++i >= 0)

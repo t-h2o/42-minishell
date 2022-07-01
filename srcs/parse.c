@@ -6,7 +6,7 @@
 /*   By: melogr@phy <melogr@phy.to>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 01:15:18 by melogr@phy        #+#    #+#             */
-/*   Updated: 2022/06/28 13:28:16 by lgyger           ###   ########.fr       */
+/*   Updated: 2022/07/01 12:41:09 by lgyger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char	*parse(t_line *inputs, char *line, char **envp)
 	if (line[0] == 0)
 		return (0);
 	line = trim_space(line);
+	if (!line)
+		return (0);
 	line = line_exitval(line);
 	if (line[0] == 0)
 		return (0);
