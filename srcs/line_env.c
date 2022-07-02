@@ -6,11 +6,23 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/30 08:23:54 by ldominiq         ###   ########.fr       */
+/*   Updated: 2022/07/02 11:47:05 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
+
+// an enviromnent variable [A-Z] or [a-z] or '_'
+int	name_env(char c)
+{
+	if (c == '_')
+		return (1);
+	if ('a' <= c && c <= 'z')
+		return (1);
+	if ('A' <= c && c <= 'Z')
+		return (1);
+	return (0);
+}
 
 // While single quote
 static inline void	simple_quote(char *ret, char *line, int ind[5])
@@ -26,10 +38,15 @@ static void	dollars(char *ret, char *line, int ind[5], char **envp)
 {
 	char	*env;
 
-	env = get_envlen(line, envp, &ind[0], 0);
-	ind[2] = 0;
-	while (env && env[ind[2]])
-		ret[ind[1]++] = env[ind[2]++];
+	if (name_env(line[ind[0]]))
+	{
+		env = get_envlen(line, envp, &ind[0], 0);
+		ind[2] = 0;
+		while (env && env[ind[2]])
+			ret[ind[1]++] = env[ind[2]++];
+	}
+	else
+		ret[ind[1]++] = '$';
 }
 
 // ind[0]: index of line
