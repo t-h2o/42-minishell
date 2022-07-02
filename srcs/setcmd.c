@@ -6,7 +6,7 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:23:44 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/06/30 22:16:27 by melogr@phy       ###   ########.fr       */
+/*   Updated: 2022/07/02 12:01:48 by ldominiq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ static void	fill_line(t_line *input, char **split, int *n)
 	}
 }
 
+static int	set_next_ptr(t_cmd **ptr)
+{
+	if ((*ptr)->next == 0)
+		return (0);
+	*ptr = (*ptr)->next;
+	return (1);
+}
+
 // set the line in cmd struct
 void	setcmd(t_line *input, char **split, char **envp)
 {
@@ -71,9 +79,8 @@ void	setcmd(t_line *input, char **split, char **envp)
 			else
 			{
 				ptr->next = new_cmd();
-				if (ptr->next == 0)
+				if (!set_next_ptr(&ptr))
 					return ;
-				ptr = ptr->next;
 			}
 		}
 		dup_cmd(split, envp, &n, ptr);
