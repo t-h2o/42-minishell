@@ -6,14 +6,14 @@
 /*   By: ldominiq <ldominiq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:56 by tgrivel           #+#    #+#             */
-/*   Updated: 2022/07/02 11:44:15 by tgrivel          ###   ########.fr       */
+/*   Updated: 2022/07/02 11:47:05 by tgrivel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minishell.h"
 
 // an enviromnent variable [A-Z] or [a-z] or '_'
-static int	name_env(char c)
+int	name_env(char c)
 {
 	if (c == '_')
 		return (1);
