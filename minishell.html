@@ -1,0 +1,622 @@
+<div class="row mt-4">
+<div class="scale-section-infos col-sm-12 scale-div">
+<h3 class="font-weight-bold text-uppercase text-center mt-4 pt-4">
+Scale for project
+
+<a href="/projects/42cursus-minishell">minishell</a>
+</h3>
+<h5 class="text-muted text-center">You should evaluate 2 students in this team</h5>
+<!-- -------- La liste des personnes du groupe ------- -->
+<div class="team-users-list d-flex justify-content-center">
+<div class="team-user-item">
+<div class="bg-image-item rounded square-s" data-placement="bottom" data-toggle="tooltip" style="background-image: url(https://cdn.intra.42.fr/users/ldominiq.jpg)" title="" data-original-title="ldominiq"></div>
+<div class="team-user-item-actions">
+<div class="team-user-role rounded bprima"></div>
+</div>
+</div>
+<div class="team-user-item">
+<div class="bg-image-item rounded square-s" data-placement="bottom" data-toggle="tooltip" style="background-image: url(https://cdn.intra.42.fr/users/tgrivel.jpg)" title="" data-original-title="tgrivel"></div>
+<div class="team-user-item-actions">
+<div class="team-user-role rounded bprima"></div>
+<span class="iconf-star-1 leader-user" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="Team leader"></span>
+</div>
+</div>
+</div>
+<small class="full-width text-muted">Git repository</small>
+<div class="container-inner-item project-repo pt-0 mt-0">
+<div class="input-group">
+<input class="repo-url form-control" disabled="" type="text" value="git@vogsphere.42lausanne.ch:vogsphere/intra-uuid-162a9fc3-a212-483d-a060-f7fda9fd77fc-4084464-tgrivel">
+<span class="copy input-group-addon" data-clipboard-text="git@vogsphere.42lausanne.ch:vogsphere/intra-uuid-162a9fc3-a212-483d-a060-f7fda9fd77fc-4084464-tgrivel">
+<span class="icon-paste"></span>
+</span>
+</div>
+</div>
+
+<hr>
+<div class="p-0 scale-introduction dancer from-down" id="introduction-14119">
+<h3 class="font-weight-bold mb-1">Introduction</h3>
+<p>
+Please comply with the following rules:<br><br>- Remain polite, courteous, respectful and constructive throughout the <br>  evaluation process. The well-being of the community depends on it.<br><br>- Identify with the student or group whose work is evaluated the possible <br>  dysfunctions in their project. Take the time to discuss and debate the <br>  problems that may have been identified.<br><br>- You must consider that there might be some differences in how your peers <br>  might have understood the project's instructions and the scope of its <br>  functionalities. Always keep an open mind and grade them as honestly as <br>  possible. The pedagogy is useful only and only if the peer-evaluation is <br>  done seriously.<br>
+</p>
+</div>
+<div class="p-0 scale-guidelines dancer from-down" id="guidelines-14119">
+<h3 class="font-weight-bold mb-1">Guidelines</h3>
+<p>
+- Only grade the work that was turned in the Git repository of the evaluated <br>  student or group.<br><br>- Double-check that the Git repository belongs to the student(s). Ensure that <br>  the project is the one expected. Also, check that 'git clone' is used in an <br>  empty folder.<br><br>- Check carefully that no malicious aliases was used to fool you and make you <br>  evaluate something that is not the content of the official repository.<br><br>- To avoid any surprises and if applicable, review together any scripts used <br>  to facilitate the grading (scripts for testing or automation).<br><br>- If you have not completed the assignment you are going to evaluate, you have <br>  to read the entire subject prior to starting the evaluation process.<br><br>- Use the available flags to report an empty repository, a non-functioning <br>  program, a Norm error, cheating, and so forth. <br>  In these cases, the evaluation process ends and the final grade is 0, <br>  or -42 in case of cheating. However, except for cheating, student are <br>  strongly encouraged to review together the work that was turned in, in order <br>  to identify any mistakes that shouldn't be repeated in the future.<br><br>- Remember that for the duration of the defense, no segfault,<br>  no other unexpected, premature, uncontrolled or unexpected<br>  termination of the program, else the final grade is 0. Use the<br>  appropriate flag. <br>  You should never have to edit any file except the configuration file if it exists.<br>  If you want to edit a file, take the time to explicit the reasons with the <br>  evaluated student and make sure both of you are okay with this.<br><br>- You must also verify the absence of memory leaks. Any memory allocated on the heap must<br>  be properly freed before the end of execution.<br>  You are allowed to use any of the different tools available on the computer, such as<br>  leaks, valgrind, or e_fence. In case of memory leaks, tick the appropriate flag.<br>
+</p>
+</div>
+
+<hr>
+<div class="dancer from-down" id="attachments-14119">
+<h3 class="font-weight-bold mb-1">Attachments</h3>
+<div class="project-attachments-list">
+</div>
+
+<div class="project-attachments-list">
+<div class="project-attachment-item">
+<h4 class="attachment-name">
+<span class="icon-file"></span>
+<a target="_blank" href="https://cdn.intra.42.fr/pdf/pdf/52129/en.subject.pdf">subject.pdf</a>
+</h4>
+</div>
+</div>
+
+</div>
+
+</div>
+<form class="simple_form form-horizontal" novalidate="novalidate" id="edit_scale_team_4270002" action="/projects/42cursus-minishell/project_sessions/3317/evaluations/1598/scales/14119/scale_teams/4270002" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="12SXqcki+s3E+e1haCdiNMUd7u9fd2H5p/9dVwa+CD0XWn4fZ4cS/qErvg52riJucQrPQdGLqb5ie1db7qhHuw=="><div class="scale-section-answers col-sm-12 scale-div">
+<section class="scale-section-item dancer from-down" id="section-40426">
+<div class="section-header">
+<h3 class="font-weight-bold mb-1">Mandatory Part</h3>
+<p class="font-italic"></p>
+</div>
+<h4 class="scale-question-name">Compile</h4>
+<p class="scale-section-guidelines">
+- Use "make -n" to see if compilation use "-Wall -Wextra -Werror". <br>  If not, select the "invalid compilation" flag.<br>- minishell compiles without any errors. If not, select the flag.<br>- The Makefile must not re-link. If not, select the flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][0][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135529" name="[scale_team][answers_attributes][0][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][0][value]" id="radio_[scale_team][answers_attributes][0]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][0]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][0][value]" id="radio_[scale_team][answers_attributes][0]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][0]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Simple Command &amp; global variables</h4>
+<p class="scale-section-guidelines">
+- Execute a simple command with an absolute path like /bin/ls, or any <br>  other command without any options.<br>- How many global variables are used? Why? Ask the evaluated student <br>  to give you a concrete example of why it feels mandatory or logical.<br>- Test an empty command.<br>- Test only spaces or tabs.<br>- If something crashes, select the "crash" flag.<br>- If something doesn't work, select the "incomplete work" flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][1][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135530" name="[scale_team][answers_attributes][1][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][1][value]" id="radio_[scale_team][answers_attributes][1]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][1]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][1][value]" id="radio_[scale_team][answers_attributes][1]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][1]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Arguments &amp; history</h4>
+<p class="scale-section-guidelines">
+- Execute a simple command with an absolute path like /bin/ls, or any <br>  other command with arguments but without any quotes or double quotes.<br>- Repeat multiple times with different commands and arguments.<br>- If something crashes, select the "crash" flag.<br>- If something doesn't work, select the "incomplete work" flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][2][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135531" name="[scale_team][answers_attributes][2][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][2][value]" id="radio_[scale_team][answers_attributes][2]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][2]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][2][value]" id="radio_[scale_team][answers_attributes][2]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][2]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">echo</h4>
+<p class="scale-section-guidelines">
+- Execute the echo command with or without arguments, or the -n option.<br>- Repeat multiple times with different arguments.<br>- If something crashes, select the "crash" flag.<br>- If something doesn't work, select the "incomplete work" flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][3][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135532" name="[scale_team][answers_attributes][3][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][3][value]" id="radio_[scale_team][answers_attributes][3]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][3]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][3][value]" id="radio_[scale_team][answers_attributes][3]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][3]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">exit</h4>
+<p class="scale-section-guidelines">
+- Execute exit command with or without arguments.<br>- Repeat multiple times with different arguments.<br>- Don't forget to relaunch the minishell<br>- If something crashes, select the "crash" flag.<br>- If something doesn't work, select the "incomplete work" flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][4][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135533" name="[scale_team][answers_attributes][4][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][4][value]" id="radio_[scale_team][answers_attributes][4]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][4]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][4][value]" id="radio_[scale_team][answers_attributes][4]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][4]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Return value of a process</h4>
+<p class="scale-section-guidelines">
+- Execute a simple command with an absolute path like /bin/ls, or any <br>  other command with arguments but without any quotes and double quotes. <br>  Then execute echo $?<br>- Check the printed value. You can do the same in bash in order to compare <br>  the results.<br>- Repeat multiple times with different commands and arguments. Try some <br>  wrong commands like '/bin/ls filethatdoesntexist'<br>- Try anything like expr $? + $?<br>- If something crashes, select the "crash" flag.<br>- If something doesn't work, select the "incomplete work" flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][5][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135534" name="[scale_team][answers_attributes][5][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][5][value]" id="radio_[scale_team][answers_attributes][5]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][5]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][5][value]" id="radio_[scale_team][answers_attributes][5]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][5]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Signals</h4>
+<p class="scale-section-guidelines">
+- ctrl-C in an empty prompt should display a new line with a new prompt.<br>- ctrl-\ in an empty prompt should not do anything.<br>- ctrl-D in an empty prompt should quit minishell --&gt; RELAUNCH!<br>- ctrl-C in a prompt after you wrote some stuff should display a new line <br>  with a new prompt.<br>- The buffer should be clean too. Press "Enter" to make sure nothing from <br>  the previous line is executed.<br>- ctrl-D in a prompt after you wrote some stuff should not do anything.<br>- ctrl-\ in a prompt after you wrote some stuff should not do anything.<br>- Try ctrl-C after running a blocking command like cat without arguments or grep “something“.<br>- Try ctrl-\ after running a blocking command like cat without arguments or grep “something“.<br>- Try ctrl-D after running a blocking command like cat without arguments or grep “something“.<br>- Repeat multiple times using different commands.<br>- If something crashes, select the "crash" flag.<br>- If something doesn't work, select the "incomplete work" flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][6][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135535" name="[scale_team][answers_attributes][6][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][6][value]" id="radio_[scale_team][answers_attributes][6]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][6]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][6][value]" id="radio_[scale_team][answers_attributes][6]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][6]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Double Quotes</h4>
+<p class="scale-section-guidelines">
+- Execute a simple command with arguments and, this time, use also double <br>  quotes (you should try to include whitespaces too).<br>- Try a command like : echo "cat lol.c | cat &gt; lol.c"<br>- Try anything except $.<br>- If something crashes, select the "crash" flag.<br>- If something doesn't work, select the "incomplete work" flag.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][7][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135536" name="[scale_team][answers_attributes][7][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][7][value]" id="radio_[scale_team][answers_attributes][7]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][7]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][7][value]" id="radio_[scale_team][answers_attributes][7]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][7]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Single Quotes</h4>
+<p class="scale-section-guidelines">
+- Execute commands with single quotes as arguments.<br>- Try empty arguments.<br>- Try environment variables, whitespaces, pipes, redirection in the single quotes.<br>- echo '$USER' must print "$USER".<br>- Nothing should be interpreted.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][8][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135537" name="[scale_team][answers_attributes][8][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][8][value]" id="radio_[scale_team][answers_attributes][8]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][8]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][8][value]" id="radio_[scale_team][answers_attributes][8]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][8]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">env</h4>
+<p class="scale-section-guidelines">
+- Check if env shows you the current environment variables.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][9][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135538" name="[scale_team][answers_attributes][9][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][9][value]" id="radio_[scale_team][answers_attributes][9]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][9]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][9][value]" id="radio_[scale_team][answers_attributes][9]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][9]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">export</h4>
+<p class="scale-section-guidelines">
+- Export environment variables, create new ones and replace old ones.<br>- Check the result with env.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][10][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135539" name="[scale_team][answers_attributes][10][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][10][value]" id="radio_[scale_team][answers_attributes][10]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][10]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][10][value]" id="radio_[scale_team][answers_attributes][10]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][10]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">unset</h4>
+<p class="scale-section-guidelines">
+- Export environment variables, create new ones and replace old ones.<br>- Use unset to remove some of them.<br>- Check the result with env.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][11][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135540" name="[scale_team][answers_attributes][11][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][11][value]" id="radio_[scale_team][answers_attributes][11]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][11]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][11][value]" id="radio_[scale_team][answers_attributes][11]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][11]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">cd</h4>
+<p class="scale-section-guidelines">
+- Use the command cd to move the working directory and check if you are in <br>  the right directory with /bin/ls<br>- Repeat multiple times with working and not working cd<br>- Also, try '.' and '..' as arguments.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][12][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135541" name="[scale_team][answers_attributes][12][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][12][value]" id="radio_[scale_team][answers_attributes][12]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][12]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][12][value]" id="radio_[scale_team][answers_attributes][12]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][12]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">pwd</h4>
+<p class="scale-section-guidelines">
+- Use the command pwd.<br>- Repeat multiple times in different directories.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][13][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135542" name="[scale_team][answers_attributes][13][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][13][value]" id="radio_[scale_team][answers_attributes][13]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][13]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][13][value]" id="radio_[scale_team][answers_attributes][13]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][13]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Relative Path</h4>
+<p class="scale-section-guidelines">
+- Execute commands but this time use a relative path.<br>- Repeat multiple times in different directories with a complex <br>  relative path (lots of ..).<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][14][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135543" name="[scale_team][answers_attributes][14][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][14][value]" id="radio_[scale_team][answers_attributes][14]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][14]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][14][value]" id="radio_[scale_team][answers_attributes][14]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][14]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Environment path</h4>
+<p class="scale-section-guidelines">
+- Execute commands but this time without any path (ls, wc, awk and so forth).<br>- Unset the $PATH and ensure commands are not working anymore.<br>- Set the $PATH to a multiple directory value (directory1:directory2) and <br>  ensure that directories are checked in order from left to right.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][15][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135544" name="[scale_team][answers_attributes][15][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][15][value]" id="radio_[scale_team][answers_attributes][15]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][15]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][15][value]" id="radio_[scale_team][answers_attributes][15]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][15]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Redirection</h4>
+<p class="scale-section-guidelines">
+- Execute commands with redirections &lt; and/or &gt;<br>- Repeat multiple times with different commands and arguments and sometimes change &gt; with &gt;&gt;<br>- Check if multiple tries of the same redirections fail.<br>- Test &lt;&lt; redirection (it doesn't have to update the history).<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][16][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135545" name="[scale_team][answers_attributes][16][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][16][value]" id="radio_[scale_team][answers_attributes][16]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][16]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][16][value]" id="radio_[scale_team][answers_attributes][16]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][16]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Pipes</h4>
+<p class="scale-section-guidelines">
+- Execute commands with pipes like 'cat file | grep bla | more'<br>- Repeat multiple times with different commands and arguments.<br>- Try some wrong commands like 'ls filethatdoesntexist | grep bla | more'<br>- Try to mix pipes and redirections.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][17][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135546" name="[scale_team][answers_attributes][17][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][17][value]" id="radio_[scale_team][answers_attributes][17]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][17]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][17][value]" id="radio_[scale_team][answers_attributes][17]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][17]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Go Crazy and history</h4>
+<p class="scale-section-guidelines">
+- Type a command line, then use ctrl-C and press "Enter". The buffer should <br>  be clean and there should be nothing left to execute.<br>- Can we navigate through history using Up and Down? Can we retry some command?<br>- Execute commands that should not work like 'dsbksdgbksdghsd'. <br>  Ensure minishell doesn't crash and prints an error.<br>- 'cat | cat | ls' should behave in a "normal way".<br>- Try to execute a long command with a ton of arguments.<br>- Have fun with that beautiful minishell and enjoy it!<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][18][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135547" name="[scale_team][answers_attributes][18][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][18][value]" id="radio_[scale_team][answers_attributes][18]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][18]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][18][value]" id="radio_[scale_team][answers_attributes][18]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][18]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Environment variables</h4>
+<p class="scale-section-guidelines">
+- Execute echo with some environment variables ($variable) as arguments.<br>- Check that $ is interpreted as an environment variable.<br>- Check that double quotes interpolate $.<br>- Check that USER exists. Otherwise, set it.<br>- echo "$USER" should print the value of the USER variable.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][19][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135548" name="[scale_team][answers_attributes][19][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][19][value]" id="radio_[scale_team][answers_attributes][19]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][19]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][19][value]" id="radio_[scale_team][answers_attributes][19]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][19]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+</section>
+<section class="scale-section-item dancer from-down" id="section-40427">
+<div class="section-header">
+<hr>
+<h3 class="font-weight-bold mb-1">Bonus</h3>
+<p class="font-italic">Evaluate the bonus part if, and only if, the mandatory part has been 
+entirely and perfectly done, and the error management handles unexpected 
+or bad usage. In case all the mandatory points were not passed during the 
+defense, bonus points must be totally ignored.
+</p>
+</div>
+<h4 class="scale-question-name">And, Or</h4>
+<p class="scale-section-guidelines">
+- Use &amp;&amp;, || and parenthesis with commands and ensure minishell behaves <br>  the same way bash does.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][20][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135549" name="[scale_team][answers_attributes][20][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][20][value]" id="radio_[scale_team][answers_attributes][20]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][20]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][20][value]" id="radio_[scale_team][answers_attributes][20]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][20]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Wildcard</h4>
+<p class="scale-section-guidelines">
+- Use wildcards in arguments in the current working directory.<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][21][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135550" name="[scale_team][answers_attributes][21][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][21][value]" id="radio_[scale_team][answers_attributes][21]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][21]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][21][value]" id="radio_[scale_team][answers_attributes][21]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][21]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+<h4 class="scale-question-name">Surprise! (or not...)</h4>
+<p class="scale-section-guidelines">
+- Set the USER environment variable.<br>- echo "'$USER'" should print the value of the USER variable.<br>- echo '"$USER"' should print "$USER".<br>
+</p>
+<div class="scale-question-answers">
+<div class="form-group hidden scale_team_answer_id"><div class="col-sm-10"><input class="form-control hidden" name="[scale_team][answers_attributes][22][id]" type="hidden" id="scale_team_answer_id"></div></div>
+<div class="form-group hidden scale_team_answer_question_id"><div class="col-sm-10"><input class="form-control hidden" value="135551" name="[scale_team][answers_attributes][22][question_id]" type="hidden" id="scale_team_answer_question_id"></div></div>
+<div class="btn-group block">
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][22][value]" id="radio_[scale_team][answers_attributes][22]_true" type="radio" value="1">
+<label class="btn btn-success checkbox-label light-bg" for="radio_[scale_team][answers_attributes][22]_true">
+<span class="icon-check"></span>
+Yes
+</label>
+<input autocomplete="off" class="checkbox-input" name="[scale_team][answers_attributes][22][value]" id="radio_[scale_team][answers_attributes][22]_false" type="radio" value="0" checked="checked">
+<label class="btn btn-danger checkbox-label light-bg" for="radio_[scale_team][answers_attributes][22]_false">
+<span class="icon-times"></span>
+No
+</label>
+</div>
+</div>
+</section>
+</div>
+<div class="col-sm-12 scale-div pb-4">
+<div class="dancer from-down" id="ratings-14119">
+<h3 class="font-weight-bold mb-1">Ratings</h3>
+<p class="marked-title">Don’t forget to check the flag corresponding to the defense</p>
+<div class="btn-group block flags-buttons" data-radio-item="flag-small">
+<label class="btn btn-default btn-success label_flag_ok on-active positive" for="scale_team_flag_id_1" name="scale_team[flag_id]">
+<span class="iconf-check-4"></span>
+Ok
+</label>
+<label class="btn btn-default btn-success label_flag_outstanding_project on-active positive" for="scale_team_flag_id_9" name="scale_team[flag_id]">
+<span class="iconf-star-1"></span>
+Outstanding project
+</label>
+</div>
+<div class="btn-group block flags-buttons" data-radio-item="flag-small">
+<label class="btn btn-danger btn-default label_flag_empty_work negative on-active" for="scale_team_flag_id_2" name="scale_team[flag_id]">
+<span class="iconf-file-1"></span>
+Empty work
+</label>
+<label class="btn btn-danger btn-default label_flag_incomplete_work negative on-active" for="scale_team_flag_id_3" name="scale_team[flag_id]">
+<span class="iconf-file-attention"></span>
+Incomplete work
+</label>
+<label class="btn btn-danger btn-default label_flag_invalid_compilation negative on-active" for="scale_team_flag_id_5" name="scale_team[flag_id]">
+<span class="iconf-skull-2"></span>
+Invalid compilation
+</label>
+<label class="btn btn-danger btn-default label_flag_norme negative on-active" for="scale_team_flag_id_6" name="scale_team[flag_id]">
+<span class="iconf-receipt-1"></span>
+Norme
+</label>
+<label class="btn btn-danger btn-default label_flag_cheat negative on-active" for="scale_team_flag_id_7" name="scale_team[flag_id]">
+<span class="iconf-layers"></span>
+Cheat
+</label>
+<label class="btn btn-danger btn-default label_flag_crash negative on-active" for="scale_team_flag_id_8" name="scale_team[flag_id]">
+<span class="iconf-bomb"></span>
+Crash
+</label>
+<label class="btn btn-danger btn-default label_flag_incomplete_group negative on-active" for="scale_team_flag_id_10" name="scale_team[flag_id]">
+<span class="iconf-user-delete-2"></span>
+Incomplete group
+</label>
+<label class="btn btn-danger btn-default label_flag_concerning_situation negative on-active" for="scale_team_flag_id_11" name="scale_team[flag_id]">
+<span class="iconf-alert-2"></span>
+Concerning situation
+</label>
+<label class="btn btn-danger btn-default label_flag_leaks negative on-active" for="scale_team_flag_id_12" name="scale_team[flag_id]">
+<span class="iconf-blood"></span>
+Leaks
+</label>
+<label class="btn btn-danger btn-default label_flag_forbidden_function negative on-active" for="scale_team_flag_id_13" name="scale_team[flag_id]">
+<span class="iconf-delete-2"></span>
+Forbidden function
+</label>
+</div>
+</div>
+
+</div>
+<div class="col-sm-12 scale-div">
+<h3 class="font-weight-bold mb-1">Conclusion</h3>
+<div class="scale-final-evaluation hidden">
+<div class="form-group radio_buttons optional scale_team_flag"><label class="col-sm-2 control-label radio_buttons optional">Flag</label><div class="col-sm-10"><input type="hidden" name="scale_team[flag_id]" value=""><span class="radio"><label for="scale_team_flag_id_1"><input class="radio_buttons optional" type="radio" value="1" checked="checked" name="scale_team[flag_id]" id="scale_team_flag_id_1">Ok</label></span><span class="radio"><label for="scale_team_flag_id_2"><input class="radio_buttons optional" type="radio" value="2" name="scale_team[flag_id]" id="scale_team_flag_id_2">Empty work</label></span><span class="radio"><label for="scale_team_flag_id_3"><input class="radio_buttons optional" type="radio" value="3" name="scale_team[flag_id]" id="scale_team_flag_id_3">Incomplete work</label></span><span class="radio"><label for="scale_team_flag_id_5"><input class="radio_buttons optional" type="radio" value="5" name="scale_team[flag_id]" id="scale_team_flag_id_5">Invalid compilation</label></span><span class="radio"><label for="scale_team_flag_id_6"><input class="radio_buttons optional" type="radio" value="6" name="scale_team[flag_id]" id="scale_team_flag_id_6">Norme</label></span><span class="radio"><label for="scale_team_flag_id_7"><input class="radio_buttons optional" type="radio" value="7" name="scale_team[flag_id]" id="scale_team_flag_id_7">Cheat</label></span><span class="radio"><label for="scale_team_flag_id_8"><input class="radio_buttons optional" type="radio" value="8" name="scale_team[flag_id]" id="scale_team_flag_id_8">Crash</label></span><span class="radio"><label for="scale_team_flag_id_10"><input class="radio_buttons optional" type="radio" value="10" name="scale_team[flag_id]" id="scale_team_flag_id_10">Incomplete group</label></span><span class="radio"><label for="scale_team_flag_id_9"><input class="radio_buttons optional" type="radio" value="9" name="scale_team[flag_id]" id="scale_team_flag_id_9">Outstanding project</label></span><span class="radio"><label for="scale_team_flag_id_11"><input class="radio_buttons optional" type="radio" value="11" name="scale_team[flag_id]" id="scale_team_flag_id_11">Concerning situation</label></span><span class="radio"><label for="scale_team_flag_id_12"><input class="radio_buttons optional" type="radio" value="12" name="scale_team[flag_id]" id="scale_team_flag_id_12">Leaks</label></span><span class="radio"><label for="scale_team_flag_id_13"><input class="radio_buttons optional" type="radio" value="13" name="scale_team[flag_id]" id="scale_team_flag_id_13">Forbidden Function</label></span></div></div>
+</div>
+<div class="scale-final-comments" id="comments-14119">
+<p class="marked-title">Leave a comment on this evaluation</p>
+<textarea required="required" label="false" class="text required col-sm-12 mb-4" aria-required="true" name="scale_team[comment]" id="scale_team_comment"></textarea>
+
+</div>
+<input id="token" name="token" class="hidden" type="hidden">
+</div>
+<div class="scale-final-submit">
+<input class="btn btn-primary btn-block font-weight-bold" data-disable-with="Finishing evaluation..." name="commit" type="submit" value="Finish evaluation">
+</div>
+</form>
+
+</div>
