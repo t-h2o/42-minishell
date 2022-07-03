@@ -1,2 +1,0 @@
-echo $HOME     "$HOME <   >"   $PasdW  '$HOME    <  >'
-echo $OLDPWD     "$PWD <   >"   $PasdW  '$HOME    <  >'
